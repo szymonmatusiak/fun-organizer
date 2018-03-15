@@ -32,6 +32,24 @@ class MainPresenterImpl : BasePresenter<MainView>(), MainPresenter {
         detachView(false)
     }
 
+    override fun postToDatabase(responseObject: ResponseObject) {
+        var ping: Call<ResponseObject> = service!!.postToDatabase(responseObject)
+        ping.enqueue(object : Callback<ResponseObject> {
+            override fun onFailure(call: Call<ResponseObject>?, t: Throwable?) {
+                view?.toast(t.toString() + call.toString())
+            }
+
+            override fun onResponse(call: Call<ResponseObject>?, response: Response<ResponseObject>?) {
+                var statusCode = response!!.code()
+                if (statusCode == OK) {
+                    var response: ResponseObject? = response.body()
+                    view?.toast(response.toString())
+                }
+            }
+        })
+        view?.toast("after")
+    }
+
     override fun getPingResponse() {
         var ping: Call<ResponseObject> = service!!.getResponse()
 

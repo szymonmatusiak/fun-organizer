@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.`fun`.R
+import com.projekt.zespolowy.`fun`.ping.ResponseObject
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity(), MainView {
             mainPresenter!!.getPingResponse()
         }
         buttonPost.setOnClickListener {
-            buttonPost.text = textInput.text
+            var name = textInput.text.toString()
+            mainPresenter!!.postToDatabase(responseObject = ResponseObject(name, 2))
         }
     }
 
