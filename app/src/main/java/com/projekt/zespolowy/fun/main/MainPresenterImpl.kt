@@ -24,7 +24,7 @@ class MainPresenterImpl : BasePresenter<MainView>(), MainPresenter {
                 .build()
 
         service = retrofit?.create(PingService::class.java)
-        getPingResponse()
+        //getPingResponse()
 
     }
 

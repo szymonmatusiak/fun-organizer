@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.`fun`.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {
     private var mainPresenter: MainPresenter? = null
@@ -12,12 +13,18 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainPresenter = MainPresenterImpl()
+
     }
 
     override fun onStart() {
         super.onStart()
         mainPresenter!!.onStart(this)
-
+        button.setOnClickListener {
+            mainPresenter!!.getPingResponse()
+        }
+        buttonPost.setOnClickListener {
+            buttonPost.text = textInput.text
+        }
     }
 
     override fun onStop() {
@@ -28,4 +35,5 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun toast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
+
 }
