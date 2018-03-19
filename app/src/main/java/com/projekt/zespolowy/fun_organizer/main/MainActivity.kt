@@ -1,32 +1,27 @@
-package com.projekt.zespolowy.`fun`.main
+package com.projekt.zespolowy.fun_organizer.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.projekt.zespolowy.`fun`.R
-import com.projekt.zespolowy.`fun`.ping.ResponseObject
+import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
+import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {
-    private var mainPresenter: MainPresenter? = null
+
+    private lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainPresenter = MainPresenterImpl()
-
+        mainPresenter = MainPresenter(PingUseCase(ApiProvider.instance), SchedulersProvider())
     }
 
     override fun onStart() {
         super.onStart()
-        mainPresenter!!.onStart(this)
-        button.setOnClickListener {
-            mainPresenter!!.getPingResponse()
-        }
-        buttonPost.setOnClickListener {
-            var name = textInput.text.toString()
-            mainPresenter!!.postToDatabase(responseObject = ResponseObject(name, 2))
-        }
+        mainPresenter.onStart(this)
+        pingButton.setOnClickListener { mainPresenter.getPingResponse() }
     }
 
     override fun onStop() {

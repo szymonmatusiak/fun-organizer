@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.`fun`.base
+package com.projekt.zespolowy.fun_organizer.base
 
 import java.lang.ref.WeakReference
 
