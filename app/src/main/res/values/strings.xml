@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">fun</string>
+    <string name="ping">get simple Ping response</string>
+    <string name="post">post val to server</string>
 </resources>

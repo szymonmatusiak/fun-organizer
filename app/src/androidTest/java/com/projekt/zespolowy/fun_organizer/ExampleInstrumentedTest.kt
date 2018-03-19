@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.`fun`
+package com.projekt.zespolowy.fun_organizer
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
