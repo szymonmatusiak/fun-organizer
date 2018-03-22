@@ -2,6 +2,7 @@ package com.projekt.zespolowy.fun_organizer.utils
 
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.register.UserModel
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,6 +35,8 @@ class ApiProvider private constructor() {
     }
 
     fun postToDatabase(responseObject: PingResponseObject) = service.postToDatabase(responseObject)
+
+    fun postUserToDatabase(user : UserModel) = service.postUserToDatabase(user)
 
     fun getPing() = service.getResponse()
 }
