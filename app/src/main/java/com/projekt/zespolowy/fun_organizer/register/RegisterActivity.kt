@@ -36,6 +36,11 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
     fun getValuesFromViewToModel() {
+        user = UserModel(email.text.toString(),
+                password1.text.toString(),
+                name.text.toString(),
+                surname.text.toString(),
+                phone.text.toString())
             user.email = email.text.toString()
             user.password = password1.text.toString()
             user.name = name.text.toString()

@@ -1,10 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.register
 
 import com.nhaarman.mockito_kotlin.*
-import com.projekt.zespolowy.fun_organizer.main.MainPresenter
-import com.projekt.zespolowy.fun_organizer.main.MainView
-import com.projekt.zespolowy.fun_organizer.main.PingUseCase
-import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -45,22 +41,29 @@ class RegisterPresenterTest {
     }
 
     @Test
+    fun shouldNotCreateNewUser() {
+        whenever(mockRegisterUseCase.postUserToDatabase(any())).thenReturn(Single.error(Throwable()))
+        presenter.postUserToDatabase(responseOnSuccess, "password")
+        verify(mockView).toast(eq(Throwable().toString()))
+    }
+
+    @Test
     fun shouldNotAllowRegistrationWithoutEmail() {
-        user = UserModel("", "password", "", "", "" )
+        user = UserModel("", "password", "", "", "")
         presenter.postUserToDatabase(user, "password")
         verify(mockView).toast(eq("email not given"))
     }
 
     @Test
     fun shouldNotAllowPasswordsNotMatching() {
-        user = UserModel("ccvwq", "password", "", "", "" )
+        user = UserModel("ccvwq", "password", "", "", "")
         presenter.postUserToDatabase(user, "paswordddd222")
         verify(mockView).toast(eq("passwords not match"))
     }
 
     @Test
     fun shouldNotAllowTooShortPassword() {
-        user = UserModel("ccvwq", "ip", "", "", "" )
+        user = UserModel("ccvwq", "ip", "", "", "")
         presenter.postUserToDatabase(user, "ip")
         verify(mockView).toast(eq("password too short"))
     }
