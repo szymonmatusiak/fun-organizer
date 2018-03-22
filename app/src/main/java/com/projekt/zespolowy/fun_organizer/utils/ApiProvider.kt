@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
+import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
 import retrofit2.Retrofit
@@ -34,6 +35,6 @@ class ApiProvider private constructor() {
     }
 
     fun postToDatabase(responseObject: PingResponseObject) = service.postToDatabase(responseObject)
-
     fun getPing() = service.getResponse()
+    fun login(login: Login) = service.login(login)
 }

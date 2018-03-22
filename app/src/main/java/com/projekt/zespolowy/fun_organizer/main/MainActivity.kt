@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun onStop() {
         super.onStop()
-        mainPresenter!!.onStop()
+        mainPresenter.onStop()
     }
 
     override fun toast(text: String) {
