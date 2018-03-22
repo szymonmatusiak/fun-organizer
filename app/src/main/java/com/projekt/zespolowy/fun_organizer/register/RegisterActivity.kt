@@ -44,12 +44,11 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
     fun clearFieldsAfterSendFailure() {
-        email.getText().clear()
-        password1.getText().clear()
-        password2.getText().clear()
-        name.getText().clear()
-        surname.getText().clear()
-        phone.getText().clear()
+        user = UserModel(email.text.toString(),
+                password1.text.toString(),
+                name.text.toString(),
+                surname.text.toString(),
+                phone.text.toString())
     }
 
 
