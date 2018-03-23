@@ -1,22 +1,23 @@
 package com.projekt.zespolowy.fun_organizer.register
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity(), RegisterView {
 
-    private lateinit var registerPresenter : RegisterPresenter
-    private lateinit var user : UserModel
+    private lateinit var registerPresenter: RegisterPresenter
+    private lateinit var user: UserModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        registerPresenter = RegisterPresenter(RegisterUseCase(ApiProvider.instance), SchedulersProvider());
+        registerPresenter = RegisterPresenter(PingUseCase(ApiProvider.instance), SchedulersProvider())
     }
 
     override fun onStart() {
@@ -24,7 +25,7 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
         registerPresenter.onStart(this)
         registerButton.setOnClickListener({
             getValuesFromViewToModel()
-            if(registerPresenter.postUserToDatabase(user, password2.text.toString()) == false) {
+            if (registerPresenter.postUserToDatabase(user, password2.text.toString()) == false) {
                 clearFieldsAfterSendFailure()
             }
         })
@@ -41,11 +42,11 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
                 name.text.toString(),
                 surname.text.toString(),
                 phone.text.toString())
-            user.email = email.text.toString()
-            user.password = password1.text.toString()
-            user.name = name.text.toString()
-            user.surname = surname.text.toString()
-            user.phone_number = phone.text.toString()
+        user.email = email.text.toString()
+        user.password = password1.text.toString()
+        user.name = name.text.toString()
+        user.surname = surname.text.toString()
+        user.phone_number = phone.text.toString()
     }
 
     fun clearFieldsAfterSendFailure() {
@@ -57,8 +58,7 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
 
-
-    override fun toast(text : String) {
+    override fun toast(text: String) {
         android.widget.Toast.makeText(this, text, android.widget.Toast.LENGTH_LONG).show()
     }
 }

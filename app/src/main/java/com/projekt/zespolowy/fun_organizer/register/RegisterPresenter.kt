@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.register
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
+import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 /**
@@ -8,13 +9,13 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
  */
 
 class RegisterPresenter(
-        private val registerUseCase : RegisterUseCase,
-        private val schedulersProvider : SchedulersProvider
+        private val pingUseCase: PingUseCase,
+        private val schedulersProvider: SchedulersProvider
 ) : BasePresenter<RegisterView>() {
 
-    private lateinit var ret : CheckCorrectnessRet
+    private lateinit var ret: CheckCorrectnessRet
 
-    fun onStart(registerView : RegisterView) {
+    fun onStart(registerView: RegisterView) {
         attachView(registerView)
     }
 
@@ -23,21 +24,20 @@ class RegisterPresenter(
     }
 
 
-
-    fun checkCorrectness(user : UserModel, secPassword: String) : CheckCorrectnessRet{
-        if(user.email.trim().length <= 0)
+    fun checkCorrectness(user: UserModel, secPassword: String): CheckCorrectnessRet {
+        if (user.email.trim().length <= 0)
             return CheckCorrectnessRet.E_MAIL_NOT_GIVEN
-        if(user.password != secPassword)
+        if (user.password != secPassword)
             return CheckCorrectnessRet.PASSWORDS_NOT_MATCH
-        if(user.password.length < 5)
+        if (user.password.length < 5)
             return CheckCorrectnessRet.PASSWORD_TOO_SHORT
         return CheckCorrectnessRet.DATA_CORRECT
     }
 
-    fun postUserToDatabase(user : UserModel, secPassword : String) : Boolean {
+    fun postUserToDatabase(user: UserModel, secPassword: String): Boolean {
         ret = checkCorrectness(user, secPassword)
         if (ret.equals(CheckCorrectnessRet.DATA_CORRECT)) {
-            registerUseCase
+            pingUseCase
                     .postUserToDatabase(user)
                     .subscribeOn(schedulersProvider.backgroundThread())
                     .observeOn(schedulersProvider.mainThread())
@@ -50,12 +50,11 @@ class RegisterPresenter(
                             }
                     )
             return true
-        }
-        else if(ret.equals(CheckCorrectnessRet.E_MAIL_NOT_GIVEN))
+        } else if (ret.equals(CheckCorrectnessRet.E_MAIL_NOT_GIVEN))
             view?.toast("email not given")
-        else if(ret.equals(CheckCorrectnessRet.PASSWORDS_NOT_MATCH))
+        else if (ret.equals(CheckCorrectnessRet.PASSWORDS_NOT_MATCH))
             view?.toast("passwords not match")
-        else if(ret.equals(CheckCorrectnessRet.PASSWORD_TOO_SHORT))
+        else if (ret.equals(CheckCorrectnessRet.PASSWORD_TOO_SHORT))
             view?.toast("password too short")
         return false
     }

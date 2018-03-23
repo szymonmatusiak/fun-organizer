@@ -19,5 +19,5 @@ interface ApiService {
     fun postToDatabase(@Body responseObject: PingResponseObject): Single<PingResponseObject>
 
     @PUT("api/user")
-    fun postUserToDatabase(user : UserModel) : Single<UserModel>
+    fun postUserToDatabase(@Body user: UserModel): Single<UserModel>
 }
