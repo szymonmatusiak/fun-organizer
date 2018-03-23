@@ -1,9 +1,11 @@
 package com.projekt.zespolowy.fun_organizer.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onStart()
         mainPresenter.onStart(this)
         pingButton.setOnClickListener { mainPresenter.getPingResponse() }
+        registerButton.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
     }
 
     override fun onStop() {
