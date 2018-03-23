@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -24,14 +25,13 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onStart()
         mainPresenter.onStart(this)
         pingButton.setOnClickListener { mainPresenter.getPingResponse() }
-        registerButton.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
+        registerButton.setOnClickListener { startActivity(Intent(this, RegisterActivity::class.java)) }
+        loginButton.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
     }
 
     override fun onStop() {
         super.onStop()
-        mainPresenter!!.onStop()
+        mainPresenter.onStop()
     }
 
     override fun toast(text: String) {

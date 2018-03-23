@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
+import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.register.UserModel
@@ -36,7 +37,8 @@ class ApiProvider private constructor() {
 
     fun postToDatabase(responseObject: PingResponseObject) = service.postToDatabase(responseObject)
 
-    fun postUserToDatabase(user : UserModel) = service.postUserToDatabase(user)
+    fun postUserToDatabase(user: UserModel) = service.postUserToDatabase(user)
 
     fun getPing() = service.getResponse()
+    fun login(login: Login) = service.login(login)
 }

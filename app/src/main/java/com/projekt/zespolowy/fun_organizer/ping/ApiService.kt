@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.ping
 
+import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -20,4 +21,7 @@ interface ApiService {
 
     @PUT("api/user")
     fun postUserToDatabase(@Body user: UserModel): Single<UserModel>
+
+    @POST("/api/login")
+    fun login(@Body login: Login): Single<Login>
 }
