@@ -26,10 +26,6 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun onStart() {
         super.onStart()
-        //To wyzwalanie aktywności na dole nie wiem czemu nie działa (wcześniej działał), odpalam to tutaj
-        startActivity(Intent(this, EventListActivity::class.java))
-        this.finish()
-
         mainPresenter.onStart(this)
         mainPresenter.checkIfUserIsAuthenticated()
         pingButton.setOnClickListener { mainPresenter.getPingResponse() }
@@ -53,12 +49,9 @@ class MainActivity : AppCompatActivity(), MainView {
         authorization = sharedPreferences.getString("Authorization", "not")
         if (authorization != "not")
             mainPresenter.startEventListActivity()
-
     }
 
     override fun startEventListActivity() {
-        //TODO("Zamien tutaj LoginActivity na nazwe klasy aktywności, którą tworzysz po zalogowaniu ona bedzie domyslna")
-        //wrzuciłem to do OnStart, bo tu coś nie działa :/
         startActivity(Intent(this, EventListActivity::class.java))
         this.finish()
     }

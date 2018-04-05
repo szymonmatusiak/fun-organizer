@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.ping
 
+import com.projekt.zespolowy.fun_organizer.eventList.Event
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import io.reactivex.Single
@@ -24,4 +25,7 @@ interface ApiService {
 
     @POST("/login")
     fun login(@Body login: Login): Single<Response<Void>>
+
+    @GET("/api/event")
+    fun getEventList(): Single<List<Event>>
 }

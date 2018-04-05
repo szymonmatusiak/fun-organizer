@@ -13,6 +13,4 @@ class PingUseCase(private val apiProvider: ApiProvider) {
     fun getPing() = apiProvider.getPing()
 
     fun postUserToDatabase(user: UserModel) = apiProvider.postUserToDatabase(user)
-
-    //fun login(login: Login) = apiProvider.login(login)
 }
