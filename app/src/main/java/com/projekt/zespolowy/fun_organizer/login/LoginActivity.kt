@@ -28,7 +28,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     private fun login() {
-        loginPresenter.login(Login(loginEditText.text.toString(), passwordEditText.text.toString()))
+        loginPresenter.login(Login("testear123@gmail.com", "thisIsAPassworda"))
+        // loginPresenter.login(Login(loginEditText.text.toString(), passwordEditText.text.toString()))
     }
 
     override fun onStop() {

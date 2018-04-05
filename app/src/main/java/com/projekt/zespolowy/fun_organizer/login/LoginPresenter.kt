@@ -1,5 +1,9 @@
 package com.projekt.zespolowy.fun_organizer.login
 
+import android.preference.PreferenceManager
+import android.util.Log
+import androidx.core.content.edit
+import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
@@ -26,7 +30,12 @@ class LoginPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            view?.startNewActivity()
+                            var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                            sharedPreferences.edit {
+                                putString("Authorization", it.raw().header("Authorization").toString())
+                            }
+                            Log.d("Authorization", it.raw().header("Authorization").toString())
+                            view?.toast(it.raw().header("Authorization").toString())
                         },
                         {
                             view?.toast("Błędne dane logowania")

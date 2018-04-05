@@ -1,9 +1,11 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.register.UserModel
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,10 +24,15 @@ class ApiProvider private constructor() {
     private val service: ApiService
 
     init {
+        var okHttpClient = OkHttpClient.Builder()
+                .addNetworkInterceptor(StethoInterceptor())
+                .addInterceptor(HeaderInterceptor())
+                .build()
         retrofit = Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
                 .build()
 
         service = retrofit.create(ApiService::class.java)

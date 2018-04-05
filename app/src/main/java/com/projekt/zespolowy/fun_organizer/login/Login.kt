@@ -5,6 +5,6 @@ package com.projekt.zespolowy.fun_organizer.login
  * Login class
  */
 data class Login(
-        val login: String,
-        val password : String
+        val username: String,
+        val password: String
 )
