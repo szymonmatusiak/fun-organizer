@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.eventList.EventListActivity
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun onStart() {
         super.onStart()
+        //To wyzwalanie aktywności na dole nie wiem czemu nie działa (wcześniej działał), odpalam to tutaj
+        startActivity(Intent(this, EventListActivity::class.java))
+        this.finish()
+
         mainPresenter.onStart(this)
         mainPresenter.checkIfUserIsAuthenticated()
         pingButton.setOnClickListener { mainPresenter.getPingResponse() }
@@ -52,8 +57,9 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun startEventListActivity() {
-        TODO("Zamien tutaj LoginActivity na nazwe klasy aktywności, którą tworzysz po zalogowaniu ona bedzie domyslna")
-        startActivity(Intent(this, LoginActivity::class.java))
+        //TODO("Zamien tutaj LoginActivity na nazwe klasy aktywności, którą tworzysz po zalogowaniu ona bedzie domyslna")
+        //wrzuciłem to do OnStart, bo tu coś nie działa :/
+        startActivity(Intent(this, EventListActivity::class.java))
         this.finish()
     }
 
