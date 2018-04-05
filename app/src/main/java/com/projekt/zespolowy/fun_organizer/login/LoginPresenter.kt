@@ -1,7 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.login
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
-import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 /**
@@ -9,19 +8,19 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
  * Presenter for login activity
  */
 class LoginPresenter(
-        private val pingUseCase: PingUseCase,
+        private val loginUseCase: LoginUseCase,
         private val schedulersProvider: SchedulersProvider) : BasePresenter<LoginView>() {
 
-    fun onStart(loginView: LoginView){
+    fun onStart(loginView: LoginView) {
         attachView(loginView)
     }
 
-    fun onStop(){
+    fun onStop() {
         detachView(false)
     }
 
-    fun login(login: Login){
-        pingUseCase
+    fun login(login: Login) {
+        loginUseCase
                 .login(login)
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())

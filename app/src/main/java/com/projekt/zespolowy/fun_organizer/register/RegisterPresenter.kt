@@ -9,7 +9,7 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
  */
 
 class RegisterPresenter(
-        private val pingUseCase: PingUseCase,
+        private val registerUseCase: RegisterUseCase,
         private val schedulersProvider: SchedulersProvider
 ) : BasePresenter<RegisterView>() {
 
@@ -37,7 +37,7 @@ class RegisterPresenter(
     fun postUserToDatabase(user: UserModel, secPassword: String): Boolean {
         ret = checkCorrectness(user, secPassword)
         if (ret.equals(CheckCorrectnessRet.DATA_CORRECT)) {
-            pingUseCase
+            registerUseCase
                     .postUserToDatabase(user)
                     .subscribeOn(schedulersProvider.backgroundThread())
                     .observeOn(schedulersProvider.mainThread())
