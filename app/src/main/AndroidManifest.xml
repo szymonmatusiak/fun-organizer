@@ -25,7 +25,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".register.RegisterActivity"></activity>
+        <activity android:name=".register.RegisterActivity" />
+        <activity
+            android:name=".eventList.EventListActivity"
+            android:label="@string/title_activity_events_list"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

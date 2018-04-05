@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.eventList.EventListActivity
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
@@ -48,12 +49,10 @@ class MainActivity : AppCompatActivity(), MainView {
         authorization = sharedPreferences.getString("Authorization", "not")
         if (authorization != "not")
             mainPresenter.startEventListActivity()
-
     }
 
     override fun startEventListActivity() {
-        TODO("Zamien tutaj LoginActivity na nazwe klasy aktywności, którą tworzysz po zalogowaniu ona bedzie domyslna")
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, EventListActivity::class.java))
         this.finish()
     }
 

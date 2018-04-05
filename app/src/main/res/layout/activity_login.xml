@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="@string/gui_email_field"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/gui_password_field"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/loginEditText" />
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Login"
+        android:text="@string/gui_login_button"
         android:textColorLink="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="@id/passwordEditText"
         app:layout_constraintEnd_toEndOf="parent"

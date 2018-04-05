@@ -43,6 +43,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun toastMessage(): String {
-        return "(nie)Bezpieczne logowanie:\nLogin: " + loginEditText.text + "\nHasło: " + passwordEditText.text
+        return "Bezpieczne logowanie:\nLogin: " + loginEditText.text + "\nHasło: " + passwordEditText.text
     }
 }
