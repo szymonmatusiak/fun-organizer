@@ -18,7 +18,7 @@ class RegisterPresenterTest {
     private lateinit var mockSchedulersProvider: SchedulersProvider
     private lateinit var presenter: RegisterPresenter
 
-    private val responseOnSuccess = UserModel("email", "password", "name", "surname", "1234")
+    private val responseOnSuccess = UserModel("email", "name", "password", "surname", "1234", "name")
     private val throwable = Throwable()
     private lateinit var user: UserModel
     @Before
@@ -43,29 +43,29 @@ class RegisterPresenterTest {
     @Test
     fun shouldNotCreateNewUser() {
         whenever(mockRegisterUseCase.postUserToDatabase(any())).thenReturn(Single.error(Throwable()))
-        presenter.postUserToDatabase(responseOnSuccess, "password")
-        verify(mockView).toast(eq(Throwable().toString()))
+        presenter.postUserToDatabase(responseOnSuccess, "passwrd")
+        verify(mockView).toast("passwords not match")
     }
 
     @Test
     fun shouldNotAllowRegistrationWithoutEmail() {
-        user = UserModel("", "password", "", "", "")
+        user = UserModel("", "password", "", "", "", "")
         presenter.postUserToDatabase(user, "password")
         verify(mockView).toast(eq("email not given"))
     }
 
     @Test
     fun shouldNotAllowPasswordsNotMatching() {
-        user = UserModel("ccvwq", "password", "", "", "")
+        user = UserModel("ccvwq", "password", "", "", "", "")
         presenter.postUserToDatabase(user, "paswordddd222")
         verify(mockView).toast(eq("passwords not match"))
     }
 
     @Test
     fun shouldNotAllowTooShortPassword() {
-        user = UserModel("ccvwq", "ip", "", "", "")
+        user = UserModel("ccvwq", "ip", "ip", "", "", "")
         presenter.postUserToDatabase(user, "ip")
-        verify(mockView).toast(eq("password too short"))
+        verify(mockView).toast(("password too short"))
     }
 }
 
