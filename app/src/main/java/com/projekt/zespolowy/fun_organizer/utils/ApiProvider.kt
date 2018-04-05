@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.projekt.zespolowy.fun_organizer.NewEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
@@ -45,6 +46,7 @@ class ApiProvider private constructor() {
     fun postToDatabase(responseObject: PingResponseObject) = service.postToDatabase(responseObject)
 
     fun postUserToDatabase(user: UserModel) = service.postUserToDatabase(user)
+    fun postEventToDatabase(event : EventModel) = service.postEventToDatabase(event)
 
     fun getPing() = service.getResponse()
     fun login(login: Login) = service.login(login)
