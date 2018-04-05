@@ -24,9 +24,8 @@ class EventListPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            //val eventList2: List<Event> = gson.fromJson(it , Array<Event>::class.java).toList()
                             EventListAdapter(it)
-                            println(it.toString())
+                            view?.setEvents(it)
                         },
                         {
                             println(it.toString())
