@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
-import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_login.*
@@ -15,7 +14,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        loginPresenter = LoginPresenter(PingUseCase(ApiProvider.instance), SchedulersProvider())
+        loginPresenter = LoginPresenter(LoginUseCase(ApiProvider.instance), SchedulersProvider())
     }
 
     override fun onStart() {
@@ -24,12 +23,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
         loginButton.setOnClickListener { login() }
     }
 
-    override fun toast(text: String){
+    override fun toast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
-    private fun login(){
-        loginPresenter.login(Login(loginEditText.text.toString(),passwordEditText.text.toString()))
+    private fun login() {
+        loginPresenter.login(Login("testear123@gmail.com", "thisIsAPassworda"))
+        // loginPresenter.login(Login(loginEditText.text.toString(), passwordEditText.text.toString()))
     }
 
     override fun onStop() {

@@ -5,9 +5,10 @@ package com.projekt.zespolowy.fun_organizer.register
  */
 
 data class UserModel(
-        var email : String,
-        var password: String,
-        var name: String,
-        var surname: String,
-        var phone_number : String
+        val email: String,
+        val name: String,
+        val password: String,
+        val phoneNumber: String,
+        val surname: String,
+        val username: String
 )

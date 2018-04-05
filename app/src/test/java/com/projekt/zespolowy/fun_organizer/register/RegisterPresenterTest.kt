@@ -1,7 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.register
 
 import com.nhaarman.mockito_kotlin.*
-import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +14,7 @@ import org.junit.Test
 class RegisterPresenterTest {
 
     private lateinit var mockView: RegisterView
-    private lateinit var mockRegisterUseCase: PingUseCase
+    private lateinit var mockRegisterUseCase: RegisterUseCase
     private lateinit var mockSchedulersProvider: SchedulersProvider
     private lateinit var presenter: RegisterPresenter
 
