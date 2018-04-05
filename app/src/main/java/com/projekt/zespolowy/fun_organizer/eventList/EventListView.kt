@@ -4,4 +4,5 @@ import com.projekt.zespolowy.fun_organizer.base.IBaseView
 
 interface EventListView : IBaseView {
     fun setEvents(it: List<Event>?)
+    fun startNewEventActivity()
 }

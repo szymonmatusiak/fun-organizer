@@ -32,4 +32,8 @@ class EventListPresenter(
                         }
                 )
     }
+
+    fun startNewActivity() {
+        view?.startNewEventActivity()
+    }
 }

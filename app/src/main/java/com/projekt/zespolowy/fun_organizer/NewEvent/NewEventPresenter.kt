@@ -36,6 +36,7 @@ private val schedulersProvider: SchedulersProvider
                     .observeOn(schedulersProvider.mainThread())
                     .subscribe(
                             {
+                                view?.killActivity()
                                 view?.toast(it.toString())
                             },
                             {
