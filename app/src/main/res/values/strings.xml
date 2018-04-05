@@ -5,6 +5,11 @@
     <string name="register">register</string>
     <string name="title_activity_login">Sign in</string>
 
+    <!-- Strings related to new event gui -->
+    <string name="event_name_field">Name:</string>
+    <string name="event_place_field">Place:</string>
+    <string name="event_new_event_button">Create event</string>
+
     <!-- Strings related to login gui -->
     <string name="gui_email_field">E-mail</string>
     <string name="gui_password_field">Password</string>

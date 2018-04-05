@@ -45,8 +45,12 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         year = datePick.year
         if (month.toString().length == 1)
             monthString = "0" + month.toString()
+        else
+            monthString =  month.toString()
         if (day.toString().length == 1)
             dayString = "0" + day.toString()
+        else
+            dayString =  day.toString()
         var finalDate: String = Integer.toString(year) + "-" + monthString + "-" + dayString
         return finalDate
     }
