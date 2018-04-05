@@ -2,8 +2,10 @@ package com.projekt.zespolowy.fun_organizer.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onStart() {
         super.onStart()
         mainPresenter.onStart(this)
+        mainPresenter.checkIfUserIsAuthenticated()
         pingButton.setOnClickListener { mainPresenter.getPingResponse() }
         registerButton.setOnClickListener { startActivity(Intent(this, RegisterActivity::class.java)) }
         loginButton.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
@@ -37,5 +40,22 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun toast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
+
+    override fun checkIfUserIsAuthenticated() {
+        lateinit var authorization: String
+        var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+
+        authorization = sharedPreferences.getString("Authorization", "not")
+        if (authorization != "not")
+            mainPresenter.startEventListActivity()
+
+    }
+
+    override fun startEventListActivity() {
+        TODO("Zamien tutaj LoginActivity na nazwe klasy aktywności, którą tworzysz po zalogowaniu ona bedzie domyslna")
+        startActivity(Intent(this, LoginActivity::class.java))
+        this.finish()
+    }
+
 
 }

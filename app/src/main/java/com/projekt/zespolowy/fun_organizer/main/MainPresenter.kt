@@ -46,4 +46,12 @@ class MainPresenter(
                         }
                 )
     }
+
+    fun checkIfUserIsAuthenticated() {
+        view?.checkIfUserIsAuthenticated()
+    }
+
+    fun startEventListActivity() {
+        view?.startEventListActivity()
+    }
 }
