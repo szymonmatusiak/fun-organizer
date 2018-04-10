@@ -2,12 +2,9 @@ package com.projekt.zespolowy.fun_organizer.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
-import com.projekt.zespolowy.fun_organizer.eventList.EventListActivity
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
@@ -42,19 +39,19 @@ class MainActivity : AppCompatActivity(), MainView {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
 
-    override fun checkIfUserIsAuthenticated() {
-        lateinit var authorization: String
+   override fun checkIfUserIsAuthenticated() {
+        /*lateinit var authorization: String
         var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
 
         authorization = sharedPreferences.getString("Authorization", "not")
         if (authorization != "not")
-            mainPresenter.startEventListActivity()
+            mainPresenter.startEventListActivity()*/
     }
 
-    override fun startEventListActivity() {
+    /*override fun startEventListActivity() {
         startActivity(Intent(this, EventListActivity::class.java))
         this.finish()
-    }
+    }*/
 
 
 }

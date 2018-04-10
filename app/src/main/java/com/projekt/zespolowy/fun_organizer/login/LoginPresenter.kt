@@ -36,10 +36,19 @@ class LoginPresenter(
                             }
                             Log.d("Authorization", it.raw().header("Authorization").toString())
                             view?.toast(it.raw().header("Authorization").toString())
+                            checkIfUserIsAuthenticated()
                         },
                         {
                             view?.toast("Błędne dane logowania")
                         }
                 )
+    }
+
+    fun checkIfUserIsAuthenticated() {
+        view?.checkIfUserIsAuthenticated()
+    }
+
+    fun startEventListActivity() {
+        view?.startEventListActivity()
     }
 }

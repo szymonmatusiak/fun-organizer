@@ -51,7 +51,5 @@ class MainPresenter(
         view?.checkIfUserIsAuthenticated()
     }
 
-    fun startEventListActivity() {
-        view?.startEventListActivity()
-    }
+
 }
