@@ -10,5 +10,5 @@ interface LoginView : IBaseView {
     fun toast(text: String)
     fun toastMessage(): String
     fun checkIfUserIsAuthenticated()
-    fun startEventListActivity()
+    fun startNavigationActivity()
 }

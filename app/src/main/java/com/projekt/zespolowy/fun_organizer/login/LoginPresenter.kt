@@ -30,16 +30,17 @@ class LoginPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
-                            sharedPreferences.edit {
-                                putString("Authorization", it.raw().header("Authorization").toString())
+                            if (it.raw().header("Authorization").toString() != null) {
+                                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                                sharedPreferences.edit {
+                                    putString("Authorization", it.raw().header("Authorization").toString())
+                                }
+                                Log.d("Authorization", it.raw().header("Authorization").toString())
+                                view?.toast(it.raw().header("Authorization").toString())
+                                checkIfUserIsAuthenticated()
                             }
-                            Log.d("Authorization", it.raw().header("Authorization").toString())
-                            view?.toast(it.raw().header("Authorization").toString())
-                            checkIfUserIsAuthenticated()
                         },
                         {
-                            view?.toast("Błędne dane logowania")
                         }
                 )
     }
@@ -48,7 +49,7 @@ class LoginPresenter(
         view?.checkIfUserIsAuthenticated()
     }
 
-    fun startEventListActivity() {
-        view?.startEventListActivity()
+    fun startNavigationActivity() {
+        view?.startNavigationActivity()
     }
 }

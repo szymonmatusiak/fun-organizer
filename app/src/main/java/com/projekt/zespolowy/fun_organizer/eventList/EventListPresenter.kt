@@ -7,8 +7,6 @@ class EventListPresenter(
         private val eventListUseCase: EventListUseCase,
         private val schedulersProvider: SchedulersProvider) : BasePresenter<EventListView>() {
 
-    lateinit var eventList :List<Event>
-
     fun onStart(eventListView: EventListView) {
         attachView(eventListView)
     }
@@ -24,7 +22,6 @@ class EventListPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            EventListAdapter(it)
                             view?.setEvents(it)
                         },
                         {

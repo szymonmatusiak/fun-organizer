@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
-import com.projekt.zespolowy.fun_organizer.eventList.EventListActivity
+import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -52,11 +52,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         authorization = sharedPreferences.getString("Authorization", "not")
         if (authorization != "not" && authorization != "null")
-            loginPresenter.startEventListActivity()
+            loginPresenter.startNavigationActivity()
     }
 
-    override fun startEventListActivity() {
-        startActivity(Intent(this, EventListActivity::class.java))
+    override fun startNavigationActivity() {
+        startActivity(Intent(this, NavigationActivity::class.java))
         this.finish()
     }
 

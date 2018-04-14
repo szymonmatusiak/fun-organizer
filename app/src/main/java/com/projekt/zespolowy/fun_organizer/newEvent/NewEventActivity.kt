@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.fun_organizer.NewEvent
+package com.projekt.zespolowy.fun_organizer.newEvent
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

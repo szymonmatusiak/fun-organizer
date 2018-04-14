@@ -1,8 +1,8 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.projekt.zespolowy.fun_organizer.NewEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.login.Login
+import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.ping.ApiService
 import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.register.UserModel
