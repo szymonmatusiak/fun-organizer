@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.projekt.zespolowy.fun_organizer.R
-import com.projekt.zespolowy.fun_organizer.eventList.EventListActivity
+import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
 
@@ -28,6 +28,14 @@ class NavigationActivity : AppCompatActivity(),
         nav_view.setNavigationItemSelectedListener(this)
     }
 
+    override fun onStart() {
+        super.onStart()
+        var fragment = EventListFragment()
+        val ft = fragmentManager.beginTransaction()
+        ft.replace(R.id.fragment_placeholder, fragment)
+        ft.commit()
+    }
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -43,17 +51,15 @@ class NavigationActivity : AppCompatActivity(),
         when (item.itemId) {
             R.id.nav_camera -> fragment = BlankFragment2()
 
-            R.id.nav_gallery -> fragment = EventListActivity()
+            R.id.nav_gallery -> fragment = EventListFragment()
 
             R.id.nav_slideshow -> {
             }
             R.id.nav_manage -> {
             }
             R.id.nav_share -> {
-
             }
             R.id.nav_send -> {
-
             }
         }
         if (fragment != null) {
