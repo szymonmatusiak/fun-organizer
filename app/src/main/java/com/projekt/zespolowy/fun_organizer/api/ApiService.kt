@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.fun_organizer.ping
+package com.projekt.zespolowy.fun_organizer.api
 
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
@@ -31,4 +31,8 @@ interface ApiService {
 
     @GET("/api/event")
     fun getEventList(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
+
+    @GET("/api/usershowf")
+    fun getFriendsList(): Single<List<UserModel>>
+
 }

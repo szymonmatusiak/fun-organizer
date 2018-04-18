@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
+import com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
 
@@ -53,8 +54,7 @@ class NavigationActivity : AppCompatActivity(),
 
             R.id.nav_gallery -> fragment = EventListFragment()
 
-            R.id.nav_slideshow -> {
-            }
+            R.id.nav_slideshow -> fragment = FriendsListFragment()
             R.id.nav_manage -> {
             }
             R.id.nav_share -> {

@@ -1,6 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.main
 
-import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 
