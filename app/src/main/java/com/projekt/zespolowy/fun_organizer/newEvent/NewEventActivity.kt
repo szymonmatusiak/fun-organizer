@@ -16,23 +16,25 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     private lateinit var event: EventModel
 
     lateinit var selectedDate : Date
-    var day : Int = 0
-    var month : Int = 0
-    var year: Int = 0
-    var hour: Int = 0
-    var minutes: Int = 0
+    var day : String = ""
+    var month : String = ""
+    var year: String = ""
+    var hour: String = ""
+    var minutes: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_event)
         eventPresenter = NewEventPresenter(NewEventUseCase(ApiProvider.instance), SchedulersProvider())
-
     }
 
     override fun onStart() {
         super.onStart()
         eventPresenter.onStart(this)
+
+        //val calend = Calendar.getInstance()
+
         createBtn.setOnClickListener({
             getValuesFromViewToModel()
             if (!eventPresenter.postEventToDatabase(event)) {
@@ -50,9 +52,16 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
 
                 //this.selectedDate = selectedDate.da
-                this.day = dayOfMonth
-                this.month = month
-                this.year = year
+                this.day = dayOfMonth.toString()
+                this.month = month.toString()
+                this.year = year.toString()
+
+                /*if (this.month.length == 1)
+                    this.month = "0" + this.month
+
+                if (day.length == 1)
+                    day = "0" + day*/
+
                 dateField.setText(this.day.toString() + "-" + this.month + "-" + this.year)
 
 
@@ -69,8 +78,15 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 selectedTime.set(Calendar.MINUTE,minute)
 
-                this.hour = hourOfDay
-                this.minutes = minute
+                this.hour = hourOfDay.toString()
+                this.minutes = minute.toString()
+
+                /*if (hour.length == 1)
+                    hour = "0" + hour
+
+                if (minutes.length == 1)
+                    minutes = "0" + minutes*/
+
                 timeField.setText(this.hour.toString() + ":" + this.minutes)
             }, now.get(Calendar.HOUR_OF_DAY),now.get(Calendar.MINUTE),false)
             timePicker.show()
@@ -86,15 +102,19 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         lateinit var monthString: String
         lateinit var dayString: String
 
-        if (month.toString().length == 1)
-            monthString = "0" + month.toString()
-        else
-            monthString = month.toString()
-        if (day.toString().length == 1)
-            dayString = "0" + day.toString()
-        else
-            dayString = day.toString()
-        var finalDate: String = Integer.toString(year) + "-" + monthString + "-" + dayString
+        if (month.length == 1)
+            month = "0" + month
+
+        if (day.length == 1)
+            day = "0" + day
+
+        if (hour.length == 1)
+            hour = "0" + hour
+
+        if (minutes.length == 1)
+            minutes = "0" + minutes
+
+        var finalDate: String = year + "-" + monthString + "-" + dayString + " " + hour + ":" + minutes
         return finalDate
     }
 

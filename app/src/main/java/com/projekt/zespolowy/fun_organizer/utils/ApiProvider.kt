@@ -1,10 +1,10 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.projekt.zespolowy.fun_organizer.login.Login
-import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.api.ApiService
 import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.login.Login
+import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -53,5 +53,7 @@ class ApiProvider private constructor() {
     fun login(login: Login) = service.login(login)
 
     fun getEventList() = service.getEventList()
+    fun getSingleEvent(eventID : Int) = service.getSingleEvent(eventID)
     fun getFriendsList() = service.getFriendsList()
+
 }

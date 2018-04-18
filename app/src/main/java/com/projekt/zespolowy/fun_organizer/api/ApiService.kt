@@ -32,6 +32,9 @@ interface ApiService {
     @GET("/api/event")
     fun getEventList(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
 
+    @GET("/api/event")
+    fun getSingleEvent(@Body eventID: Int): Single<UserModel>
+
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>
 

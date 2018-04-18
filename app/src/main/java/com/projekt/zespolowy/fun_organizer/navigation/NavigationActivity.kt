@@ -55,7 +55,9 @@ class NavigationActivity : AppCompatActivity(),
             R.id.nav_upcoming_events -> {
             }
 
-            R.id.nav_friends -> fragment = FriendsListFragment()
+            R.id.nav_friends -> {
+                fragment = FriendsListFragment()
+            }
 
             R.id.nav_your_events -> fragment = EventListFragment()
 

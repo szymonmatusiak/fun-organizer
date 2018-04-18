@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.projekt.zespolowy.fun_organizer.R
+import java.text.SimpleDateFormat
+
 
 class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+
     private val eventName: TextView
     private val eventDate: TextView
     private val eventPlace: TextView
@@ -22,6 +25,7 @@ class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
     }
 
+
     init {
         v.setOnClickListener { view ->
             Snackbar.make(view, "Cicked on event id: $adapterPosition", Snackbar.LENGTH_LONG)
@@ -34,9 +38,10 @@ class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     fun setData(event: EventModel2) {
         eventName.text = event.name
-        eventDate.text = event.date
+        val dateFormat = SimpleDateFormat("MM-dd-yyyy HH:mm")
+        val text = dateFormat.format(event.date)
+        eventDate.text = text
         eventPlace.text = event.placeName
     }
-
 
 }

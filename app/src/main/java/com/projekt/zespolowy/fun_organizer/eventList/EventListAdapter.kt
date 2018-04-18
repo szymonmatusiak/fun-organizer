@@ -1,14 +1,16 @@
 package com.projekt.zespolowy.fun_organizer.eventList
 
+import android.renderscript.Script
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.view.ViewGroup
 
 /**
  *  Adapter class for event list recycle
  */
 
-class EventListAdapter(private val eventModelList: List<EventModel2>) :
-        RecyclerView.Adapter<EventViewHolder>() {
+class EventListAdapter (private val eventModelList: List<EventModel2>)  :
+        RecyclerView.Adapter<EventViewHolder>()  {
 
 
     // Create new views (invoked by the layout manager)
