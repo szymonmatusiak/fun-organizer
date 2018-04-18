@@ -1,7 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.login
 
 import android.preference.PreferenceManager
-import android.util.Log
 import androidx.core.content.edit
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
@@ -30,16 +29,29 @@ class LoginPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
-                            sharedPreferences.edit {
-                                putString("Authorization", it.raw().header("Authorization").toString())
-                            }
-                            Log.d("Authorization", it.raw().header("Authorization").toString())
-                            view?.toast(it.raw().header("Authorization").toString())
+                            var test: String? = it.raw().header("Authorization").toString()
+                            if (test?.length!! > 5) {
+                                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                                sharedPreferences.edit {
+                                    putString("Authorization", it.raw().header("Authorization").toString())
+                                }
+                                //view?.toast(it.raw().header("Authorization").toString())
+                                checkIfUserIsAuthenticated()
+                            } else
+                                view?.toast("błędne dane logowania")
                         },
                         {
-                            view?.toast("Błędne dane logowania")
+                            view?.toast("sprawdz połączenie sieciowe")
+
                         }
                 )
+    }
+
+    fun checkIfUserIsAuthenticated() {
+        view?.checkIfUserIsAuthenticated()
+    }
+
+    fun startNavigationActivity() {
+        view?.startNavigationActivity()
     }
 }

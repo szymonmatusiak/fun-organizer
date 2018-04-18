@@ -2,7 +2,7 @@ package com.projekt.zespolowy.fun_organizer.main
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import io.reactivex.Single
 import org.junit.Before

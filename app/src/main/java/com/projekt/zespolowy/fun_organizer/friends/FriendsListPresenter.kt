@@ -1,28 +1,28 @@
-package com.projekt.zespolowy.fun_organizer.eventList
+package com.projekt.zespolowy.fun_organizer.friends
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
-class EventListPresenter(
-        private val eventListUseCase: EventListUseCase,
-        private val schedulersProvider: SchedulersProvider) : BasePresenter<EventListView>() {
+class FriendsListPresenter(
+        private val friendsListUseCase: FriendsListUseCase,
+        private val schedulersProvider: SchedulersProvider) : BasePresenter<FriendsListView>() {
 
-    fun onStart(eventListView: EventListView) {
-        attachView(eventListView)
+    fun onStart(friendsListView: FriendsListView) {
+        attachView(friendsListView)
     }
 
     fun onStop() {
         detachView(false)
     }
 
-    fun getEventList() {
-        eventListUseCase
-                .getEventList()
+    fun getFriendsList() {
+        friendsListUseCase
+                .getFriendsList()
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            view?.setEvents(it)
+                            view?.setFriendsList(it)
                         },
                         {
                             println(it.toString())
@@ -30,7 +30,4 @@ class EventListPresenter(
                 )
     }
 
-    fun startNewActivity() {
-        view?.startNewEventActivity()
-    }
 }

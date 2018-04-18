@@ -1,9 +1,8 @@
-package com.projekt.zespolowy.fun_organizer.ping
+package com.projekt.zespolowy.fun_organizer.api
 
-import com.projekt.zespolowy.fun_organizer.eventList.Event
 import com.projekt.zespolowy.fun_organizer.login.Login
+import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
-import com.projekt.zespolowy.fun_organizer.NewEvent.EventModel
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -25,11 +24,15 @@ interface ApiService {
     fun postUserToDatabase(@Body user: UserModel): Single<UserModel>
 
     @POST("api/event")
-    fun postEventToDatabase(@Body event: EventModel) :Single<EventModel>
+    fun postEventToDatabase(@Body event: EventModel): Single<EventModel>
 
     @POST("/login")
     fun login(@Body login: Login): Single<Response<Void>>
 
     @GET("/api/event")
-    fun getEventList(): Single<List<Event>>
+    fun getEventList(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
+
+    @GET("/api/usershowf")
+    fun getFriendsList(): Single<List<UserModel>>
+
 }

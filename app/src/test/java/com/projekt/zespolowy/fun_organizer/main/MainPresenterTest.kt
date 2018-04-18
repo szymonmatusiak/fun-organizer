@@ -1,7 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.main
 
 import com.nhaarman.mockito_kotlin.*
-import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers

@@ -8,6 +8,7 @@ import com.projekt.zespolowy.fun_organizer.base.IBaseView
  */
 interface LoginView : IBaseView {
     fun toast(text: String)
-    fun startNewActivity()
     fun toastMessage(): String
+    fun checkIfUserIsAuthenticated()
+    fun startNavigationActivity()
 }

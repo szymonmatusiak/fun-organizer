@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    tools:context="com.projekt.zespolowy.fun_organizer.eventList.EventListFragment">
+    tools:context="com.projekt.zespolowy.fun_organizer.friends.FriendsFragment">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_event_button"
@@ -26,4 +24,4 @@
         android:clipToPadding="true"
         android:scrollbars="vertical" />
 
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

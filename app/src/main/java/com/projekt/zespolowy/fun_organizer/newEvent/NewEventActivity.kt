@@ -1,13 +1,15 @@
-package com.projekt.zespolowy.fun_organizer.NewEvent
+package com.projekt.zespolowy.fun_organizer.newEvent
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.DatePicker
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_new_event.*
 
-class NewEventActivity : AppCompatActivity(), NewEventView {
+class NewEventActivity : AppCompatActivity(), NewEventView, DatePickerDialog.OnDateSetListener {
 
     private lateinit var eventPresenter: NewEventPresenter
     private lateinit var event: EventModel
@@ -23,7 +25,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         eventPresenter.onStart(this)
         createBtn.setOnClickListener({
             getValuesFromViewToModel()
-            if (eventPresenter.postEventToDatabase(event) == false) {
+            if (!eventPresenter.postEventToDatabase(event)) {
                 clearFieldsAfterSendFailure()
             }
         })
@@ -46,11 +48,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         if (month.toString().length == 1)
             monthString = "0" + month.toString()
         else
-            monthString =  month.toString()
+            monthString = month.toString()
         if (day.toString().length == 1)
             dayString = "0" + day.toString()
         else
-            dayString =  day.toString()
+            dayString = day.toString()
         var finalDate: String = Integer.toString(year) + "-" + monthString + "-" + dayString
         return finalDate
     }
@@ -76,4 +78,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         this.finish()
     }
 
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        
+    }
 }
