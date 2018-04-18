@@ -1,23 +1,33 @@
 package com.projekt.zespolowy.fun_organizer.newEvent
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.DatePicker
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_new_event.*
+import java.util.*
 
-class NewEventActivity : AppCompatActivity(), NewEventView, DatePickerDialog.OnDateSetListener {
+class NewEventActivity : AppCompatActivity(), NewEventView {
 
     private lateinit var eventPresenter: NewEventPresenter
     private lateinit var event: EventModel
+
+    lateinit var selectedDate : Date
+    var day : Int = 0
+    var month : Int = 0
+    var year: Int = 0
+    var hour: Int = 0
+    var minutes: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_event)
         eventPresenter = NewEventPresenter(NewEventUseCase(ApiProvider.instance), SchedulersProvider())
+
     }
 
     override fun onStart() {
@@ -29,6 +39,42 @@ class NewEventActivity : AppCompatActivity(), NewEventView, DatePickerDialog.OnD
                 clearFieldsAfterSendFailure()
             }
         })
+        dateField.setOnClickListener({
+            //Popup calendar
+            val now = Calendar.getInstance()
+            val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(Calendar.YEAR,year)
+                selectedDate.set(Calendar.MONTH,month)
+                selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+
+
+                //this.selectedDate = selectedDate.da
+                this.day = dayOfMonth
+                this.month = month
+                this.year = year
+                dateField.setText(this.day.toString() + "-" + this.month + "-" + this.year)
+
+
+            }, now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
+            datePicker.show()
+
+        })
+
+        timeField.setOnClickListener({
+            //Popup clock picker
+            val now = Calendar.getInstance()
+            val timePicker = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                val selectedTime = Calendar.getInstance()
+                selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
+                selectedTime.set(Calendar.MINUTE,minute)
+
+                this.hour = hourOfDay
+                this.minutes = minute
+                timeField.setText(this.hour.toString() + ":" + this.minutes)
+            }, now.get(Calendar.HOUR_OF_DAY),now.get(Calendar.MINUTE),false)
+            timePicker.show()
+        })
     }
 
     override fun onStop() {
@@ -37,14 +83,9 @@ class NewEventActivity : AppCompatActivity(), NewEventView, DatePickerDialog.OnD
     }
 
     fun parseDate(): String {
-        var day: Int
-        var month: Int
-        var year: Int
         lateinit var monthString: String
         lateinit var dayString: String
-        day = datePick.dayOfMonth
-        month = datePick.month
-        year = datePick.year
+
         if (month.toString().length == 1)
             monthString = "0" + month.toString()
         else
@@ -78,7 +119,4 @@ class NewEventActivity : AppCompatActivity(), NewEventView, DatePickerDialog.OnD
         this.finish()
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        
-    }
 }

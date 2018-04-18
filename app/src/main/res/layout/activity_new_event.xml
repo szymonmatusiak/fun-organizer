@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:scrollbars="none"
-    android:fillViewport="false">
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="0dp">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/event_main_message"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -24,8 +25,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:text="@string/event_name_field" />
 
             <EditText
@@ -33,83 +35,131 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/eventNameLabel"
                 android:ems="10"
-                android:inputType="text"
-                android:paddingLeft="10dp"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:text="" />
+                android:text=""/>
         </RelativeLayout>
 
+
+
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/localisationLabel"
+            android:id="@+id/localisationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="18dp"
+            android:paddingTop="15dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/event_place_field" />
+
+        <EditText
+            android:id="@+id/localisation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/localisationLabel"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="" />
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/event_place_field" />
+                android:paddingRight="23dp"
+                android:paddingTop="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:text="@string/event_date_field" />
 
             <EditText
-                android:id="@+id/localisation"
+                android:id="@+id/dateField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/localisationLabel"
+                android:focusable="false"
+                android:layout_toRightOf="@id/dateLabel"
                 android:ems="10"
-                android:inputType="text"
-                android:paddingLeft="10dp"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
                 android:paddingTop="10dp"
+                android:layout_marginRight="20dp"
                 android:text="" />
+
+
         </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/timeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/event_time_field" />
+
+        <EditText
+            android:id="@+id/timeField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:focusable="false"
+            android:layout_toRightOf="@id/timeLabel"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="1">
+    </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.9"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-                    <DatePicker
-                        android:id="@+id/datePick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:datePickerMode="calendar"
-                        android:defaultFocusHighlightEnabled="false"
-                        android:visibility="visible"
-                        tools:headerBackground="@android:color/darker_gray"></DatePicker>
-                </LinearLayout>
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/event_new_event_button" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:orientation="vertical"
-                    android:paddingBottom="0dp">
-                <Button
-                    android:id="@+id/createBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/event_new_event_button" />
-            </LinearLayout>
-
-
-        </LinearLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
+
 </LinearLayout>

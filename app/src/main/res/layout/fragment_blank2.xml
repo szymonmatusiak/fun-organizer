@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.projekt.zespolowy.fun_organizer.navigation.BlankFragment">
+    tools:context="com.projekt.zespolowy.fun_organizer.navigation.BlankFragment2">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Hello news" />
 
 </FrameLayout>
