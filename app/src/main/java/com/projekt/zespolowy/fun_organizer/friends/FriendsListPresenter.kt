@@ -30,4 +30,9 @@ class FriendsListPresenter(
                 )
     }
 
+    fun startNewActivity() {
+        view?.startNewEventActivity()
+
+    }
+
 }

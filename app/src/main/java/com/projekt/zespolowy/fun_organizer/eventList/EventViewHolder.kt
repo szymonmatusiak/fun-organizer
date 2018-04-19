@@ -1,17 +1,20 @@
 package com.projekt.zespolowy.fun_organizer.eventList
 
-import android.support.design.widget.Snackbar
+import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.projekt.zespolowy.fun_organizer.R
+import kotterknife.bindView
 
 class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    private val eventName: TextView
-    private val eventDate: TextView
-    private val eventPlace: TextView
+    
+    private val eventName: TextView by bindView(R.id.event_name_textView)
+    private val eventDate: TextView by bindView(R.id.event_date_textView)
+    private val eventPlace: TextView by bindView(R.id.event_place_textView)
+    private val viewHolder: ConstraintLayout by bindView(R.id.layout_holder)
 
     companion object {
         fun createViewHolder(viewGroup: ViewGroup): EventViewHolder {
@@ -22,21 +25,10 @@ class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
     }
 
-    init {
-        v.setOnClickListener { view ->
-            Snackbar.make(view, "Cicked on event id: $adapterPosition", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        eventName = v.findViewById(R.id.event_name_textView)
-        eventDate = v.findViewById(R.id.event_date_textView)
-        eventPlace = v.findViewById(R.id.event_place_textView)
-    }
-
-    fun setData(event: EventModel2) {
+    fun setData(event: EventModel2, eventListener: EventListener) {
         eventName.text = event.name
         eventDate.text = event.date
         eventPlace.text = event.placeName
+        viewHolder.setOnClickListener { eventListener.onEventClicked(event) }
     }
-
-
 }

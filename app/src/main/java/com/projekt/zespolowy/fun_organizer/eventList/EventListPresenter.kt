@@ -33,4 +33,8 @@ class EventListPresenter(
     fun startNewActivity() {
         view?.startNewEventActivity()
     }
+
+    fun onEventClicked(event: EventModel2) {
+        view?.startEventInfoActivity(event)
+    }
 }

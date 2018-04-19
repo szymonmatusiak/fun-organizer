@@ -2,6 +2,7 @@ package com.projekt.zespolowy.fun_organizer.friends
 
 
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.newFriend.NewFriendActivity
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -38,7 +40,7 @@ class FriendsListFragment : Fragment(), FriendsListView {
         friendsListPresenter.onStart(this)
         friendsListPresenter.getFriendsList()
         newFriendButton.setOnClickListener {
-            // friendsListPresenter.startNewActivity()
+            friendsListPresenter.startNewActivity()
         }
     }
 
@@ -58,6 +60,9 @@ class FriendsListFragment : Fragment(), FriendsListView {
         }
     }
 
+    override fun startNewEventActivity() {
+        startActivity(Intent(activity, NewFriendActivity::class.java))
 
+    }
 
 }
