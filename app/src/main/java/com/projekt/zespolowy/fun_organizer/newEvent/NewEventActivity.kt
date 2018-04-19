@@ -56,11 +56,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 this.month = month.toString()
                 this.year = year.toString()
 
-                /*if (this.month.length == 1)
+                if (this.month.length == 1)
                     this.month = "0" + this.month
 
                 if (day.length == 1)
-                    day = "0" + day*/
+                    day = "0" + day
 
                 dateField.setText(this.day.toString() + "-" + this.month + "-" + this.year)
 
@@ -81,11 +81,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 this.hour = hourOfDay.toString()
                 this.minutes = minute.toString()
 
-                /*if (hour.length == 1)
+                if (hour.length == 1)
                     hour = "0" + hour
 
                 if (minutes.length == 1)
-                    minutes = "0" + minutes*/
+                    minutes = "0" + minutes
 
                 timeField.setText(this.hour.toString() + ":" + this.minutes)
             }, now.get(Calendar.HOUR_OF_DAY),now.get(Calendar.MINUTE),false)
@@ -119,6 +119,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     fun getValuesFromViewToModel() {
         var finalDate: String = parseDate()
         event = EventModel(finalDate,
+                eventDescription.text.toString(),
                 eventName.text.toString(),
                 localisation.text.toString())
     }

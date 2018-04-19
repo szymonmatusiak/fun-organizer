@@ -67,12 +67,16 @@
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/buttoneventTest"
+        <TextView
+            android:id="@+id/eventInfo_description_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-
+            android:text="Description"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="16dp" />
 
     </LinearLayout>
 

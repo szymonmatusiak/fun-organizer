@@ -35,5 +35,6 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         eventInfo_name_textView.setText(it.name)
         eventInfo_place_textView.setText(it.placeName)
         eventInfo_date_textView.setText(it.date)
+        eventInfo_description_textView.setText(it.description)
     }
 }

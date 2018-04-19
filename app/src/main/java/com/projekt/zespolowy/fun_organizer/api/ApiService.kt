@@ -9,6 +9,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 
 /**
@@ -33,8 +34,8 @@ interface ApiService {
     @GET("/api/event")
     fun getEventList(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
 
-    @GET("/api/event")
-    fun getSingleEvent(@Body eventID: Integer): Single<EventInfo>
+    @GET("/api/event/{id}")
+    fun getSingleEvent(@Path("id") eventID: Int): Single<EventInfo>
 
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>
