@@ -38,9 +38,15 @@ class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     fun setData(event: EventModel2) {
         eventName.text = event.name
-        val dateFormat = SimpleDateFormat("MM-dd-yyyy HH:mm")
-        val text = dateFormat.format(event.date)
-        eventDate.text = text
+        // If jest fixem na starą datę w bazie, nowa powinna działać bez IFa
+        if (event.date.length == 16 && event.date[9] == ' '){
+            val dateFormat = SimpleDateFormat("MM-dd-yyyy HH:mm")
+            val text = dateFormat.format(event.date) // tutaj data czytana jest jako właściwa data, jednak ze względu na pole zamieniana jest spowrotem na String
+            eventDate.text = text
+        }
+        else{
+            eventDate.text = event.date
+        }
         eventPlace.text = event.placeName
     }
 
