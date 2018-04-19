@@ -5,10 +5,7 @@ import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import io.reactivex.Single
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 
 /**
@@ -39,11 +36,13 @@ interface ApiService {
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>
 
+    @FormUrlEncoded
     @PUT("/api/useraddfnum")
-    fun searchWithPhoneNumber(@Body phonenumber: String): Single<Response<Void>>
+    fun searchWithPhoneNumber(@Field("number") phonenumber: String): Single<Response<Void>>
 
+    @FormUrlEncoded
     @PUT("/api/useraddf")
-    fun searchWithMail(@Body mail: String): Single<Response<Void>>
+    fun searchWithMail(@Field("f") mail: String): Single<Response<Void>>
 
     @PUT("/api/useraddfbook")
     fun searchWithContactList(@Body list: List<String>): Single<Response<Void>>

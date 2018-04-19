@@ -66,17 +66,10 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
                     arrayOf(Manifest.permission.READ_CONTACTS),
                     MY_PERMISSIONS_REQUEST_READ_CONTACTS)
 
-        } else {
-            var string = String()
-            for (phoneNumber in getContactList()) {
-                string += "$phoneNumber "
-
-            }
-            Toast.makeText(this, string, Toast.LENGTH_LONG).show()
         }
     }
 
-    //TODO this can't stay like this
+    //TODO this can't stay like this or can it
     private fun getContactList(): List<String> {
         var list: MutableList<String> = arrayListOf()
         val cr = contentResolver
@@ -100,7 +93,9 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
                                 ContactsContract.CommonDataKinds.Phone.NUMBER))
                         Log.i("1", "Name: $name")
                         Log.i("2", "Phone Number: $phoneNo")
+
                         list.add(phoneNo)
+
                     }
                     pCur.close()
                 }
