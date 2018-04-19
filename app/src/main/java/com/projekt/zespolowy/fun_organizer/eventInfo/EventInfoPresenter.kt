@@ -14,4 +14,20 @@ class EventInfoPresenter(
     fun onStop() {
         detachView(false)
     }
+
+    fun getEventInfo(eventID : Int) {
+        eventInfoUseCase
+                .getSingleEvent(eventID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            view?.setEvnetInfo(it)
+                        },
+                        {
+                            println(it.toString())
+                        }
+                )
+    }
+
 }

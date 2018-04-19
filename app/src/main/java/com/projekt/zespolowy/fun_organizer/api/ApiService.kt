@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.api
 
+import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
@@ -33,7 +34,7 @@ interface ApiService {
     fun getEventList(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
 
     @GET("/api/event")
-    fun getSingleEvent(@Body eventID: Int): Single<UserModel>
+    fun getSingleEvent(@Body eventID: Integer): Single<EventInfo>
 
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfoActivity2
 import com.projekt.zespolowy.fun_organizer.newEvent.NewEventActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -23,7 +24,7 @@ class EventListFragment : Fragment(), EventListView, EventListener {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val recyclerView: RecyclerView by bindView(R.id.event_list_recycle_view)
-    private val newEventButton: FloatingActionButton by bindView(R.id.new_event_button)
+    private val newEventButton: FloatingActionButton by this.bindView(R.id.new_event_button)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,9 +73,9 @@ class EventListFragment : Fragment(), EventListView, EventListener {
     }
 
     override fun startEventInfoActivity(event: EventModel2) {
-        // val intent = Intent(activity, NewEventActivity::class.java)
-        // intent.putExtra("eventID", event.id)
-        // startActivity(intent)
+         val intent = Intent(activity, EventInfoActivity2::class.java)
+         intent.putExtra("eventID", event.id.toString())
+         startActivity(intent)
     }
 
 }

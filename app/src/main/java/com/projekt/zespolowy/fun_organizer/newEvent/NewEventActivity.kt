@@ -99,9 +99,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     }
 
     fun parseDate(): String {
-        lateinit var monthString: String
-        lateinit var dayString: String
-
         if (month.length == 1)
             month = "0" + month
 
@@ -114,7 +111,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         if (minutes.length == 1)
             minutes = "0" + minutes
 
-        var finalDate: String = year + "-" + monthString + "-" + dayString + " " + hour + ":" + minutes
+        var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
         return finalDate
     }
 

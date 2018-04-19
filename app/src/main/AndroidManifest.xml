@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    
 
     <application
         android:name=".MyApplication"
@@ -31,7 +30,8 @@
             android:name=".navigation.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".newFriend.NewFriendActivity"></activity>
+        <activity android:name=".newFriend.NewFriendActivity" />
+        <activity android:name=".eventInfo.EventInfoActivity2"></activity>
     </application>
 
 </manifest>
