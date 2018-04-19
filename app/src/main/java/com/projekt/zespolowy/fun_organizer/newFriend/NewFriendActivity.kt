@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.newFriend
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -10,11 +11,14 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
+import kotlinx.android.synthetic.main.activity_new_friend.*
 
 
 class NewFriendActivity : AppCompatActivity(), NewFriendView {
+
     companion object {
         private const val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 11
 
@@ -26,13 +30,35 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_friend)
         newFriendPresenter = NewFriendPresenter(NewFriendUseCase(ApiProvider.instance), SchedulersProvider())
+
     }
 
     override fun onStart() {
         super.onStart()
-        newFriendPresenter.onStart(this)
+        askForPermission()
 
-        //TODO fix this to cover all cases
+        newFriendPresenter.onStart(this)
+        phoneButton.setOnClickListener {
+            newFriendPresenter.searchWithPhoneNumber(phoneInput.text.toString())
+        }
+        mailButton.setOnClickListener {
+            newFriendPresenter.searchWithMail(mailInput.text.toString())
+        }
+        getAllContacts.setOnClickListener {
+            newFriendPresenter.searchWithContactList(getContactList())
+        }
+    }
+
+    override fun toast(it: String) {
+        Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+    }
+
+    override fun exitActivity() {
+        startActivity(Intent(this, NavigationActivity::class.java))
+    }
+
+    //TODO fix this to cover all cases
+    private fun askForPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -40,17 +66,10 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
                     arrayOf(Manifest.permission.READ_CONTACTS),
                     MY_PERMISSIONS_REQUEST_READ_CONTACTS)
 
-        } else {
-            var string = String()
-            for (phoneNumber in getContactList()) {
-                string += "$phoneNumber "
-
-            }
-            Toast.makeText(this, string, Toast.LENGTH_LONG).show()
         }
     }
 
-    //TODO this can't stay like this
+    //TODO this can't stay like this or can it
     private fun getContactList(): List<String> {
         var list: MutableList<String> = arrayListOf()
         val cr = contentResolver
@@ -74,7 +93,9 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
                                 ContactsContract.CommonDataKinds.Phone.NUMBER))
                         Log.i("1", "Name: $name")
                         Log.i("2", "Phone Number: $phoneNo")
+
                         list.add(phoneNo)
+
                     }
                     pCur.close()
                 }

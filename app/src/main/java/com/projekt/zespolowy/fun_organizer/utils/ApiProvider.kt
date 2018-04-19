@@ -53,7 +53,10 @@ class ApiProvider private constructor() {
     fun login(login: Login) = service.login(login)
 
     fun getEventList() = service.getEventList()
-    fun getSingleEvent(eventID : Int) = service.getSingleEvent(eventID)
+    fun getSingleEvent(eventID: Int) = service.getSingleEvent(eventID)
     fun getFriendsList() = service.getFriendsList()
+    fun searchWithPhoneNumber(phone: String) = service.searchWithPhoneNumber(phone)
+    fun searchWithMail(mail: String) = service.searchWithMail(mail)
+    fun searchWithContactList(contactList: List<String>) = service.searchWithContactList(contactList)
 
 }

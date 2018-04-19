@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
-import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfoActivity2
 import com.projekt.zespolowy.fun_organizer.newEvent.NewEventActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -73,9 +72,8 @@ class EventListFragment : Fragment(), EventListView, EventListener {
     }
 
     override fun startEventInfoActivity(event: EventModel2) {
-         val intent = Intent(activity, EventInfoActivity2::class.java)
-         intent.putExtra("eventID", event.id.toString())
-         startActivity(intent)
+        val intent = Intent(activity, NewEventActivity::class.java)
+        intent.putExtra("eventID", event.id.toString())
+        startActivity(intent)
     }
-
 }
