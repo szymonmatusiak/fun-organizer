@@ -72,9 +72,8 @@ class EventListFragment : Fragment(), EventListView, EventListener {
     }
 
     override fun startEventInfoActivity(event: EventModel2) {
-        // val intent = Intent(activity, NewEventActivity::class.java)
-        // intent.putExtra("eventID", event.id)
-        // startActivity(intent)
+         val intent = Intent(activity, NewEventActivity::class.java)
+         intent.putExtra("eventID", event.id.toString())
+        startActivity(intent)
     }
-
 }

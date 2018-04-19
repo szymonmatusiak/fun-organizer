@@ -17,5 +17,65 @@ class NewFriendPresenter(
         detachView(false)
     }
 
+    fun searchWithPhoneNumber(phone: String) {
+        friendUseCase
+                .searchWithPhoneNumber(phone)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            val raw = it.raw()
+                            if (raw.isSuccessful)
+                                view?.exitActivity()
+                            else
+                                view?.toast(raw.code().toString())
+
+                        },
+                        {
+
+                        }
+                )
+    }
+
+    fun searchWithMail(mail: String) {
+        friendUseCase
+                .searchWithMail(mail)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            val raw = it.raw()
+                            if (raw.code() == 200)
+                                view?.exitActivity()
+                            else
+                                view?.toast(raw.code().toString())
+
+                        },
+                        {
+
+                        }
+                )
+    }
+
+    fun searchWithContactList(contactList: List<String>) {
+        friendUseCase
+                .searchWithContactList(contactList)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            val raw = it.raw()
+                            if (raw.isSuccessful)
+                                view?.exitActivity()
+                            else
+                                view?.toast(raw.code().toString())
+
+                        },
+                        {
+
+                        }
+                )
+    }
+
 
 }
