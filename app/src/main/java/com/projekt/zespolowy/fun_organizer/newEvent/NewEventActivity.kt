@@ -3,14 +3,12 @@ package com.projekt.zespolowy.fun_organizer.newEvent
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.InputType
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsAdapter
 import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsModel
@@ -19,6 +17,7 @@ import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_new_event.*
 import java.util.*
+
 
 class NewEventActivity : AppCompatActivity(), NewEventView {
 
@@ -137,7 +136,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     }
 
     fun parseDate(): String {
-        //Data powinna byc sparsowana wczesniej
+        //Data powinna byc zmieniona wczesniej
        /* if (month.length == 1)
             month = "0" + month
 
