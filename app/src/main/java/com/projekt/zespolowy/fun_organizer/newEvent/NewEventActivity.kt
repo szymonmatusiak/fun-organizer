@@ -1,9 +1,19 @@
 package com.projekt.zespolowy.fun_organizer.newEvent
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.text.InputType
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsAdapter
+import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsModel
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -15,7 +25,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     private lateinit var eventPresenter: NewEventPresenter
     private lateinit var event: EventModel
 
-    lateinit var selectedDate : Date
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
+    var itemsList: MutableList<EventNeedsModel> = mutableListOf<EventNeedsModel>()
     var day : String = ""
     var month : String = ""
     var year: String = ""
@@ -27,13 +41,20 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_event)
         eventPresenter = NewEventPresenter(NewEventUseCase(ApiProvider.instance), SchedulersProvider())
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = EventNeedsAdapter(itemsList)
+
+        recyclerView = findViewById<RecyclerView>(R.id.event_needs_recycle_view).apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
     }
 
     override fun onStart() {
         super.onStart()
         eventPresenter.onStart(this)
-
-        //val calend = Calendar.getInstance()
 
         createBtn.setOnClickListener({
             getValuesFromViewToModel()
@@ -41,6 +62,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 clearFieldsAfterSendFailure()
             }
         })
+
         dateField.setOnClickListener({
             //Popup calendar
             val now = Calendar.getInstance()
@@ -50,8 +72,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 selectedDate.set(Calendar.MONTH,month)
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
 
-
-                //this.selectedDate = selectedDate.da
                 this.day = dayOfMonth.toString()
                 this.month = month.toString()
                 this.year = year.toString()
@@ -63,11 +83,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                     day = "0" + day
 
                 dateField.setText(this.day.toString() + "-" + this.month + "-" + this.year)
-
-
             }, now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
-
         })
 
         timeField.setOnClickListener({
@@ -91,6 +108,27 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
             }, now.get(Calendar.HOUR_OF_DAY),now.get(Calendar.MINUTE),false)
             timePicker.show()
         })
+
+        //Dodanie do itemu do listy
+        add_item_button.setOnClickListener({
+            var itemName : String = ""
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Item name")
+
+            val input = EditText(this)
+
+            input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
+            builder.setView(input)
+
+            builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = input.text.toString()
+                if (itemName != ""){
+                    this.itemsList.add(EventNeedsModel("descrioption",false,0,mutableListOf<EventNeedsModel>(),itemName))
+                    viewAdapter.notifyItemInserted(itemsList.size - 1)
+                }
+            })
+            builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+            builder.show()
+        })
     }
 
     override fun onStop() {
@@ -99,7 +137,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     }
 
     fun parseDate(): String {
-        if (month.length == 1)
+        //Data powinna byc sparsowana wczesniej
+       /* if (month.length == 1)
             month = "0" + month
 
         if (day.length == 1)
@@ -109,7 +148,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
             hour = "0" + hour
 
         if (minutes.length == 1)
-            minutes = "0" + minutes
+            minutes = "0" + minutes*/
 
         var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
         return finalDate
