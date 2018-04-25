@@ -23,7 +23,7 @@ class EventListFragment : Fragment(), EventListView, EventListener {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val recyclerView: RecyclerView by bindView(R.id.event_list_recycle_view)
-    private val newEventButton: FloatingActionButton by this.bindView(R.id.new_event_button)
+    private val newEventButton: FloatingActionButton by bindView(R.id.new_event_button)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,8 +10,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.InputType
 import android.widget.EditText
-import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsAdapter
-import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsModel
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -112,14 +110,15 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         add_item_button.setOnClickListener({
             var itemName : String = ""
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Item name")
+            builder.setTitle("Add new item")
 
             val input = EditText(this)
+            input.inputType = InputType.TYPE_CLASS_TEXT
+            input.hint = "Item name"
 
-            input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
             builder.setView(input)
 
-            builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = input.text.toString()
+            builder.setPositiveButton("Add item", DialogInterface.OnClickListener { dialog, which -> itemName = input.text.toString()
                 if (itemName != ""){
                     this.itemsList.add(EventNeedsModel("descrioption",false,0,mutableListOf<EventNeedsModel>(),itemName))
                     viewAdapter.notifyItemInserted(itemsList.size - 1)

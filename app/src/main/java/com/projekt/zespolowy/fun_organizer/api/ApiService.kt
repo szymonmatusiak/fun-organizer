@@ -1,6 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.api
 
-import com.projekt.zespolowy.fun_organizer.NewEvent.EventNeedsModel
+import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel

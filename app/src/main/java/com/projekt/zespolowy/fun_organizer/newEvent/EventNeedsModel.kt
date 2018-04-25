@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.fun_organizer.NewEvent
+package com.projekt.zespolowy.fun_organizer.newEvent
 
 
 
