@@ -35,6 +35,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var fusedLocationClient : FusedLocationProviderClient
     private lateinit var lastLocation : Location
     private lateinit var locationCallback : LocationCallback
+    private lateinit var locationRequest : LocationRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
