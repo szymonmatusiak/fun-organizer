@@ -50,6 +50,9 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
 
     }
 
+    override fun killActivity() {
+        this.finish()
+    }
 
     override fun toast(text: String) {
         android.widget.Toast.makeText(this, text, android.widget.Toast.LENGTH_LONG).show()

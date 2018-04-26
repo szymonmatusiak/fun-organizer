@@ -43,6 +43,7 @@ class RegisterPresenter(
                     .subscribe(
                             {
                                 view?.toast(it.toString())
+                                view?.killActivity()
                             },
                             {
                                 view?.toast(it.toString())

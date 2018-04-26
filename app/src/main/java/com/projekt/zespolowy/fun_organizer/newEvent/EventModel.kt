@@ -12,5 +12,6 @@ data class EventModel(
         val address: String,
         val latitude: Double,
         val longitude: Double,
-        val description: String
+        val description: String,
+        val items: MutableList<EventNeedsModel>
 )

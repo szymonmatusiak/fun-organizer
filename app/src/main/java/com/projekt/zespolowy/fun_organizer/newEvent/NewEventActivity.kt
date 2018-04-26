@@ -9,7 +9,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.InputType
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
@@ -17,6 +19,7 @@ import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_new_event.*
 import java.util.*
+
 
 class NewEventActivity : AppCompatActivity(), NewEventView {
 
@@ -31,7 +34,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     private  var latitude: Double = 0.0
     private  var longitude: Double = 0.0
 
-    lateinit var selectedDate : Date
+    //lateinit var selectedDate : Date
     var day : String = ""
     var month : String = ""
     var year: String = ""
@@ -69,7 +72,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
             val i = Intent(this, MapsActivity::class.java)
             startActivityForResult(i, 1)
         })
-
 
         dateField.setOnClickListener({
             //Popup calendar
@@ -117,26 +119,24 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
             timePicker.show()
         })
 
-        //Dodanie do itemu do listy
         add_item_button.setOnClickListener({
-            var itemName : String = ""
+            var itemName : String
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Add new item")
+            val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, findViewById(android.R.id.content) as ViewGroup, false)
+            val inputItem = viewInflated.findViewById(R.id.input_item) as EditText
+            val inputDescription = viewInflated.findViewById(R.id.input_description) as EditText
+            builder.setTitle("Add item")
+            builder.setView(viewInflated)
 
-            val input = EditText(this)
-            input.inputType = InputType.TYPE_CLASS_TEXT
-            input.hint = "Item name"
-
-            builder.setView(input)
-
-            builder.setPositiveButton("Add item", DialogInterface.OnClickListener { dialog, which -> itemName = input.text.toString()
+            builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = inputItem.text.toString()
                 if (itemName != ""){
-                    this.itemsList.add(EventNeedsModel("descrioption",false,0,mutableListOf<EventNeedsModel>(),itemName))
+                    this.itemsList.add(EventNeedsModel(itemName,inputDescription.text.toString()))
                     viewAdapter.notifyItemInserted(itemsList.size - 1)
                 }
             })
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
             builder.show()
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         })
     }
 
@@ -180,6 +180,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
     fun getValuesFromViewToModel() {
         var finalDate: String = parseDate()
+        //var finalList: List<EventNeedsModel> = itemsList
+
         event = EventModel(
                 eventName.text.toString(),
                 finalDate,
@@ -188,7 +190,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 street.text.toString(),
                 latitude,
                 longitude,
-                eventDescription.text.toString()
+                eventDescription.text.toString(),
+                itemsList
         )
     }
 

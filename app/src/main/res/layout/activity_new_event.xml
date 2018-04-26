@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/new_event_scroll_view"
     android:layout_height="wrap_content"
+    android:maxHeight="1000dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="0dp">
+        android:maxHeight="1000dp"
+        android:minHeight="800dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
@@ -45,7 +45,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/eventNameLabel"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textAutoCorrect"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:text=""/>
@@ -131,17 +131,13 @@
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@id/placeInfoLabel"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textAutoCorrect"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:layout_marginRight="20dp"
+
                 android:text="" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -226,7 +222,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="18dp"
-
+                android:inputType="textAutoCorrect"
                 android:text="" />
         </LinearLayout>
 

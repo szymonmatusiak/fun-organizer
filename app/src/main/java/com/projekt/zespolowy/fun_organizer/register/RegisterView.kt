@@ -8,5 +8,6 @@ import com.projekt.zespolowy.fun_organizer.base.IBaseView
 
 interface RegisterView : IBaseView {
     fun toast(text : String)
+    fun killActivity()
 }
 

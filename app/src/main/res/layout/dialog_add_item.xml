@@ -10,7 +10,13 @@
         android:layout_height="wrap_content"
         android:hint="Name"
         android:imeOptions="actionDone"
-        android:inputType="textPassword" />
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:focusedByDefault="true"
+        android:nextFocusDown="@+id/input_description"
+        android:inputType="textAutoCorrect" />
 
     <AutoCompleteTextView
         android:id="@+id/input_description"
@@ -18,6 +24,11 @@
         android:layout_height="wrap_content"
         android:hint="Description"
         android:imeOptions="actionDone"
-        android:inputType="textPassword" />
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:inputType="textAutoCorrect" />
 
 </LinearLayout>
