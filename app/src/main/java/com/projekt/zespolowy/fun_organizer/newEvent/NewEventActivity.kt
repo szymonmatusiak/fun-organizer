@@ -2,9 +2,11 @@ package com.projekt.zespolowy.fun_organizer.newEvent
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_new_event.*
@@ -14,6 +16,9 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
     private lateinit var eventPresenter: NewEventPresenter
     private lateinit var event: EventModel
+
+    private  var latitude: Double = 0.0
+    private  var longitude: Double = 0.0
 
     lateinit var selectedDate : Date
     var day : String = ""
@@ -41,6 +46,13 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 clearFieldsAfterSendFailure()
             }
         })
+
+        mapBtn.setOnClickListener({
+            val i = Intent(this, MapsActivity::class.java)
+            startActivityForResult(i, 1)
+        })
+
+
         dateField.setOnClickListener({
             //Popup calendar
             val now = Calendar.getInstance()
@@ -93,6 +105,20 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         })
     }
 
+    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                val place = data.getStringExtra("place")
+                val address = data.getStringExtra("address")
+                latitude = data.getDoubleExtra("latitude", 0.0)
+                longitude = data.getDoubleExtra("longitude", 0.0)
+                localisation.setText(place)
+                street.setText(address)
+            }
+        }
+    }
+
     override fun onStop() {
         super.onStop()
         eventPresenter.onStop()
@@ -117,17 +143,29 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
 
     fun getValuesFromViewToModel() {
+
+        //var la:String = latitude.toString().substring(0,5)
+        //var lo:String = longitude.toString().substring(0,5)
+
+
         var finalDate: String = parseDate()
-        event = EventModel(finalDate,
-                eventDescription.text.toString(),
+        event = EventModel(
                 eventName.text.toString(),
-                localisation.text.toString())
+                finalDate,
+                placeInfo.text.toString(),
+                localisation.text.toString(),
+                street.text.toString(),
+                latitude,
+                longitude,
+                eventDescription.text.toString()
+        )
     }
 
     fun clearFieldsAfterSendFailure() {
         eventName.text.clear()
         localisation.text.clear()
     }
+
 
     override fun toast(text: String) {
         android.widget.Toast.makeText(this, text, android.widget.Toast.LENGTH_LONG).show()
