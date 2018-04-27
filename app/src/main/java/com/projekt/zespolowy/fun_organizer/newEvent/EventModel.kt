@@ -10,8 +10,8 @@ data class EventModel(
         val placeInfo: String,
         val place: String,
         val address: String,
-        val latitude: Double,
-        val longitude: Double,
+        val latitude: String,
+        val longitude: String,
         val description: String,
-        val items: MutableList<EventNeedsModel>
+        val needs: MutableList<EventNeedsModel>
 )

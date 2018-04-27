@@ -2,15 +2,12 @@
 <ScrollView android:layout_width="match_parent"
     android:id="@+id/new_event_scroll_view"
     android:layout_height="wrap_content"
-    android:maxHeight="1000dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="1000dp"
-        android:minHeight="800dp"
         android:orientation="vertical">
 
         <TextView
@@ -271,11 +268,8 @@
             android:layout_gravity="bottom"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:clipChildren="true"
-            android:clipToPadding="true"
-            android:isScrollContainer="false"
-            android:maxHeight="2000dp"
-            android:scrollbars="none" />
+            android:minHeight="150dp"
+            android:maxHeight="2000dp" />
 
         <Button
             android:id="@+id/add_item_button"

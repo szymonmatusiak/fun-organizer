@@ -51,7 +51,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         viewAdapter = EventNeedsAdapter(itemsList)
 
         recyclerView = findViewById<RecyclerView>(R.id.event_needs_recycle_view).apply {
-            setHasFixedSize(true)
+            setHasFixedSize(false)
             layoutManager = viewManager
             adapter = viewAdapter
         }
@@ -63,9 +63,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
         createBtn.setOnClickListener({
             getValuesFromViewToModel()
+            toast(event.toString())
             if (!eventPresenter.postEventToDatabase(event)) {
-                clearFieldsAfterSendFailure()
+                //clearFieldsAfterSendFailure()
             }
+            //toast(event.toString())
         })
 
         mapBtn.setOnClickListener({
@@ -188,8 +190,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
                 placeInfo.text.toString(),
                 localisation.text.toString(),
                 street.text.toString(),
-                latitude,
-                longitude,
+                latitude.toString(),
+                longitude.toString(),
                 eventDescription.text.toString(),
                 itemsList
         )
