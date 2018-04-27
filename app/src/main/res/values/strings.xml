@@ -9,7 +9,7 @@
     <string name="event_main_message">"Create new event"</string>
     <string name="event_name_field">Name:</string>
     <string name="event_place_field">Place:</string>
-    <string name="event_street_field">Street: </string>
+    <string name="event_street_field">Address: </string>
     <string name="event_placeInfo_field">Place info: </string>
     <string name="event_date_field">Date:</string>
     <string name="event_time_field">Time:</string>
