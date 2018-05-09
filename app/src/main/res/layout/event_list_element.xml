@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Place"
+            android:layout_marginLeft="5dp"
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -41,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date"
+            android:layout_marginLeft="5dp"
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 

@@ -22,10 +22,19 @@ private val schedulersProvider: SchedulersProvider
 
 
     fun checkCorrectness(event: EventModel) : Boolean {
-        if (event.placeName.trim().length <= 0 || event.name.trim().length <= 0)
+        if (event.placeInfo.trim().length <= 0 || event.name.trim().length <= 0)
             return false
-        else
+        else {
+            println(event.address)
+            println(event.date)
+            println(event.description)
+            println(event.latitude)
+            println(event.longitude)
+            println(event.name)
+            println(event.place)
+            println(event.placeInfo)
             return true
+        }
     }
 
     fun postEventToDatabase(event: EventModel): Boolean {
@@ -50,4 +59,4 @@ private val schedulersProvider: SchedulersProvider
         }
         return true
     }
-    }
+}

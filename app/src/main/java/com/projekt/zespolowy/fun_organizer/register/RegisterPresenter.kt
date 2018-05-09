@@ -1,7 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.register
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
-import com.projekt.zespolowy.fun_organizer.main.PingUseCase
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 /**
@@ -44,11 +43,13 @@ class RegisterPresenter(
                     .subscribe(
                             {
                                 view?.toast(it.toString())
+                                view?.killActivity()
                             },
                             {
                                 view?.toast(it.toString())
                             }
                     )
+            //return to login screen or autologin
             return true
         } else if (ret.equals(CheckCorrectnessRet.E_MAIL_NOT_GIVEN))
             view?.toast("email not given")

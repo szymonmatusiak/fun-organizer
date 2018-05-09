@@ -50,13 +50,17 @@ class NavigationActivity : AppCompatActivity(),
         var fragment: Fragment? = null
 
         when (item.itemId) {
-            R.id.nav_camera -> fragment = BlankFragment2()
+            R.id.nav_news -> fragment = BlankFragment2()
 
-            R.id.nav_gallery -> fragment = EventListFragment()
-
-            R.id.nav_slideshow -> fragment = FriendsListFragment()
-            R.id.nav_manage -> {
+            R.id.nav_upcoming_events -> {
             }
+
+            R.id.nav_friends -> {
+                fragment = FriendsListFragment()
+            }
+
+            R.id.nav_your_events -> fragment = EventListFragment()
+
             R.id.nav_share -> {
             }
             R.id.nav_send -> {

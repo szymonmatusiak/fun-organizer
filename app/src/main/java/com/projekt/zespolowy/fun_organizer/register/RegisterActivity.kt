@@ -40,7 +40,6 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
                 name.text.toString(),
                 password1.text.toString(),
                 phone.text.toString(),
-                surname.text.toString(),
                 surname.text.toString())
     }
 
@@ -50,6 +49,9 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
 
     }
 
+    override fun killActivity() {
+        this.finish()
+    }
 
     override fun toast(text: String) {
         android.widget.Toast.makeText(this, text, android.widget.Toast.LENGTH_LONG).show()

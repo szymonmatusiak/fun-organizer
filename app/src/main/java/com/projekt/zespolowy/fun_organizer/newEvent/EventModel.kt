@@ -5,7 +5,13 @@ package com.projekt.zespolowy.fun_organizer.newEvent
  */
 
 data class EventModel(
-        val date: String,
         val name: String,
-        val placeName: String
+        val date: String,
+        val placeInfo: String,
+        val place: String,
+        val address: String,
+        val latitude: String,
+        val longitude: String,
+        val description: String,
+        val needs: MutableList<EventNeedsModel>
 )

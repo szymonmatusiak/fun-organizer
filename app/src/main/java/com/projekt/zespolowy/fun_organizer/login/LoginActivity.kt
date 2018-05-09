@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+            setContentView(R.layout.activity_login)
         loginPresenter = LoginPresenter(LoginUseCase(ApiProvider.instance), SchedulersProvider())
     }
 

@@ -1,15 +1,17 @@
 package com.projekt.zespolowy.fun_organizer.utils
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.projekt.zespolowy.fun_organizer.login.Login
-import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.api.ApiService
 import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.login.Login
+import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 /**
  *
@@ -25,10 +27,15 @@ class ApiProvider private constructor() {
     private val service: ApiService
 
     init {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
         var okHttpClient = OkHttpClient.Builder()
                 .addNetworkInterceptor(StethoInterceptor())
                 .addInterceptor(HeaderInterceptor())
+                .addInterceptor(logging)
                 .build()
+
         retrofit = Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -53,5 +60,10 @@ class ApiProvider private constructor() {
     fun login(login: Login) = service.login(login)
 
     fun getEventList() = service.getEventList()
+    fun getSingleEvent(eventID: Int) = service.getSingleEvent(eventID)
     fun getFriendsList() = service.getFriendsList()
+    fun searchWithPhoneNumber(phone: String) = service.searchWithPhoneNumber(phone)
+    fun searchWithMail(mail: String) = service.searchWithMail(mail)
+    fun searchWithContactList(contactList: List<String>) = service.searchWithContactList(contactList)
+
 }
