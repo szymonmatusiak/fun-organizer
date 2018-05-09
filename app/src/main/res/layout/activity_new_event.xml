@@ -14,9 +14,9 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/event_main_message"
             android:textAlignment="center"
-            android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <RelativeLayout
@@ -31,8 +31,8 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="15dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_name_field" />
+                android:text="@string/event_name_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/eventName"
@@ -45,9 +45,8 @@
                 android:inputType="textAutoCorrect"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:text=""/>
+                android:text="" />
         </RelativeLayout>
-
 
 
         <RelativeLayout
@@ -61,20 +60,20 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="18dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_place_field" />
+                android:text="@string/event_place_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/localisation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/localisationLabel"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:layout_marginRight="20dp"
                 android:text="" />
         </RelativeLayout>
 
@@ -90,20 +89,20 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="18dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_street_field" />
+                android:text="@string/event_street_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/street"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/streetLabel"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:layout_marginRight="20dp"
                 android:text="" />
         </RelativeLayout>
 
@@ -118,20 +117,20 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="18dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_placeInfo_field" />
+                android:text="@string/event_placeInfo_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/placeInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/placeInfoLabel"
                 android:ems="10"
                 android:inputType="textAutoCorrect"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:layout_marginRight="20dp"
 
                 android:text="" />
         </RelativeLayout>
@@ -147,21 +146,21 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="23dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_date_field" />
+                android:text="@string/event_date_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/dateField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:focusable="false"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/dateLabel"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:layout_marginRight="20dp"
                 android:text="" />
 
 
@@ -178,21 +177,21 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="15dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:text="@string/event_time_field" />
+                android:text="@string/event_time_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/timeField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:focusable="false"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/timeLabel"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:layout_marginRight="20dp"
                 android:text="" />
 
         </RelativeLayout>
@@ -204,8 +203,8 @@
             android:paddingLeft="20dp"
             android:paddingRight="18dp"
             android:paddingTop="15dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:text="@string/event_description_field" />
+            android:text="@string/event_description_field"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,9 +215,9 @@
                 android:id="@+id/eventDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="18dp"
+                android:layout_weight="1"
                 android:inputType="textAutoCorrect"
                 android:text="" />
         </LinearLayout>
@@ -258,18 +257,19 @@
             android:paddingLeft="20dp"
             android:paddingRight="18dp"
             android:paddingTop="15dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:text="@string/event_need_field" />
+            android:text="@string/event_need_field"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/event_needs_recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:minHeight="150dp"
-            android:maxHeight="2000dp" />
+            android:layout_weight="0"
+            android:maxHeight="2000dp"
+            android:minHeight="150dp" />
 
         <Button
             android:id="@+id/add_item_button"
