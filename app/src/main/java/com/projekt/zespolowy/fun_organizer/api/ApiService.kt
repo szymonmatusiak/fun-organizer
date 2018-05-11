@@ -1,9 +1,9 @@
 package com.projekt.zespolowy.fun_organizer.api
 
-import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
+import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
 import com.projekt.zespolowy.fun_organizer.user.UserData
 import io.reactivex.Single
