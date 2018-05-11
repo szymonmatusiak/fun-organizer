@@ -1,6 +1,8 @@
 package com.projekt.zespolowy.fun_organizer.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +11,7 @@ import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
+import com.projekt.zespolowy.fun_organizer.user.UserData
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_login.*
@@ -56,8 +59,25 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun startNavigationActivity() {
-        startActivity(Intent(this, NavigationActivity::class.java))
+        var editor :SharedPreferences.Editor = getSharedPreferences("userData", MODE_PRIVATE).edit()
+        editor.putString("email", loginEditText.text.toString())
+        editor.apply()
+
+        val navigatorActivity = Intent(this, NavigationActivity::class.java)
+        //navigatorActivity.putExtra("email", loginEditText.id.toString())
+        startActivity(navigatorActivity)
         this.finish()
+    }
+
+    override fun saveUserData(it: UserData) {
+        //toast(it.name + " ; " + it.surname + " ; " + it.email + " ; " + it.phoneNumber + " ; ")
+        var editor : SharedPreferences.Editor
+        editor = getSharedPreferences("userData", Context.MODE_PRIVATE).edit()
+        editor.putString("name", it.name)
+        editor.putString("surname", it.surname)
+        editor.putString("email", it.email)
+        editor.putString("phoneNumber", it.phoneNumber)
+        editor.apply()
     }
 
     override fun toastMessage(): String {

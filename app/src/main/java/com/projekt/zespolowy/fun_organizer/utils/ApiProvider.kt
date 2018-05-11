@@ -58,6 +58,7 @@ class ApiProvider private constructor() {
     fun getPing() = service.getResponse()
 
     fun login(login: Login) = service.login(login)
+    fun getUserInfo() = service.getUserInfo()
 
     fun getEventList() = service.getEventList()
     fun getSingleEvent(eventID: Int) = service.getSingleEvent(eventID)

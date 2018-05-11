@@ -5,6 +5,7 @@ import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
+import com.projekt.zespolowy.fun_organizer.user.UserData
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.*
@@ -26,6 +27,9 @@ interface ApiService {
 
     @POST("/login")
     fun login(@Body login: Login): Single<Response<Void>>
+
+    @GET("/api/tester")
+    fun getUserInfo(): Single<UserData>
 
     //Event
     @POST("api/event")

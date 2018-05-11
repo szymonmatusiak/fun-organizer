@@ -7,4 +7,5 @@ import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
  */
 class LoginUseCase(private val apiProvider: ApiProvider) {
     fun login(loginCredentials: Login) = apiProvider.login(loginCredentials)
+    fun getUserData() = apiProvider.getUserInfo()
 }

@@ -48,6 +48,18 @@ class LoginPresenter(
     }
 
     fun checkIfUserIsAuthenticated() {
+        loginUseCase.getUserData().
+                subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            view?.saveUserData(it)
+                        },
+                        {
+                            println(it.toString())
+                        }
+                )
+
         view?.checkIfUserIsAuthenticated()
     }
 
