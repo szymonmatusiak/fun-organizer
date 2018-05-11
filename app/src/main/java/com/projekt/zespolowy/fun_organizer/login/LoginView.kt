@@ -1,7 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.login
 
 import com.projekt.zespolowy.fun_organizer.base.IBaseView
-import com.projekt.zespolowy.fun_organizer.user.UserData
+import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 
 /**
  * Created by Marcin Całkowski on 22.03.2018.
@@ -12,5 +12,5 @@ interface LoginView : IBaseView {
     fun toastMessage(): String
     fun checkIfUserIsAuthenticated()
     fun startNavigationActivity()
-    fun saveUserData(it: UserData)
+    //fun saveUserData(it: UserModelNoPassword)
 }
