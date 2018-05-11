@@ -40,7 +40,6 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
                 name.text.toString(),
                 password1.text.toString(),
                 phone.text.toString(),
-                surname.text.toString(),
                 surname.text.toString())
     }
 
