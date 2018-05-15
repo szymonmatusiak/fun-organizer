@@ -18,7 +18,7 @@ class RegisterPresenterTest {
     private lateinit var mockSchedulersProvider: SchedulersProvider
     private lateinit var presenter: RegisterPresenter
 
-    private val responseOnSuccess = UserModel("email", "name", "password", "surname", "1234", "name")
+    private val responseOnSuccess = UserModel("email", "name", "password", "surname", "1234")
     private val throwable = Throwable()
     private lateinit var user: UserModel
     @Before
