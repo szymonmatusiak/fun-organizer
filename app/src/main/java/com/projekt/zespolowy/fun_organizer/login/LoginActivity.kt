@@ -1,6 +1,5 @@
 package com.projekt.zespolowy.fun_organizer.login
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,7 +10,6 @@ import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
-import com.projekt.zespolowy.fun_organizer.user.UserData
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_login.*
@@ -39,9 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     private fun login() {
-        //loginPresenter.login(Login("testear123@gmail.com", "thisIsAPassworda"))
         loginPresenter.login(Login(loginEditText.text.toString(), passwordEditText.text.toString()))
-
     }
 
     override fun onStop() {
@@ -64,13 +60,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
         editor.apply()
 
         val navigatorActivity = Intent(this, NavigationActivity::class.java)
-        //navigatorActivity.putExtra("email", loginEditText.id.toString())
         startActivity(navigatorActivity)
         this.finish()
     }
 
-    override fun saveUserData(it: UserData) {
-        //toast(it.name + " ; " + it.surname + " ; " + it.email + " ; " + it.phoneNumber + " ; ")
+    /*override fun saveUserData(it: UserModelNoPassword) {
         var editor : SharedPreferences.Editor
         editor = getSharedPreferences("userData", Context.MODE_PRIVATE).edit()
         editor.putString("name", it.name)
@@ -78,7 +72,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         editor.putString("email", it.email)
         editor.putString("phoneNumber", it.phoneNumber)
         editor.apply()
-    }
+    }*/
 
     override fun toastMessage(): String {
         return "Bezpieczne logowanie:\nLogin: " + loginEditText.text + "\nHasło: " + passwordEditText.text
