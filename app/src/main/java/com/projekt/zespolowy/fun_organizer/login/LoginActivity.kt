@@ -1,6 +1,5 @@
 package com.projekt.zespolowy.fun_organizer.login
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,7 +10,6 @@ import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
-import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_login.*
@@ -39,9 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     private fun login() {
-        //loginPresenter.login(Login("testear123@gmail.com", "thisIsAPassworda"))
         loginPresenter.login(Login(loginEditText.text.toString(), passwordEditText.text.toString()))
-
     }
 
     override fun onStop() {
