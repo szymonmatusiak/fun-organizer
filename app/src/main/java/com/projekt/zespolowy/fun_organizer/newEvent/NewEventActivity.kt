@@ -65,9 +65,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
             getValuesFromViewToModel()
             //toast(event.toString())
             if (!eventPresenter.postEventToDatabase(event)) {
-                //clearFieldsAfterSendFailure()
             }
-            //toast(event.toString())
         })
 
         mapBtn.setOnClickListener({
@@ -168,19 +166,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
     }
 
     fun parseDate(): String {
-        //Data powinna byc zmieniona wczesniej
-       /* if (month.length == 1)
-            month = "0" + month
-
-        if (day.length == 1)
-            day = "0" + day
-
-        if (hour.length == 1)
-            hour = "0" + hour
-
-        if (minutes.length == 1)
-            minutes = "0" + minutes*/
-
         var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
         return finalDate
     }
@@ -188,8 +173,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
 
     fun getValuesFromViewToModel() {
         var finalDate: String = parseDate()
-        //var finalList: List<EventNeedsModel> = itemsList
-
         event = EventModel(
                 eventName.text.toString(),
                 finalDate,
