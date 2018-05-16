@@ -31,7 +31,7 @@ class LoginPresenter(
                         {
                             var test: String? = it.raw().header("Authorization").toString()
                             if (test?.length!! > 5) {
-                                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                                    var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
                                 sharedPreferences.edit {
                                     putString("Authorization", it.raw().header("Authorization").toString())
                                 }
@@ -48,6 +48,23 @@ class LoginPresenter(
     }
 
     fun checkIfUserIsAuthenticated() {
+        loginUseCase.getUserData().
+                subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            var userData = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                            userData.edit {
+                                putString("name", it.name)
+                                putString("surname", it.surname)
+                                putString("phoneNumber", it.phoneNumber)
+                                putString("email", it.email)
+                            }
+                        },
+                        {
+                            println(it.toString())
+                        }
+                )
         view?.checkIfUserIsAuthenticated()
     }
 

@@ -59,8 +59,10 @@ password:"</string>
     <string name="action_settings">Settings</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="get_contact_list_numbers">get contact list numbers</string>
+    <string name="get_contact_list_numbers">Get friends from your phonebook</string>
     <string name="title_activity_maps">Map</string>
-    <string name="event_need_field">Items list:</string>
+    <string name="event_need_field">Event needs list:</string>
     <string name="event_add_need_field">Add new Item</string>
+    <string name="search_by_email">Search by e-mail</string>
+    <string name="search_by_phone">Search by phone number</string>
 </resources>

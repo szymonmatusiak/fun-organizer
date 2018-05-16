@@ -20,9 +20,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
     override fun onStart() {
         super.onStart()
         eventInfoPresenter.onStart(this)
-        //toast(getIntent().getExtras().getInt("eventID"))
         var eventID: String = intent.getStringExtra("eventID")
-        // <---- PONIŻEJ CRASHUJE
         eventInfoPresenter.getEventInfo(Integer.parseInt(eventID))
     }
 

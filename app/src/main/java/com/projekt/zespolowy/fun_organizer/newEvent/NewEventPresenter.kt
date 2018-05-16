@@ -20,7 +20,6 @@ private val schedulersProvider: SchedulersProvider
         detachView(false)
     }
 
-
     fun checkCorrectness(event: EventModel) : Boolean {
         if (event.placeInfo.trim().length <= 0 || event.name.trim().length <= 0)
             return false
