@@ -18,7 +18,7 @@ class RegisterPresenterTest {
     private lateinit var mockSchedulersProvider: SchedulersProvider
     private lateinit var presenter: RegisterPresenter
 
-    private val responseOnSuccess = UserModel("email", "name", "password", "surname", "1234", "name")
+    private val responseOnSuccess = UserModel("email", "name", "password", "surname", "1234")
     private val throwable = Throwable()
     private lateinit var user: UserModel
     @Before
@@ -49,21 +49,21 @@ class RegisterPresenterTest {
 
     @Test
     fun shouldNotAllowRegistrationWithoutEmail() {
-        user = UserModel("", "password", "", "", "", "")
+        user = UserModel("", "password", "", "", "")
         presenter.postUserToDatabase(user, "password")
         verify(mockView).toast(eq("email not given"))
     }
 
     @Test
     fun shouldNotAllowPasswordsNotMatching() {
-        user = UserModel("ccvwq", "password", "", "", "", "")
+        user = UserModel("ccvwq", "password", "", "", "")
         presenter.postUserToDatabase(user, "paswordddd222")
         verify(mockView).toast(eq("passwords not match"))
     }
 
     @Test
     fun shouldNotAllowTooShortPassword() {
-        user = UserModel("ccvwq", "ip", "ip", "", "", "")
+        user = UserModel("ccvwq", "ip", "ip", "", "")
         presenter.postUserToDatabase(user, "ip")
         verify(mockView).toast(("password too short"))
     }

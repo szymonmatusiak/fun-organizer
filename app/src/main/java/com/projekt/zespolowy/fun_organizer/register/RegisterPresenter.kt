@@ -42,11 +42,12 @@ class RegisterPresenter(
                     .observeOn(schedulersProvider.mainThread())
                     .subscribe(
                             {
-                                view?.toast(it.toString())
+                                view?.toast("User " + it.name +" registered")
                                 view?.killActivity()
                             },
                             {
-                                view?.toast(it.toString())
+                                //view?.toast(it.toString())
+                                view?.toast("Cannot create new user")
                             }
                     )
             //return to login screen or autologin
