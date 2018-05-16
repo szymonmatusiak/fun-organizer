@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.projekt.zespolowy.fun_organizer.friends.FriendsFragment">
+    tools:context="com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_event_button"

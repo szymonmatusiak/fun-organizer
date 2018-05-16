@@ -23,10 +23,13 @@ interface ApiService {
 
     //Login/register
     @POST("api2/user")
-    fun postUserToDatabase(@Body user: UserModel): Single<UserModelNoPassword>
+    fun postUserToDatabase(@Body user: UserModel): Single<UserModel>
 
     @POST("/login")
     fun login(@Body login: Login): Single<Response<Void>>
+
+    @GET("/api/tester")
+    fun getUserInfo(): Single<UserModelNoPassword>
 
     //Event
     @POST("api/event")

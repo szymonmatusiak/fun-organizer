@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_new_event.*
 import java.util.*
 
 
-class NewEventActivity : AppCompatActivity(), NewEventView {
+class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
 
     private lateinit var eventPresenter: NewEventPresenter
     private lateinit var event: EventModel
@@ -31,8 +31,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     var itemsList: MutableList<EventNeedsModel> = mutableListOf<EventNeedsModel>()
-    private  var latitude: Double = 0.0
-    private  var longitude: Double = 0.0
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     //lateinit var selectedDate : Date
     var day : String = ""
@@ -48,7 +48,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
         eventPresenter = NewEventPresenter(NewEventUseCase(ApiProvider.instance), SchedulersProvider())
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = EventNeedsAdapter(itemsList)
+        viewAdapter = EventNeedsAdapter(itemsList, this)
 
         recyclerView = findViewById<RecyclerView>(R.id.event_needs_recycle_view).apply {
             setHasFixedSize(false)
@@ -63,7 +63,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
 
         createBtn.setOnClickListener({
             getValuesFromViewToModel()
-            toast(event.toString())
+            //toast(event.toString())
             if (!eventPresenter.postEventToDatabase(event)) {
                 //clearFieldsAfterSendFailure()
             }
@@ -140,6 +140,12 @@ class NewEventActivity : AppCompatActivity(), NewEventView {
             builder.show()
             this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         })
+    }
+
+    override fun onDeleteClicked(data: EventNeedsModel) {
+        var index = itemsList.indexOf(data)
+        itemsList.removeAt(index)
+        viewAdapter.notifyItemRemoved(index)
     }
 
     override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent) {

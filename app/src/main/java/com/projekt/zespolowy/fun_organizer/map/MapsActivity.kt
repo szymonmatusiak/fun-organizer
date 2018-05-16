@@ -2,22 +2,19 @@ package com.projekt.zespolowy.fun_organizer.map
 
 import android.app.Activity
 import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
-import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.location.places.ui.PlacePicker
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -52,10 +49,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 placeMarkerOnMap(LatLng(lastLocation.latitude, lastLocation.longitude))
             }
         }
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        //lepiej chyba odrazu placePickera zrobić ;)
+        /*val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             loadPlacePicker()
-        }
+        }*/
+        loadPlacePicker()
     }
 
 
