@@ -18,7 +18,7 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
     override fun onStart() {
         super.onStart()
         eventGuestsPresenter.onStart(this)
-        var eventID: String = intent.getStringExtra("eventID")
+       // var eventID: String = intent.getStringExtra("eventID")
     }
 
     override fun onStop() {

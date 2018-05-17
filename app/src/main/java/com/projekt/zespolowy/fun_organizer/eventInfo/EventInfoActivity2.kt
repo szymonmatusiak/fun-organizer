@@ -3,12 +3,14 @@ package com.projekt.zespolowy.fun_organizer.eventInfo
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.eventGuests.EventGuestsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_info.*
@@ -17,7 +19,6 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
     private lateinit var eventInfoPresenter: EventInfoPresenter
     private var iAmHost: Boolean = false;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
             var builder = onCreateDialog()
             builder.show()
         })
+
         event_details_edit_event.setOnClickListener({
             toast("Jestem hostem i mogę to klikać :)")
             //Przycisk do edycji <<<
@@ -53,9 +55,9 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
-            /*val intent = Intent(this, EventGuestsActivity::class.java)
-            intent.putExtra("eventID", eventID.toString())
-            startActivity(intent)*/
+            val intent = Intent(this, EventGuestsActivity::class.java)
+            //intent.putExtra("eventID", eventID.toString())
+            startActivity(intent)
         })
     }
 
