@@ -6,4 +6,5 @@ import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 
 interface EventItemsView : IBaseView {
     fun setItems(it: EventInfo?)
+    fun setItemsInCategory(itemsList: List<SingleItemModel>)
 }

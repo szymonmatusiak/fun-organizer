@@ -29,4 +29,20 @@ class EventItemsPresenter(
                         }
                 )
     }
+
+    fun getAllCategoryItems(groupID: Int){
+        eventItemsUseCase
+                .getAllCategoryItems(groupID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            //view?.setItems(it)
+                            view?.setItemsInCategory(it)
+                        },
+                        {
+                            println(it.toString())
+                        }
+                )
+    }
 }

@@ -19,6 +19,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val recyclerView: RecyclerView by bindView(R.id.event_items_recycle_view)
 
+    private val groupsItems: List<List<SingleItemModel>> = ArrayList<ArrayList<SingleItemModel>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_items)
@@ -31,9 +32,14 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
 
         var eventID: String = intent.getStringExtra("eventID")
         eventItemsPresenter.getSingleEvent(Integer.parseInt(eventID))
+
     }
 
     override fun setItems(it: EventInfo?) {
+        /*for (item in it.needs){
+
+        }*/
+
         viewManager = LinearLayoutManager(this)
         viewAdapter = EventItemsAdapter(it!!, this)
         recyclerView.apply {
@@ -41,6 +47,10 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
             layoutManager = viewManager
             adapter = viewAdapter
         }
+    }
+
+    override fun setItemsInCategory(itemsList: List<SingleItemModel>) {
+
     }
 
     override fun onEventClicked(item: Need) {
