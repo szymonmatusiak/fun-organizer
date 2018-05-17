@@ -37,7 +37,7 @@ class RegisterPresenterTest {
     fun shouldCreateNewUser() {
         whenever(mockRegisterUseCase.postUserToDatabase(any())).thenReturn(Single.just(responseOnSuccess))
         presenter.postUserToDatabase(responseOnSuccess, "password")
-        verify(mockView).toast(eq(responseOnSuccess.toString()))
+        verify(mockView).toast(eq("User name registered"))
     }
 
     @Test

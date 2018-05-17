@@ -52,11 +52,14 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
             //trzeba chyba przekazać jako extra intent czy jestem hostem
             toast("Wywołaj okno od pokazywania potrzeb")
         })
+        Log.v("eventID", eventID)
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
             val intent = Intent(this, EventGuestsActivity::class.java)
-            //intent.putExtra("eventID", eventID.toString())
+
+            intent.putExtra("eventID", eventID)
+            Log.v("EVENTSSSS", eventID)
             startActivity(intent)
         })
     }
@@ -73,7 +76,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         eventInfo_author_textView.text = it.host.email
 
         eventInfo_place_textView.text = it.place
-        if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")){
+        if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")) {
             eventInfo_place_textView.isVisible = false
         }
         eventInfo_address_textView.text = it.address
@@ -86,7 +89,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
             eventInfo_description_text_textView.isVisible = false;
     }
 
-    override fun iAmHost(bool: Boolean){
+    override fun iAmHost(bool: Boolean) {
         this.iAmHost = bool
         // bool to przesłanie czy jestem hostem czy nie
         // okeśla to widzoczność i dla bepeczeństwa możliwość klikania przycisku

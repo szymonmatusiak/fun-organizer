@@ -3,6 +3,7 @@ package com.projekt.zespolowy.fun_organizer.utils
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.projekt.zespolowy.fun_organizer.api.ApiService
 import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.register.UserModel
@@ -67,5 +68,6 @@ class ApiProvider private constructor() {
     fun searchWithPhoneNumber(phone: String) = service.searchWithPhoneNumber(phone)
     fun searchWithMail(mail: String) = service.searchWithMail(mail)
     fun searchWithContactList(contactList: List<String>) = service.searchWithContactList(contactList)
-
+    fun sendInvitationToEvent(inviteData: InviteData) = service.sendInvitationToEvent(inviteData)
+    fun getEventGuest(eventID: String) = service.getEventGuest(eventID)
 }

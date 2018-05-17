@@ -2,6 +2,7 @@ package com.projekt.zespolowy.fun_organizer.navigation
 
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.support.design.widget.NavigationView
@@ -15,6 +16,7 @@ import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
 import com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment
+import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
 
@@ -74,6 +76,8 @@ class NavigationActivity : AppCompatActivity(),
             R.id.nav_news -> fragment = BlankFragment2()
 
             R.id.nav_upcoming_events -> {
+                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
+                startActivity(navigatorActivity)
             }
 
             R.id.nav_friends -> {
@@ -83,8 +87,12 @@ class NavigationActivity : AppCompatActivity(),
             R.id.nav_your_events -> fragment = EventListFragment()
 
             R.id.nav_share -> {
+                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
+                startActivity(navigatorActivity)
             }
             R.id.nav_send -> {
+                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
+                startActivity(navigatorActivity)
             }
         }
         if (fragment != null) {
