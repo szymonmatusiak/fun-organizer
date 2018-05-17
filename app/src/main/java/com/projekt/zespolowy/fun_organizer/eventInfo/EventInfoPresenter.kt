@@ -30,4 +30,16 @@ class EventInfoPresenter(
                 )
     }
 
+    fun getIfIsHost(eventID: Int){
+        eventInfoUseCase
+                .getIfIsHost(eventID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe({
+                    view?.iAmHost(it)
+                },{
+
+                }
+                )
+    }
 }

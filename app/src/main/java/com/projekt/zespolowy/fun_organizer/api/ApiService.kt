@@ -41,6 +41,9 @@ interface ApiService {
     @GET("/api/event/{id}")
     fun getSingleEvent(@Path("id") eventID: Int): Single<EventInfo>
 
+    @GET("/api/eventchk")
+    fun getIfIsHost(@Query("id") eventID: Int): Single<Boolean>
+
     //Friends
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>

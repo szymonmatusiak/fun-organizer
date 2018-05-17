@@ -65,4 +65,7 @@ password:"</string>
     <string name="event_add_need_field">Add new Item</string>
     <string name="search_by_email">Search by e-mail</string>
     <string name="search_by_phone">Search by phone number</string>
+    <string name="edit_event">Edit event</string>
+    <string name="event_info_description_text">Description:</string>
+    <string name="title_activity_event_guests">eventGuestsActivity</string>
 </resources>
