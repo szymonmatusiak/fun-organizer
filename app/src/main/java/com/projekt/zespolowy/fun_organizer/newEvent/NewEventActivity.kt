@@ -2,6 +2,8 @@ package com.projekt.zespolowy.fun_organizer.newEvent
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.app.PendingIntent.getActivity
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -14,6 +16,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.R.id.createBtn
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -168,20 +171,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
     }
 
     fun parseDate(): String {
-        //Data powinna byc zmieniona wczesniej
-       /* if (month.length == 1)
-            month = "0" + month
 
-        if (day.length == 1)
-            day = "0" + day
-
-        if (hour.length == 1)
-            hour = "0" + hour
-
-        if (minutes.length == 1)
-            minutes = "0" + minutes*/
-
-        var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
+        var finalDate: String = year + "-" + month + "-" + day
+        if (hour.isNotEmpty() && minutes.isNotEmpty()){
+            finalDate = finalDate + " " + hour + ":" + minutes
+        }
         return finalDate
     }
 
