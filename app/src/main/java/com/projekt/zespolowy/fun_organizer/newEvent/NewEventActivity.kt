@@ -2,6 +2,8 @@ package com.projekt.zespolowy.fun_organizer.newEvent
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.app.PendingIntent.getActivity
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -14,6 +16,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.R.id.createBtn
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider

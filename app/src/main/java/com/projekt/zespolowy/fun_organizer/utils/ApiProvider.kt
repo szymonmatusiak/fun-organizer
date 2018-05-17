@@ -59,6 +59,7 @@ class ApiProvider private constructor() {
 
     fun login(login: Login) = service.login(login)
     fun getUserInfo() = service.getUserInfo()
+    fun getIfIsHost(id: Int) = service.getIfIsHost(id)
 
     fun getEventList() = service.getEventList()
     fun getSingleEvent(eventID: Int) = service.getSingleEvent(eventID)
