@@ -6,11 +6,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import androidx.core.view.isVisible
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventGuests.EventGuestsActivity
+import com.projekt.zespolowy.fun_organizer.eventItems.EventItemsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_info.*
@@ -18,11 +18,10 @@ import kotlinx.android.synthetic.main.activity_event_info.*
 class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
     private lateinit var eventInfoPresenter: EventInfoPresenter
-    private var iAmHost: Boolean = false;
+    private var iAmHost: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.v("tag", "DUPA")
         setContentView(R.layout.activity_event_info)
         eventInfoPresenter = EventInfoPresenter(EventInfoUseCase(ApiProvider.instance), SchedulersProvider())
     }
@@ -50,13 +49,15 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
         eventInfo_show_needs.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
-            toast("Wywołaj okno od pokazywania potrzeb")
+            val intent = Intent(this, EventItemsActivity::class.java)
+            intent.putExtra("eventID", eventID.toString())
+            startActivity(intent)
         })
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
             val intent = Intent(this, EventGuestsActivity::class.java)
-            //intent.putExtra("eventID", eventID.toString())
+            intent.putExtra("eventID", eventID.toString())
             startActivity(intent)
         })
     }
@@ -69,6 +70,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
     override fun setEvnetInfo(it: EventInfo) {
         //toast(it.toString())
         eventInfo_name_textView.text = it.name
+
+        var author: String
 
         eventInfo_author_textView.text = it.host.email
 
