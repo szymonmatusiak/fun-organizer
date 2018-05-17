@@ -63,7 +63,7 @@ private val schedulersProvider: SchedulersProvider
                     )
         }
         else {
-            view?.toast("Fields cannot be empty")
+            //view?.toast("Fields cannot be empty")
             return false
         }
         return true

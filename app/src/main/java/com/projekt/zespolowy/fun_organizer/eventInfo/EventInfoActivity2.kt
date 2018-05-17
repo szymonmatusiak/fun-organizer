@@ -64,9 +64,13 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
             eventInfo_place_textView.isVisible = false
         }
         eventInfo_address_textView.text = it.address
+        if (eventInfo_address_textView.text.equals(""))
+            eventInfo_address_textView.isVisible = false
         eventInfo_placeInfo_textView.text = it.placeInfo
         eventInfo_date_textView.text = it.date
         eventInfo_description_textView.text = it.description
+        if (eventInfo_description_textView.text.equals(""))
+            eventInfo_description_text_textView.isVisible = false;
     }
 
     override fun iAmHost(bool: Boolean){
