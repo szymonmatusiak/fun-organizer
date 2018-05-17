@@ -28,10 +28,11 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         super.onStart()
         eventInfoPresenter.onStart(this)
         var eventID: String = intent.getStringExtra("eventID")
-        eventInfoPresenter.getEventInfo(Integer.parseInt(eventID))
         eventInfoPresenter.getIfIsHost(Integer.parseInt(eventID))
+        eventInfoPresenter.getEventInfo(Integer.parseInt(eventID))
+
         imageView_show_on_map.setOnClickListener({
-            //toast("Działa toto")
+            //toast("Tutaj albo dodać przeniesienie na mapę, albo przez dialog")
             var builder = onCreateDialog()
             builder.show()
         })
@@ -56,14 +57,14 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
     }
 
     override fun setEvnetInfo(it: EventInfo) {
-        toast(it.toString())
+        //toast(it.toString())
         eventInfo_name_textView.text = it.name
-        eventInfo_place_textView.text = it.placeName
-
-        if (eventInfo_place_textView.text.equals("")){
+        eventInfo_place_textView.text = it.place
+        if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")){
             eventInfo_place_textView.isVisible = false
         }
-
+        eventInfo_address_textView.text = it.address
+        eventInfo_placeInfo_textView.text = it.placeInfo
         eventInfo_date_textView.text = it.date
         eventInfo_description_textView.text = it.description
     }
@@ -77,19 +78,17 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         event_details_edit_event.isVisible = bool
     }
 
-
     fun onCreateDialog(): Dialog {
+
         //builder dialogu
-        // Use the Builder class for convenient dialog construction
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Pokazać mapę? (nie wiem czy dać dialog czy odrazu przenieść, no i nie ma lepszej ikonki w domyślnych :f)")
                 .setPositiveButton("Tak", DialogInterface.OnClickListener { dialog, id ->
                     // Odpal mapkę
                 })
                 .setNegativeButton("Nie", DialogInterface.OnClickListener { dialog, id ->
-                    // User cancelled the dialog
+                    // Anuluj
                 })
-        // Create the AlertDialog object and return it
         return builder.create()
     }
 }

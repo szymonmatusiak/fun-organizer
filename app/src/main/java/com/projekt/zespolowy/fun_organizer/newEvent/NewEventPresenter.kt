@@ -21,17 +21,27 @@ private val schedulersProvider: SchedulersProvider
     }
 
     fun checkCorrectness(event: EventModel) : Boolean {
-        if (event.placeInfo.trim().length <= 0 || event.name.trim().length <= 0)
+        if (event.name.trim().length <= 0){
+            view?.toast("Please enter event name")
             return false
+        }
+        else if (event.place.trim().length <= 0){
+            view?.toast("Please enter event place")
+            return false
+        }
+        else if (event.date.trim().length < 10){
+            view?.toast("Please set event date")
+            return false
+        }
         else {
-            println(event.address)
+            /*println(event.address)
             println(event.date)
             println(event.description)
             println(event.latitude)
             println(event.longitude)
             println(event.name)
             println(event.place)
-            println(event.placeInfo)
+            println(event.placeInfo)*/
             return true
         }
     }

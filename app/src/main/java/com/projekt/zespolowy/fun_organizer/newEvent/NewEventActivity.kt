@@ -171,20 +171,11 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
     }
 
     fun parseDate(): String {
-        //Data powinna byc zmieniona wczesniej
-       /* if (month.length == 1)
-            month = "0" + month
 
-        if (day.length == 1)
-            day = "0" + day
-
-        if (hour.length == 1)
-            hour = "0" + hour
-
-        if (minutes.length == 1)
-            minutes = "0" + minutes*/
-
-        var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
+        var finalDate: String = year + "-" + month + "-" + day
+        if (hour.isNotEmpty() && minutes.isNotEmpty()){
+            finalDate = finalDate + " " + hour + ":" + minutes
+        }
         return finalDate
     }
 
