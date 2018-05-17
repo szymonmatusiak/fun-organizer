@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
@@ -20,6 +21,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.v("tag", "DUPA")
         setContentView(R.layout.activity_event_info)
         eventInfoPresenter = EventInfoPresenter(EventInfoUseCase(ApiProvider.instance), SchedulersProvider())
     }
@@ -32,12 +34,16 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         eventInfoPresenter.getEventInfo(Integer.parseInt(eventID))
 
         imageView_show_on_map.setOnClickListener({
-            //toast("Tutaj albo dodać przeniesienie na mapę, albo przez dialog")
+            //Przycisk mapy tutaj <<<
             var builder = onCreateDialog()
             builder.show()
         })
         event_details_edit_event.setOnClickListener({
             toast("Jestem hostem i mogę to klikać :)")
+            //Przycisk do edycji <<<
+            /*val intent = Intent(this, TutajNazwaKlasyXD::class.java)
+            intent.putExtra("eventID", eventID.toString())
+            startActivity(intent)*/
         })
 
         eventInfo_show_needs.setOnClickListener({
@@ -47,7 +53,9 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
-            toast("Wywołaj okno od pokazywania gości")
+            /*val intent = Intent(this, EventGuestsActivity::class.java)
+            intent.putExtra("eventID", eventID.toString())
+            startActivity(intent)*/
         })
     }
 
@@ -59,6 +67,9 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
     override fun setEvnetInfo(it: EventInfo) {
         //toast(it.toString())
         eventInfo_name_textView.text = it.name
+
+        eventInfo_author_textView.text = it.host.email
+
         eventInfo_place_textView.text = it.place
         if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")){
             eventInfo_place_textView.isVisible = false
