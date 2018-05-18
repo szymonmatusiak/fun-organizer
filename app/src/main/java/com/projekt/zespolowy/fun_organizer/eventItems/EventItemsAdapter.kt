@@ -15,7 +15,7 @@ class EventItemsAdapter(private val userModelList: EventInfo, private val itemsG
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(eventViewHolder: EventItemsHolder, position: Int) {
         Log.v("2 Size: ", itemsGropusList.size.toString())
-        //eventViewHolder.setData(userModelList.needs.get(position), itemsGropusList.get(0), eventItemsListener)
+        //eventViewHolder.setData(userModelList.needs.get(position), itemsGropusList.get(position), eventItemsListener)
         eventViewHolder.setData(userModelList.needs.get(position), eventItemsListener)
     }
 

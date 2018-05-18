@@ -73,7 +73,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
 
         var author: String
 
-        eventInfo_author_textView.text = it.host.name + it.host.surname + "(" +  it.host.email + ")"
+        eventInfo_author_textView.text = it.host.name + it.host.surname + " (" +  it.host.email + ")"
 
         eventInfo_place_textView.text = it.place
         if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")){

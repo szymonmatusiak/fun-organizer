@@ -55,7 +55,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
     }
 
     override fun setItemsInCategory(itemsList: ArrayList<SingleItemModel>) {
-        //toast("org:" + itemsList.toString())
+        toast("org:" + itemsList.toString())
         groupsItemsList.add(itemsList)
         toast("cpy: " + groupsItemsList.get(groupsItemsList.lastIndex))
         Log.v("SizeNow", groupsItemsList.size.toString())
