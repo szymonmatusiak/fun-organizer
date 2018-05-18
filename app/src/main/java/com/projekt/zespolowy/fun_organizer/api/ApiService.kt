@@ -65,6 +65,6 @@ interface ApiService {
     fun postEventCategory(@Body category: EventNeedsModel): Single<Response<Void>>
 
     @GET("/api/itemall")
-    fun getAllCategoryItems(@Query("catid") catID:Int): Single<List<SingleItemModel>>
+    fun getAllCategoryItems(@Query("catid") catID:Int): Single<ArrayList<SingleItemModel>>
 
 }

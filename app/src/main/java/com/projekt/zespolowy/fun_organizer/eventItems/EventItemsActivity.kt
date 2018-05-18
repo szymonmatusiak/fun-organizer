@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
@@ -19,7 +20,8 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val recyclerView: RecyclerView by bindView(R.id.event_items_recycle_view)
 
-    private val groupsItems: List<List<SingleItemModel>> = ArrayList<ArrayList<SingleItemModel>>()
+    private val groupsItemsList: MutableList<ArrayList<SingleItemModel>> = mutableListOf<ArrayList<SingleItemModel>>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_items)
@@ -32,16 +34,19 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
 
         var eventID: String = intent.getStringExtra("eventID")
         eventItemsPresenter.getSingleEvent(Integer.parseInt(eventID))
-
     }
 
     override fun setItems(it: EventInfo?) {
-        /*for (item in it.needs){
-
-        }*/
+        if (it != null) {
+            if(it.needs?.size>0){
+                for (item in it!!.needs) {
+                    eventItemsPresenter.getAllCategoryItems(item.id)
+                }
+            }
+        }
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = EventItemsAdapter(it!!, this)
+        viewAdapter = EventItemsAdapter(it!!, groupsItemsList, this)
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -49,12 +54,15 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
         }
     }
 
-    override fun setItemsInCategory(itemsList: List<SingleItemModel>) {
-
+    override fun setItemsInCategory(itemsList: ArrayList<SingleItemModel>) {
+        //toast("org:" + itemsList.toString())
+        groupsItemsList.add(itemsList)
+        toast("cpy: " + groupsItemsList.get(groupsItemsList.lastIndex))
+        Log.v("SizeNow", groupsItemsList.size.toString())
     }
 
     override fun onEventClicked(item: Need) {
-        toast("heh")
+        //toast("heh")
     }
 
     override fun onStop() {

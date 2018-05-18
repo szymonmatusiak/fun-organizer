@@ -34,24 +34,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="description"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/event_single_item_recycle_view"
+        <TextView
+            android:id="@+id/event_items_group_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:text="Items list"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="2"
-            android:keepScreenOn="true" >
-
-        </android.support.v7.widget.RecyclerView>
+            android:layout_marginTop="10dp"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="16dp" />
 
         <ImageView
-            android:id="@+id/add_new_item"
+            android:id="@+id/event_items_add_new_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_input_add" />
