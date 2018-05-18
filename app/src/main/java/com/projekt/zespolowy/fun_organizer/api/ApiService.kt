@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.api
 
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
+import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
@@ -62,4 +63,12 @@ interface ApiService {
     //EventNeeds/items
     @POST("/api/itemcat")
     fun postEventCategory(@Body category: EventNeedsModel): Single<Response<Void>>
+
+    @POST("/api/event/invite")
+    fun sendInvitationToEvent(@Body inviteData: InviteData): Single<Response<Void>>
+
+
+    @GET("/api/event/guests")
+    fun getEventGuest(@Query("id") eventID: String): Single<List<UserModelNoPassword>>
+
 }
