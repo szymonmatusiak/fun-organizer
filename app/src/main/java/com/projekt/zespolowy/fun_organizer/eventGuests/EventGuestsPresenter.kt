@@ -5,11 +5,11 @@ import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 class EventGuestsPresenter(
-        private val eventGuestsUseCase: EventGuestsUseCase,
+        private val eventItemsUseCase: EventGuestsUseCase,
         private val schedulersProvider: SchedulersProvider) : BasePresenter<EventGuestsView>() {
 
-    fun onStart(eventGuestsView: EventGuestsView) {
-        attachView(eventGuestsView)
+    fun onStart(eventItemsView: EventGuestsView) {
+        attachView(eventItemsView)
     }
 
     fun onStop() {

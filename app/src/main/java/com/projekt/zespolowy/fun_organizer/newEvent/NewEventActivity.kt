@@ -41,7 +41,6 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
     var hour: String = ""
     var minutes: String = ""
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_event)
