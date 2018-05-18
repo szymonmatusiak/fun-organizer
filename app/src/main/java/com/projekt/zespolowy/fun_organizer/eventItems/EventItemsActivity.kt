@@ -1,10 +1,16 @@
 package com.projekt.zespolowy.fun_organizer.eventItems
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.EditText
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
@@ -38,7 +44,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
 
     override fun setItems(it: EventInfo?) {
         if (it != null) {
-            if(it.needs?.size>0){
+            if (it.needs?.size > 0) {
                 for (item in it!!.needs) {
                     eventItemsPresenter.getAllCategoryItems(item.id)
                 }
@@ -62,7 +68,24 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
     }
 
     override fun onEventClicked(item: Need) {
-        //toast("heh")
+        var itemName: String
+        val builder = AlertDialog.Builder(this)
+        val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, findViewById(android.R.id.content) as ViewGroup, false)
+        val inputItem = viewInflated.findViewById(R.id.input_item) as EditText
+        val inputDescription = viewInflated.findViewById(R.id.input_description) as EditText
+        builder.setTitle("Add item")
+        builder.setView(viewInflated)
+
+        builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
+            itemName = inputItem.text.toString()
+            /*if (itemName != ""){
+                this.itemsList.add(EventNeedsModel(itemName,inputDescription.text.toString()))
+                viewAdapter.notifyItemInserted(itemsList.size - 1)
+            }*/
+        })
+        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+        builder.show()
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
     override fun onStop() {
