@@ -18,7 +18,6 @@ class EventGuestsPresenter(
 
     fun getEventGuest(eventID: String) {
         Log.v("fuck2", "fuck")
-
         eventGuestsUseCase
                 .getEventGuest(eventID)
                 .subscribeOn(schedulersProvider.backgroundThread())
@@ -37,6 +36,8 @@ class EventGuestsPresenter(
 
                         }
                 )
+
+
     }
 
     fun startNewActivity(eventID: String) {

@@ -69,6 +69,6 @@ interface ApiService {
 
 
     @GET("/api/event/guests")
-    fun getEventGuest(@Query("id") eventID: String): Single<List<UserModel>>
+    fun getEventGuest(@Query("id") eventID: String): Single<List<UserModelNoPassword>>
 
 }
