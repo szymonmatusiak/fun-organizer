@@ -56,7 +56,7 @@
             android:name=".map.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".eventGuests.EventItemsActivity"
+            android:name=".eventGuests.EventGuestsActivity"
             android:label="@string/title_activity_event_guests"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".friendsListEvent.AddFriendsToEventActivity"></activity>
