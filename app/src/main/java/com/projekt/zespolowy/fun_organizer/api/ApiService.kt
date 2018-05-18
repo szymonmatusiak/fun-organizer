@@ -3,6 +3,7 @@ package com.projekt.zespolowy.fun_organizer.api
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemModel
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
+import com.projekt.zespolowy.fun_organizer.invitations.Invitation
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
@@ -73,5 +74,14 @@ interface ApiService {
 
     @GET("/api/itemall")
     fun getAllCategoryItems(@Query("catid") catID: Int): Single<ArrayList<SingleItemModel>>
+
+    @GET("api/usershowi")
+    fun getUserInvitations(): Single<List<Invitation>>
+
+    @POST("api/event/inviteresponse")
+    fun sentInvitationDesition(
+            @Query("invid") id: Int,
+            @Query("r") i: Int
+    ): Single<Response<Void>>
 
 }

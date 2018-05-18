@@ -71,4 +71,7 @@ class ApiProvider private constructor() {
     fun getEventGuest(eventID: String) = service.getEventGuest(eventID)
 
     fun getAllCategoryItems(catID: Int) = service.getAllCategoryItems(catID)
+    fun getUserInvitations() = service.getUserInvitations()
+    fun sentInvitationDesition(id: Int, i: Int) = service.sentInvitationDesition(id, i)
+
 }

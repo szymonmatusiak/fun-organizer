@@ -4,5 +4,4 @@ import android.view.View
 
 interface InvitationsListener {
     fun onEventClicked(invitation: Invitation, view: View)
-
 }

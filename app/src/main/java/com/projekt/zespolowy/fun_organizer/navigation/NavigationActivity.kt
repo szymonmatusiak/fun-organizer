@@ -1,7 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.navigation
 
 import android.app.Fragment
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager.getDefaultSharedPreferences
@@ -17,6 +16,7 @@ import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
 import com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
+import com.projekt.zespolowy.fun_organizer.invitations.InvitationsFragment
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
 
@@ -57,8 +57,8 @@ class NavigationActivity : AppCompatActivity(),
         val surname = defaultSharedPreferences.getString("surname", "Missing")
         val email = defaultSharedPreferences.getString("email", "Missing")
 
-        userName.text =  name + " " + surname
-        userEmail.text =  email
+        userName.text = name + " " + surname
+        userEmail.text = email
     }
 
     override fun onBackPressed() {
@@ -76,8 +76,8 @@ class NavigationActivity : AppCompatActivity(),
             R.id.nav_news -> fragment = BlankFragment2()
 
             R.id.nav_upcoming_events -> {
-                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
-                startActivity(navigatorActivity)
+                fragment = InvitationsFragment()
+
             }
 
             R.id.nav_friends -> {

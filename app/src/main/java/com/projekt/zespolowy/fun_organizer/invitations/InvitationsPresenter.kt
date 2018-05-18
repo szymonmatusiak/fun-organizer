@@ -16,4 +16,33 @@ class InvitationsPresenter(
         detachView(boolean)
     }
 
+    fun getUserInvitations() {
+        invitationUseCase
+                .getUserInvitations()
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            view?.setEvents(it)
+                            view?.toast(it.toString())
+                        },
+                        {
+                        }
+                )
+    }
+
+    fun sentInvitationDesition(id: Int, i: Int) {
+        invitationUseCase
+                .sentInvitationDesition(id, i)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+
+                        },
+                        {
+                        }
+                )
+    }
+
 }
