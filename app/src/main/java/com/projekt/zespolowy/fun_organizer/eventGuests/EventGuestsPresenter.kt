@@ -29,7 +29,7 @@ class EventGuestsPresenter(
 
                             }
                             Log.v("setData", it.toString())
-                            //view?.setData(it)
+                            view?.setData(it)
                         },
                         {
                             Log.v("setData", it.toString())

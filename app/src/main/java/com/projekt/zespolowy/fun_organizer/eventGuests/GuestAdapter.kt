@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.eventGuests
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.ViewGroup
 import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 
@@ -12,6 +13,9 @@ class GuestAdapter(private val userModelList: List<UserModelNoPassword>) : Recyc
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(guestViewHolder: GuestViewHolder, position: Int) {
+        Log.v("QQQQQQQQQQQ",
+                "tesetestest")
+
         guestViewHolder.setData(userModelList[position])
     }
 

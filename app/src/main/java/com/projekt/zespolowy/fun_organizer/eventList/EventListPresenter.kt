@@ -23,6 +23,7 @@ class EventListPresenter(
                 .subscribe(
                         {
                             view?.setEvents(it)
+
                         },
                         {
                             println(it.toString())

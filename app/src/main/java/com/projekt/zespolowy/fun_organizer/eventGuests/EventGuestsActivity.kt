@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
 import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
+import kotlinx.android.synthetic.main.activity_event_guests.*
 import kotterknife.bindView
 
 class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
@@ -25,6 +27,7 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_guests)
+        setSupportActionBar(toolbar)
         eventID = intent.getStringExtra("eventID")
         eventGuestsPresenter = EventGuestsPresenter(EventGuestsUseCase(ApiProvider.instance), SchedulersProvider())
     }

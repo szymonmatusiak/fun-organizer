@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.eventGuests
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ class GuestViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         fun createViewHolder(viewGroup: ViewGroup): GuestViewHolder {
             val v = LayoutInflater.from(viewGroup.context)
                     .inflate(R.layout.user_list_element, viewGroup, false)
+            Log.v("QQQQQQQQQQQ", "testestestes")
 
             return GuestViewHolder(v)
         }
@@ -27,5 +29,6 @@ class GuestViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         name.text = user.name
         surname.text = user.surname
         mail.text = user.email
+        Log.v("QQQQQQQQQQQ", user.toString())
     }
 }
