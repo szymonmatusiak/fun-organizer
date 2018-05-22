@@ -6,12 +6,65 @@
     android:layout_height="match_parent"
     tools:context="com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/event_items_recycle_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:clipToPadding="true"
-        android:scrollbars="vertical" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/single_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/event_items_activity_group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item name"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <TextView
+                android:id="@+id/event_items_activity_group_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="description"
+                android:layout_marginLeft="2dp"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_items_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="0"
+            android:clipToPadding="true"
+            android:scrollbars="vertical" >
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/event_items_add_new_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="0"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </LinearLayout>
 
 </FrameLayout>

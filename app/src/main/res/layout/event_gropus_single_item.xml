@@ -59,6 +59,16 @@
                 tools:layout_editor_absoluteX="130dp"
                 tools:layout_editor_absoluteY="16dp" />
 
+            <TextView
+                android:id="@+id/event_items_item_user_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="By ..."
+                android:textSize="11dp"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
         </LinearLayout>
 
         <Space

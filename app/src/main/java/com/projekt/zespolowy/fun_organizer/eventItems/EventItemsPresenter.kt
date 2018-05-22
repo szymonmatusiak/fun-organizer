@@ -15,13 +15,14 @@ class EventItemsPresenter(
         detachView(false)
     }
 
-    fun getSingleEvent(eventID: Int) {
+    fun getAllCategoryItems(groupID: Int) {
         eventItemsUseCase
-                .getSingleEvent(eventID)
+                .getAllCategoryItems(groupID)
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
+                            //view?.setItems(it)
                             view?.setItems(it)
                         },
                         {
@@ -30,19 +31,4 @@ class EventItemsPresenter(
                 )
     }
 
-    fun getAllCategoryItems(groupID: Int){
-        eventItemsUseCase
-                .getAllCategoryItems(groupID)
-                .subscribeOn(schedulersProvider.backgroundThread())
-                .observeOn(schedulersProvider.mainThread())
-                .subscribe(
-                        {
-                            //view?.setItems(it)
-                            view?.setItemsInCategory(it)
-                        },
-                        {
-                            println(it.toString())
-                        }
-                )
-    }
 }

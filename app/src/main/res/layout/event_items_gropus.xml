@@ -2,14 +2,20 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_holder"
+    android:id="@+id/event_info_items_group_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/single_event"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/single_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
@@ -25,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Item name"
-            android:textSize="@dimen/event_title_text"
+            android:textSize="20dp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -38,21 +45,23 @@
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <TextView
-            android:id="@+id/event_items_group_items"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Items list"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="16dp" />
 
-        <ImageView
-            android:id="@+id/event_items_add_new_item"
+
+    </LinearLayout>
+
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:layout_weight="2" />
+
+        <ImageView
+            android:id="@+id/event_info_enough_items"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:enabled="false"
+            android:layout_weight="0"
+            app:srcCompat="@android:drawable/checkbox_on_background" />
 
     </LinearLayout>
 

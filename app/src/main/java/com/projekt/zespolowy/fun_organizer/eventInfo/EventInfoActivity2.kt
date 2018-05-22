@@ -6,6 +6,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import androidx.core.view.isVisible
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
@@ -15,10 +17,17 @@ import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_info.*
 
-class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
+class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGoupsListener {
 
     private lateinit var eventInfoPresenter: EventInfoPresenter
     private var iAmHost: Boolean = false
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
+    var groupsList: MutableList<Need> = mutableListOf<Need>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +56,16 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
             startActivity(intent)*/
         })
 
-        eventInfo_show_needs.setOnClickListener({
+        event_info_add_item_button.setOnClickListener({
+            toast("Jako host mogę dodawać rzeczy :)")
+        })
+
+        /*eventInfo_show_needs.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
             val intent = Intent(this, EventItemsActivity::class.java)
             intent.putExtra("eventID", eventID.toString())
             startActivity(intent)
-        })
+        })*/
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
@@ -67,14 +80,33 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         super.onStop()
         eventInfoPresenter.onStop()
     }
-
     override fun setEvnetInfo(it: EventInfo) {
-        //toast(it.toString())
+
+        groupsList = it.needs.toMutableList()
+        groupsList.sortBy {it.id}
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = EventInfoItemsGroupsAdapter(groupsList, this)
+
+        recyclerView = findViewById<RecyclerView>(R.id.event_info_event_needs_recycle_view).apply {
+            setHasFixedSize(false)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+
+        if (groupsList.isEmpty())
+        {
+            event_info_eventNeedsLabel.isVisible = false
+        }
+
         eventInfo_name_textView.text = it.name
 
-        var author: String
-
-        eventInfo_author_textView.text = it.host.name + it.host.surname + " (" + it.host.email + ")"
+        var author = ""
+        if (it.host.name.equals("") && it.host.surname.equals(""))
+            author = it.host.email
+        else
+            author = it.host.name + " " + it.host.surname + " (" + it.host.email + ")"
+        eventInfo_author_textView.text = author
 
         eventInfo_place_textView.text = it.place
         if (eventInfo_place_textView.text.equals("") || eventInfo_place_textView.text.contains("°")) {
@@ -97,13 +129,25 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
         // tylko host wydażenia powinien je widzieć
         event_details_edit_event.isEnabled = bool
         event_details_edit_event.isVisible = bool
+        event_info_add_item_button.isEnabled = bool
+        event_info_add_item_button.isVisible = bool
+    }
+
+    override fun onEventClicked(item: Need) {
+        //Na kliknętą grupe...
+        val intent = Intent(this, EventItemsActivity::class.java)
+        intent.putExtra("groupID", item.id.toString())
+        intent.putExtra("itemName", item.name)
+        intent.putExtra("description", item.description)
+
+        startActivity(intent)
     }
 
     fun onCreateDialog(): Dialog {
 
         //builder dialogu
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Pokazać mapę? (nie wiem czy dać dialog czy odrazu przenieść, no i nie ma lepszej ikonki w domyślnych :f)")
+        builder.setMessage("Pokazać mapę?")
                 .setPositiveButton("Tak", DialogInterface.OnClickListener { dialog, id ->
                     // Odpal mapkę
                 })
@@ -112,4 +156,5 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView {
                 })
         return builder.create()
     }
+
 }

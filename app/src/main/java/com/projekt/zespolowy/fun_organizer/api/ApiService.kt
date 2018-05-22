@@ -72,6 +72,6 @@ interface ApiService {
     fun getEventGuest(@Query("id") eventID: String): Single<List<UserModelNoPassword>>
 
     @GET("/api/itemall")
-    fun getAllCategoryItems(@Query("catid") catID: Int): Single<ArrayList<SingleItemModel>>
+    fun getAllCategoryItems(@Query("catid") catID: Int): Single<MutableList<SingleItemModel>>
 
 }

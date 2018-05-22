@@ -69,4 +69,5 @@ password:"</string>
     <string name="edit_event">Edit event</string>
     <string name="event_info_description_text">Description:</string>
     <string name="title_activity_event_guests">eventGuestsActivity</string>
+    <string name="event_info_add_need">Add category</string>
 </resources>
