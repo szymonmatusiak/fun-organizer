@@ -74,4 +74,10 @@ interface ApiService {
     @GET("/api/itemall")
     fun getAllCategoryItems(@Query("catid") catID: Int): Single<MutableList<SingleItemModel>>
 
+    @PUT("/api/event")
+    fun putEventToDatabase(@Query("eventid") eventID: Int, @Body event: com.projekt.zespolowy.fun_organizer.eventEdit.EventModel): Single<com.projekt.zespolowy.fun_organizer.eventEdit.EventModel>
+
+    @GET("/api/event/{id}")
+    fun getEventForEdit(@Path("id") eventID: Int): Single<com.projekt.zespolowy.fun_organizer.eventEdit.EventModel>
+
 }

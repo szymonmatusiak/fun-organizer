@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import androidx.core.view.isVisible
 import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.eventEdit.EventEditActivity
 import com.projekt.zespolowy.fun_organizer.eventGuests.EventGuestsActivity
 import com.projekt.zespolowy.fun_organizer.eventItems.EventItemsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
@@ -49,11 +50,10 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         })
 
         event_details_edit_event.setOnClickListener({
-            toast("Jestem hostem i mogę to klikać :)")
             //Przycisk do edycji <<<
-            /*val intent = Intent(this, TutajNazwaKlasyXD::class.java)
+            val intent = Intent(this, EventEditActivity::class.java)
             intent.putExtra("eventID", eventID.toString())
-            startActivity(intent)*/
+            startActivity(intent)
         })
 
         event_info_add_item_button.setOnClickListener({

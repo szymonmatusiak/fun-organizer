@@ -70,5 +70,8 @@ class ApiProvider private constructor() {
     fun sendInvitationToEvent(inviteData: InviteData) = service.sendInvitationToEvent(inviteData)
     fun getEventGuest(eventID: String) = service.getEventGuest(eventID)
 
+    fun getEventForEdit(eventID: Int) = service.getEventForEdit(eventID)
+    fun putEventToDatabase(eventID: Int, event: com.projekt.zespolowy.fun_organizer.eventEdit.EventModel) = service.putEventToDatabase(eventID, event)
+
     fun getAllCategoryItems(catID: Int) = service.getAllCategoryItems(catID)
 }
