@@ -81,6 +81,11 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                     var price = inputPrice.text.toString()
                     var parsedPrice: Int
 
+                    //Jak strczy czasu: Ogarnąć parsowanie przecinka
+                    //var temp = price.substring(0, price.lastIndexOf('.',0) + 3)
+                    //toast( temp)
+                    //toast( price.substring(0, price.lastIndexOf('.',price.length)))
+
                     if (price == "")
                         parsedPrice = 0
                     else{
@@ -99,7 +104,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
             })
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
             builder.show()
-            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         })
 
     }
@@ -115,15 +120,12 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
         }
     }
 
-   /* override fun setItemsInCategory(itemsList: ArrayList<SingleItemModel>) {
-        toast("org:" + itemsList.toString())
-        //groupsItemsList.add(itemsList)
-        toast("cpy: " + groupsItemsList.get(groupsItemsList.lastIndex))
-        Log.v("SizeNow", groupsItemsList.size.toString())
-    }*/
-
     override fun onEventClicked(item: SingleItemModel) {
-        //toast("heh")
+        toast("Edytujemy to")
+    }
+
+    override fun onDeleteClicked(item: SingleItemModel, fieldID: Int){
+        eventItemsPresenter.deleteItemInCategory(item.id, this.groupID)
     }
 
     override fun onStop() {

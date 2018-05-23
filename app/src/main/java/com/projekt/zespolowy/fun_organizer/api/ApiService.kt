@@ -78,4 +78,6 @@ interface ApiService {
     @POST("/api/item")
     fun postItemToCategory(@Query("catid") catID: Int, @Body recivedItemModel: SingleItemSmallModel): Single<SingleItemSmallModel>
 
+    @DELETE("/api/item")
+    fun deleteItemInCaategory(@Query("id") itemID: Int): Single<Response<Void>>
 }

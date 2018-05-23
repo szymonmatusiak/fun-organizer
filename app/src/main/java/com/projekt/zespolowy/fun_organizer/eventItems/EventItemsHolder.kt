@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.projekt.zespolowy.fun_organizer.R
 
@@ -12,6 +14,8 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val itemDescription: TextView
     private val itemPrice: TextView
     private val itemBy: TextView
+    private val deleteItem: ImageView
+    private val editItem: LinearLayout
 
     companion object {
         fun createViewHolder(viewGroup: ViewGroup): EventItemsHolder {
@@ -31,14 +35,27 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
         itemDescription = v.findViewById(R.id.event_items_item_comment_textView)
         itemPrice = v.findViewById(R.id.event_items_item_value_textView)
         itemBy = v.findViewById(R.id.event_items_item_user_textView)
+        deleteItem = v.findViewById(R.id.new_event_delete_item)
+        editItem = v.findViewById(R.id.single_event)
+
+        deleteItem.setOnClickListener({})
+        editItem.setOnClickListener({})
+
     }
 
-    //fun setData(need: Need, items: List<SingleItemModel> , eventItemsListener: EventItemsListener) {
     fun setData(item: SingleItemModel, eventItemsListener: EventItemsListener) {
 
         itemName.text = item.name
         itemDescription.text = item.description
-        itemPrice.text = item.value.toString()
+
+        if (item.value.toString().length > 2)
+            itemPrice.text = item.value.toString().substring(0,item.value.toString().length-2) + "." + item.value.toString().substring(item.value.toString().length-2) + " PLN"
+        else if (item.value.toString().length > 1)
+            itemPrice.text = item.value.toString().substring(0,item.value.toString().length-2) + "0." + item.value.toString().substring(item.value.toString().length-2) + " PLN"
+
+
+        else
+            itemPrice.text = item.value.toString()
 
         var s = "By "
         if (!item.declared.name.equals("") )
@@ -52,6 +69,8 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         itemBy.text = s
 
+        editItem.setOnClickListener({eventItemsListener.onEventClicked(item)})
+        deleteItem.setOnClickListener({eventItemsListener.onDeleteClicked(item, adapterPosition)})
     }
 
 }

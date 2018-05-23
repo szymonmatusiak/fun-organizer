@@ -34,7 +34,6 @@ class NavigationActivity : AppCompatActivity(),
 
     private val defaultSharedPreferences = getDefaultSharedPreferences(MyApplication.appContext)
     private lateinit var navigatorViewPresenter: NavigatorViewPresenter
-   //var mDrawerLayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

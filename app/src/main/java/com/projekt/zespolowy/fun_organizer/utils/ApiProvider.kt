@@ -73,4 +73,5 @@ class ApiProvider private constructor() {
 
     fun getAllCategoryItems(catID: Int) = service.getAllCategoryItems(catID)
     fun postItemToCategory(catID: Int, item: SingleItemSmallModel) = service.postItemToCategory(catID, item)
+    fun deleteItemInCaategory(itemID: Int) = service.deleteItemInCaategory(itemID)
 }

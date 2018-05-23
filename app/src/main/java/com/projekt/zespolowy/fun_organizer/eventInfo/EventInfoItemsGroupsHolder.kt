@@ -36,14 +36,12 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         itemName = v.findViewById(R.id.event_items_group_name)
         itemDescription = v.findViewById(R.id.event_items_group_description)
-        //numberOfItems = v.findViewById(R.id.event_items_group_count)
         enoughIcon = v.findViewById(R.id.event_info_enough_items)
         notEnoughIcon = v.findViewById(R.id.event_info_not_enough_items)
-        //itemsList = v.findViewById(R.id.event_items_group_items)
-        //addItemButton = v.findViewById(R.id.event_items_add_new_item)
+
+        viewHolder.setOnClickListener({})
     }
 
-    //fun setData(need: Need, items: List<SingleItemModel> , eventItemsListener: EventItemsListener) {
     fun setData(need: Need , eventItemsListener: EventInfoItemsGoupsListener) {
 
         itemName.text = need.name

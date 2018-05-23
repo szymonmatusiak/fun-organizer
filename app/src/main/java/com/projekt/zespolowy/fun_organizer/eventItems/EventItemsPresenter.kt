@@ -38,14 +38,28 @@ class EventItemsPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            //view?.setItems(it)
-                            //view?.setItems(it)
+                            getAllCategoryItems(catID)
                             view?.notifyOnUpdate()
-                            view?.myToast("chyba dodano")
                         },
                         {
                             println(it.toString())
-                            view?.myToast("chyba nie dodano :(")
+                            view?.myToast("Problem with adding item :(")
+                        }
+                )
+    }
+
+    fun deleteItemInCategory(itemID: Int, catID: Int){
+        eventItemsUseCase
+                .deleteItemInCaategory(itemID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            getAllCategoryItems(catID)
+                            view?.notifyOnUpdate()
+                        },
+                        {
+                            view?.myToast("Problem with deleting item :(")
                         }
                 )
     }
