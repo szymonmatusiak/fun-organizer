@@ -1,6 +1,9 @@
 package com.projekt.zespolowy.fun_organizer.navigation
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.app.Fragment
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -133,22 +136,8 @@ class NavigationActivity : AppCompatActivity(),
                 startActivity(navigatorActivity)
             }
             R.id.logout -> {
-                /*val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
-                startActivity(navigatorActivity)*/
-                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
-                sharedPreferences.edit {
-                    putString("Authorization", "not")
-                }
-                var userData = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
-                userData.edit {
-                    putString("name", "")
-                    putString("surname", "")
-                    putString("phoneNumber", "")
-                    putString("email", "")
-                }
-
-                val logoutActivity = Intent(this, LoginActivity::class.java)
-                startActivity(logoutActivity)
+                var builder = onCreateDialog()
+                builder.show()
             }
         }
         if (fragment != null) {
@@ -159,4 +148,32 @@ class NavigationActivity : AppCompatActivity(),
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    fun onCreateDialog(): Dialog {
+
+        //builder dialogu
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Are you sure to log out?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+                    var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                    sharedPreferences.edit {
+                        putString("Authorization", "not")
+                    }
+                    var userData = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                    userData.edit {
+                        putString("name", "")
+                        putString("surname", "")
+                        putString("phoneNumber", "")
+                        putString("email", "")
+                    }
+
+                    val logoutActivity = Intent(this, LoginActivity::class.java)
+                    startActivity(logoutActivity)
+                })
+                .setNegativeButton("no", DialogInterface.OnClickListener { dialog, id ->
+                    // Anuluj
+                })
+        return builder.create()
+    }
+
 }

@@ -6,5 +6,6 @@ data class SingleItemModel(
     val id: Int,
     val name: String,
     val description: String,
-    val value: Int
+    val value: Int,
+    val declared: Declared
 )

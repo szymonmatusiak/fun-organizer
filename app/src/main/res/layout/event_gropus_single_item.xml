@@ -81,8 +81,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:layout_marginRight="20dp"
             app:srcCompat="@android:drawable/btn_dialog" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical" />
 
 </android.support.constraint.ConstraintLayout>

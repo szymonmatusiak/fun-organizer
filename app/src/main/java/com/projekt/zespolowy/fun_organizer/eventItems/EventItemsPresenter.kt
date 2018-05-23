@@ -31,4 +31,23 @@ class EventItemsPresenter(
                 )
     }
 
+    fun postItemToCategory(catID: Int, item: SingleItemSmallModel){
+        eventItemsUseCase
+                .postItemToCategory(catID, item)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            //view?.setItems(it)
+                            //view?.setItems(it)
+                            view?.notifyOnUpdate()
+                            view?.myToast("chyba dodano")
+                        },
+                        {
+                            println(it.toString())
+                            view?.myToast("chyba nie dodano :(")
+                        }
+                )
+    }
+
 }

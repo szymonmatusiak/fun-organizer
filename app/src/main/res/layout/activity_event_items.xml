@@ -29,7 +29,7 @@
                 android:id="@+id/event_items_activity_group_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Item name"
+                android:text="Group"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="130dp"
@@ -55,16 +55,57 @@
             android:layout_gravity="bottom"
             android:layout_weight="0"
             android:clipToPadding="true"
-            android:scrollbars="vertical" >
+            android:isScrollContainer="false">
         </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:orientation="vertical" />
 
         <ImageView
             android:id="@+id/event_items_add_new_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0"
             app:srcCompat="@android:drawable/ic_input_add" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/event_items_accept"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:enabled="false"
+                android:text="Accept this group"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </FrameLayout>

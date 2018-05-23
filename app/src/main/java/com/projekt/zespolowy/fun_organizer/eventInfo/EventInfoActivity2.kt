@@ -139,6 +139,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         intent.putExtra("groupID", item.id.toString())
         intent.putExtra("itemName", item.name)
         intent.putExtra("description", item.description)
+        intent.putExtra("enough", item.enough.toString())
+        intent.putExtra("iAmHost", iAmHost.toString())
 
         startActivity(intent)
     }
@@ -147,11 +149,11 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
 
         //builder dialogu
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Pokazać mapę?")
-                .setPositiveButton("Tak", DialogInterface.OnClickListener { dialog, id ->
+        builder.setMessage("Show map?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
                     // Odpal mapkę
                 })
-                .setNegativeButton("Nie", DialogInterface.OnClickListener { dialog, id ->
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
                     // Anuluj
                 })
         return builder.create()

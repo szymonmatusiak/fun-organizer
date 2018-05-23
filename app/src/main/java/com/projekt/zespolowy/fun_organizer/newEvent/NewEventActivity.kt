@@ -126,7 +126,7 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
             val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, findViewById(android.R.id.content) as ViewGroup, false)
             val inputItem = viewInflated.findViewById(R.id.input_item) as EditText
             val inputDescription = viewInflated.findViewById(R.id.input_description) as EditText
-            builder.setTitle("Add item")
+            builder.setTitle("Add items group")
             builder.setView(viewInflated)
 
             builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = inputItem.text.toString()

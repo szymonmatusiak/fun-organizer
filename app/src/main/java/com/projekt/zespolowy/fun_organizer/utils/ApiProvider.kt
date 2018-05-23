@@ -3,6 +3,7 @@ package com.projekt.zespolowy.fun_organizer.utils
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.projekt.zespolowy.fun_organizer.api.ApiService
 import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemSmallModel
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
@@ -71,4 +72,5 @@ class ApiProvider private constructor() {
     fun getEventGuest(eventID: String) = service.getEventGuest(eventID)
 
     fun getAllCategoryItems(catID: Int) = service.getAllCategoryItems(catID)
+    fun postItemToCategory(catID: Int, item: SingleItemSmallModel) = service.postItemToCategory(catID, item)
 }

@@ -1,9 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.eventItems
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.ViewGroup
-import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 
 class EventItemsAdapter(private val itemsGropusList: MutableList<SingleItemModel>, private val eventItemsListener: EventItemsListener)
     : RecyclerView.Adapter<EventItemsHolder>(){

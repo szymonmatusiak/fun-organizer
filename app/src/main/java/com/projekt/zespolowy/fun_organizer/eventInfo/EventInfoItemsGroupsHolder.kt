@@ -17,6 +17,7 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val itemDescription: TextView
     //private val numberOfItems: TextView
     private val enoughIcon: ImageView
+    private val notEnoughIcon: ImageView
     private val viewHolder: ConstraintLayout by bindView(R.id.event_info_items_group_holder)
 
     companion object {
@@ -37,6 +38,7 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
         itemDescription = v.findViewById(R.id.event_items_group_description)
         //numberOfItems = v.findViewById(R.id.event_items_group_count)
         enoughIcon = v.findViewById(R.id.event_info_enough_items)
+        notEnoughIcon = v.findViewById(R.id.event_info_not_enough_items)
         //itemsList = v.findViewById(R.id.event_items_group_items)
         //addItemButton = v.findViewById(R.id.event_items_add_new_item)
     }
@@ -49,12 +51,15 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         enoughIcon.isEnabled = need.enough
         enoughIcon.isVisible = need.enough
+        notEnoughIcon.isEnabled = !need.enough
+        notEnoughIcon.isVisible = !need.enough
 
         if (!need.enough){
             viewHolder.setOnClickListener{eventItemsListener.onEventClicked(need)}
+
         }
         else{
-            viewHolder.setBackgroundColor(Color.parseColor("#21000000"))
+            viewHolder.setBackgroundColor(Color.parseColor("#21adf6ec"))
         }
 
 
