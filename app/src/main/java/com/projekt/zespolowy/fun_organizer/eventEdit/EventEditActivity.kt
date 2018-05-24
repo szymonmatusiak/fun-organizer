@@ -8,6 +8,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import com.google.android.gms.common.api.Api
+import com.projekt.zespolowy.fun_organizer.R.attr.content
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -34,7 +36,7 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
     var itemsList: MutableList<EventNeedsModel> = mutableListOf<EventNeedsModel>()
     lateinit var spinnerList: MutableList<String>
     //private lateinit var recyclerView: RecyclerView
-    private val recyclerView: RecyclerView by bindView(R.id.edit_needs_recycle_view2)
+    private val recyclerView: RecyclerView by bindView(com.projekt.zespolowy.fun_organizer.R.id.edit_needs_recycle_view2)
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
@@ -55,9 +57,11 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
         currentId = Integer.parseInt(eventID)
         eventPresenter.getEventModel(currentId)
         //toast("name: " + itemsList[0].name + " Id: " + itemsList[0].id + " description: " + itemsList[0].description)
+
+        viewManager = LinearLayoutManager(this)
         viewAdapter = EditEventNeedsAdapter(itemsList, this)
 
-        recyclerView = findViewById<RecyclerView>(R.id.edit_needs_recycle_view2).apply {
+        recyclerView.apply {
             setHasFixedSize(false)
             layoutManager = viewManager
             adapter = viewAdapter
@@ -138,19 +142,24 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
             eventPresenter.putEventToDatabase(currentId, eventM)
         })
 
-        add_item_button.setOnClickListener({
-            var itemName : String
+        edit_add_item_button.setOnClickListener({
+            var itemName: String
+            var test: ViewGroup
+            test = findViewById(android.R.id.content)
             val builder = AlertDialog.Builder(this)
-            val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, findViewById(android.R.id.content) as ViewGroup, false)
-            val inputItem = viewInflated.findViewById(R.id.input_item) as EditText
-            val inputDescription = viewInflated.findViewById(R.id.input_description) as EditText
+            val viewInflated = LayoutInflater.from(this).inflate(com.projekt.zespolowy.fun_organizer.R.layout.dialog_edit_item, test, false)
+            val inputItem :EditText
+                    inputItem = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_item)
+            val inputDescription: EditText
+                    inputDescription = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_description)
             builder.setTitle("Add item")
             builder.setView(viewInflated)
 
-            builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = inputItem.text.toString()
-                if (itemName != ""){
-                    this.itemsList.add(EventNeedsModel(itemName,inputDescription.text.toString()))
-                    viewAdapter.notifyItemInserted(itemsList.size - 1)
+            builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
+                itemName = inputItem.text.toString()
+                if (itemName != "") {
+                    this.itemsList.add(EventNeedsModel(0, itemName, inputDescription.text.toString()))
+                    viewAdapter.notifyDataSetChanged()
                 }
             })
 
