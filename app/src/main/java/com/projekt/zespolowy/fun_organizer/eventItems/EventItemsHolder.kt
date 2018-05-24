@@ -50,13 +50,7 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         itemName.text = item.name
         itemDescription.text = item.description
-
-        if (item.value.toString().length > 2)
-            itemPrice.text = item.value.toString().substring(0,item.value.toString().length-2) + "." + item.value.toString().substring(item.value.toString().length-2) + " PLN"
-        else if (item.value.toString().length > 1)
-            itemPrice.text = item.value.toString().substring(0,item.value.toString().length-2) + "0." + item.value.toString().substring(item.value.toString().length-2) + " PLN"
-        else
-            itemPrice.text = item.value.toString()
+        itemPrice.text = item.value.toString() + " PLN"
 
         var owner = "By "
         if (!item.declared.name.equals("") )

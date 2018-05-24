@@ -97,19 +97,12 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
             builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which -> itemName = inputItem.text.toString()
                 if (itemName != "" && inputPrice.text.toString() != ""){
                     var price = inputPrice.text.toString()
-                    var parsedPrice: Int
+                    var parsedPrice: Float
 
                     if (price == "")
-                        parsedPrice = 0
+                        parsedPrice = 0.toFloat()
                     else{
-                        val regex = "\\D+".toRegex()
-                        var result = regex.replace(price, "")
-                        if (result.length == 1)
-                            result += "00"
-                        else if (result.length == 2)
-                            result += "0"
-
-                        parsedPrice = Integer.parseInt(result)
+                        parsedPrice = price.toFloat()
                     }
                     var model = SingleItemSmallModel(inputItem.text.toString(), inputDescription.text.toString(), parsedPrice)
 
@@ -157,29 +150,17 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
         inputItem.setText(item.name)
         inputDescription.setText(item.description)
 
-        if (item.value.toString().length > 2)
-            inputPrice.setText(item.value.toString().substring(0,item.value.toString().length-2) + "." + item.value.toString().substring(item.value.toString().length-2) + " PLN")
-        else if (item.value.toString().length > 1)
-            inputPrice.setText(item.value.toString().substring(0,item.value.toString().length-2) + "0." + item.value.toString().substring(item.value.toString().length-2) + " PLN")
-        else
-            inputPrice.setText(item.value.toString())
+        inputPrice.setText(item.value.toString().substring(0,item.value.toString().length))
 
         builder.setPositiveButton("Change", DialogInterface.OnClickListener { dialog, which -> itemName = inputItem.text.toString()
             if (itemName != "" && inputPrice.text.toString() != ""){
                 var price = inputPrice.text.toString()
-                var parsedPrice: Int
-
-                //Jak strczy czasu: Ogarnąć parsowanie przecinka
-                //var temp = price.substring(0, price.lastIndexOf('.',0) + 3)
-                //toast( temp)
-                //toast( price.substring(0, price.lastIndexOf('.',price.length)))
+                var parsedPrice: Float
 
                 if (price == "")
-                    parsedPrice = 0
+                    parsedPrice = 0.toFloat()
                 else{
-                    val regex = "\\D+".toRegex()
-                    val result = regex.replace(price, "")
-                    parsedPrice = Integer.parseInt(result)
+                    parsedPrice = price.toFloat()
                 }
                 var model = SingleItemSmallModel(inputItem.text.toString(), inputDescription.text.toString(), parsedPrice)
 
