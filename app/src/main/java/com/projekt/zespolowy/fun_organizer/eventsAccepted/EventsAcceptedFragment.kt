@@ -18,9 +18,9 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotterknife.bindView
 
 
-class EventListFragment : Fragment(), EventsAcceptedView, EventListener {
+class EventsAcceptedFragment : Fragment(), EventsAcceptedView, EventListener {
 
-    private lateinit var eventListPresenter: EventListPresenter
+    private lateinit var eventsAcceptedPresenter: EventsAcceptedPresenter
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private val recyclerView: RecyclerView by bindView(R.id.event_list_recycle_view)
@@ -28,7 +28,7 @@ class EventListFragment : Fragment(), EventsAcceptedView, EventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        eventListPresenter = EventListPresenter(EventListUseCase(ApiProvider.instance), SchedulersProvider())
+        eventsAcceptedPresenter = EventsAcceptedPresenter(EventsAcceptedUseCase(ApiProvider.instance), SchedulersProvider())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -38,16 +38,17 @@ class EventListFragment : Fragment(), EventsAcceptedView, EventListener {
 
     override fun onStart() {
         super.onStart()
-        eventListPresenter.onStart(this)
-        eventListPresenter.getEventList()
+        eventsAcceptedPresenter.onStart(this)
+        eventsAcceptedPresenter.getEventsAccepted()
         newEventButton.setOnClickListener {
-            eventListPresenter.startNewActivity()
+            eventsAcceptedPresenter.startNewActivity()
         }
+        Toast.makeText(activity,"test",Toast.LENGTH_LONG).show()
     }
 
     override fun onStop() {
         super.onStop()
-        eventListPresenter.onStop()
+        eventsAcceptedPresenter.onStop()
     }
 
     override fun setEvents(it: List<EventModel2>?) {
@@ -65,7 +66,7 @@ class EventListFragment : Fragment(), EventsAcceptedView, EventListener {
     }
 
     override fun onEventClicked(event: EventModel2) {
-        eventListPresenter.onEventClicked(event)
+        eventsAcceptedPresenter.onEventClicked(event)
     }
 
     override fun toast(string: String) {

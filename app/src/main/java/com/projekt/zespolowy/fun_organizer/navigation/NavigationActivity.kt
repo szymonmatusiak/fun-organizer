@@ -19,6 +19,7 @@ import androidx.core.content.edit
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
+import com.projekt.zespolowy.fun_organizer.eventList.EventsAcceptedFragment
 import com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
@@ -62,7 +63,7 @@ class NavigationActivity : AppCompatActivity(),
         var surname = defaultSharedPreferences.getString("surname", "Missing")
         var email = defaultSharedPreferences.getString("email", "Missing")
 
-        if (email.equals("") || email.equals("Missing")){
+        if (email.equals("") || email.equals("Missing")) {
             navigatorViewPresenter.getUserData()
             nr = defaultSharedPreferences.getString("phoneNumber", "Missing")
             name = defaultSharedPreferences.getString("name", "Missing")
@@ -75,20 +76,20 @@ class NavigationActivity : AppCompatActivity(),
         val userEmail = headerView.findViewById(R.id.navigator_email) as TextView
         val userName = headerView.findViewById(R.id.navigator_user_name) as TextView
 
-        userName.text =  name + " " + surname
-        userEmail.text =  email
+        userName.text = name + " " + surname
+        userEmail.text = email
 
-        if(drawer_layout.isDrawerOpen(GravityCompat.START)) {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             //drawer is open
-            if (userEmail.text.equals("") || userEmail.text.equals("Missing")){
+            if (userEmail.text.equals("") || userEmail.text.equals("Missing")) {
                 navigatorViewPresenter.getUserData()
                 nr = defaultSharedPreferences.getString("phoneNumber", "Missing")
                 name = defaultSharedPreferences.getString("name", "Missing")
                 surname = defaultSharedPreferences.getString("surname", "Missing")
                 email = defaultSharedPreferences.getString("email", "Missing")
 
-                userName.text =  name + " " + surname
-                userEmail.text =  email
+                userName.text = name + " " + surname
+                userEmail.text = email
             }
         }
     }
@@ -105,24 +106,25 @@ class NavigationActivity : AppCompatActivity(),
         var fragment: Fragment? = null
 
         //to poniżej trzeba podpiąć pod wysunięcie naavigator bar, ale nie wiem jak
-        if (navigator_email.text.equals("") || navigator_email.text.equals("Missing")){
+        if (navigator_email.text.equals("") || navigator_email.text.equals("Missing")) {
             navigatorViewPresenter.getUserData()
             val nr = defaultSharedPreferences.getString("phoneNumber", "Missing")
             val name = defaultSharedPreferences.getString("name", "Missing")
             val surname = defaultSharedPreferences.getString("surname", "Missing")
             val email = defaultSharedPreferences.getString("email", "Missing")
 
-            navigator_user_name.text =  name + " " + surname
-            navigator_email.text =  email
+            navigator_user_name.text = name + " " + surname
+            navigator_email.text = email
         }
 
         when (item.itemId) {
             R.id.nav_news -> fragment = BlankFragment2()
 
-            R.id.nav_upcoming_events -> {
-                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
-                startActivity(navigatorActivity)
-            }
+            R.id.nav_upcoming_events -> fragment = EventsAcceptedFragment()
+        /*{
+        val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
+        startActivity(navigatorActivity)
+    }*/
 
             R.id.nav_friends -> {
                 fragment = FriendsListFragment()

@@ -90,5 +90,8 @@ interface ApiService {
     @PUT("/api/item")
     fun editItemInCategory(@Query("id") itemID: Int, @Body recivetItem: SingleItemSmallModel): Single<SingleItemSmallModel>
 
+    @GET("/api/eventgo")
+    fun getEventsAccepted(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
+
 
 }

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -25,7 +26,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-
+    private lateinit var eventInfo: EventInfo
     var groupsList: MutableList<Need> = mutableListOf<Need>()
 
 
@@ -44,6 +45,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
 
         imageView_show_on_map.setOnClickListener({
             //Przycisk mapy tutaj <<<
+            Intent(Intent.ACTION_VIEW,
+                    Uri.parse(String.format("geo:%s,%s", eventInfo.latitude, eventInfo.longitude)))
             var builder = onCreateDialog()
             builder.show()
         })
@@ -80,10 +83,11 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         super.onStop()
         eventInfoPresenter.onStop()
     }
-    override fun setEvnetInfo(it: EventInfo) {
 
+    override fun setEvnetInfo(it: EventInfo) {
+        eventInfo = it
         groupsList = it.needs.toMutableList()
-        groupsList.sortBy {it.id}
+        groupsList.sortBy { it.id }
 
         viewManager = LinearLayoutManager(this)
         viewAdapter = EventInfoItemsGroupsAdapter(groupsList, iAmHost, this)
@@ -94,8 +98,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
             adapter = viewAdapter
         }
 
-        if (groupsList.isEmpty())
-        {
+        if (groupsList.isEmpty()) {
             event_info_eventNeedsLabel.isVisible = false
         }
 
