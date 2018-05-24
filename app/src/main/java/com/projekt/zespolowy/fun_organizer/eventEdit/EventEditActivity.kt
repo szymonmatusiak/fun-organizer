@@ -1,34 +1,26 @@
 package com.projekt.zespolowy.fun_organizer.eventEdit
 
-import android.R
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.Spinner
-import com.google.android.gms.common.api.Api
-import com.projekt.zespolowy.fun_organizer.R.attr.content
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_edit.*
-import kotlinx.android.synthetic.main.activity_new_event.*
 import kotterknife.bindView
 import java.util.*
 
-class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
+class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener {
 
     private lateinit var eventPresenter: EventEditPresenter
     private lateinit var eventM: EventModel
@@ -40,8 +32,8 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    var day : String = ""
-    var month : String = ""
+    var day: String = ""
+    var month: String = ""
     var year: String = ""
     var hour: String = ""
     var minutes: String = ""
@@ -53,12 +45,11 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
         setContentView(com.projekt.zespolowy.fun_organizer.R.layout.activity_event_edit)
         eventPresenter = EventEditPresenter(EventEditUseCase(ApiProvider.instance), SchedulersProvider())
         eventPresenter.onStart(this)
-        var eventID:String = intent.getStringExtra("eventID")
+        var eventID: String = intent.getStringExtra("eventID")
         currentId = Integer.parseInt(eventID)
         eventPresenter.getEventModel(currentId)
         //toast("name: " + itemsList[0].name + " Id: " + itemsList[0].id + " description: " + itemsList[0].description)
 
-        itemsList.add(EventNeedsModel(0, "ase", "sad"))
         viewManager = LinearLayoutManager(this)
         viewAdapter = EditEventNeedsAdapter(itemsList, this)
 
@@ -151,10 +142,10 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
             test = findViewById(android.R.id.content)
             val builder = AlertDialog.Builder(this)
             val viewInflated = LayoutInflater.from(this).inflate(com.projekt.zespolowy.fun_organizer.R.layout.dialog_edit_item, test, false)
-            val inputItem :EditText
-                    inputItem = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_item)
+            val inputItem: EditText
+            inputItem = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_item)
             val inputDescription: EditText
-                    inputDescription = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_description)
+            inputDescription = viewInflated.findViewById(com.projekt.zespolowy.fun_organizer.R.id.edit_input_description)
             builder.setTitle("Add item")
             builder.setView(viewInflated)
 
@@ -195,22 +186,22 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
 
     }*/
 
-    fun parseDate() : String {
+    fun parseDate(): String {
         var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
         return finalDate
     }
 
     override fun onDeleteClicked(data: Int) {
         //var index = itemsList.indexOf(data)
- //       toast(itemsList.toString())
+        //       toast(itemsList.toString())
         itemsList.removeAt(data)
         viewAdapter.notifyDataSetChanged()
     }
 
-    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 1) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 val place = data.getStringExtra("place")
                 val address = data.getStringExtra("address")
                 latitude = data.getDoubleExtra("latitude", 0.0)
