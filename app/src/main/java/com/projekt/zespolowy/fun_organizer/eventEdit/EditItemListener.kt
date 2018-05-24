@@ -5,5 +5,5 @@ package com.projekt.zespolowy.fun_organizer.eventEdit
  */
 
 interface EditItemListener {
-    fun onDeleteClicked(data: EventNeedsModel)
+    fun onDeleteClicked(positon: Int)
 }

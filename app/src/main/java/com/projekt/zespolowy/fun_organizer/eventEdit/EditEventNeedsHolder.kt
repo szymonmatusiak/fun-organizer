@@ -30,6 +30,6 @@ class EditEventNeedsHolder(v: View) : RecyclerView.ViewHolder(v){
     fun setData(needs: EventNeedsModel, itemListener: EditItemListener) {
         itemName.text = needs.name
         itemComment.text = needs.description
-        buttonDeleteItem.setOnClickListener{itemListener.onDeleteClicked(needs)}
+        buttonDeleteItem.setOnClickListener{itemListener.onDeleteClicked(adapterPosition)}
     }
 }

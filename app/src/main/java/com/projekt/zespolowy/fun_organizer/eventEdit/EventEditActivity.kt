@@ -58,6 +58,7 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
         eventPresenter.getEventModel(currentId)
         //toast("name: " + itemsList[0].name + " Id: " + itemsList[0].id + " description: " + itemsList[0].description)
 
+        itemsList.add(EventNeedsModel(0, "ase", "sad"))
         viewManager = LinearLayoutManager(this)
         viewAdapter = EditEventNeedsAdapter(itemsList, this)
 
@@ -139,6 +140,8 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
                     editDescription.text.toString(),
                     itemsList)
 
+            toast(eventM.toString())
+
             eventPresenter.putEventToDatabase(currentId, eventM)
         })
 
@@ -160,6 +163,7 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
                 if (itemName != "") {
                     this.itemsList.add(EventNeedsModel(0, itemName, inputDescription.text.toString()))
                     viewAdapter.notifyDataSetChanged()
+                    toast(itemsList.last().name)
                 }
             })
 
@@ -196,10 +200,11 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
         return finalDate
     }
 
-    override fun onDeleteClicked(data: EventNeedsModel) {
-        var index = itemsList.indexOf(data)
-        itemsList.removeAt(index)
-        viewAdapter.notifyItemRemoved(index)
+    override fun onDeleteClicked(data: Int) {
+        //var index = itemsList.indexOf(data)
+ //       toast(itemsList.toString())
+        itemsList.removeAt(data)
+        viewAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent) {
@@ -235,7 +240,9 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
         editStreet.setText(it.address)
         editPlaceInfo.setText(it.placeInfo)
         editDescription.setText(it.description)
-        itemsList = it.needs.toMutableList()
+        //itemsList = it.needs.toMutableList()
+        itemsList.addAll(it.needs)
+        viewAdapter.notifyDataSetChanged()
         //toast("name: " + itemsList[0].name + " Id: " + itemsList[0].id + " description: " + itemsList[0].description)
         //val it = itemsList.iterator()
         //itemsList.forEach {
