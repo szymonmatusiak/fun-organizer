@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.eventItems
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
+import com.projekt.zespolowy.fun_organizer.eventInfo.NeedNoID
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 class EventItemsPresenter(
@@ -22,7 +23,6 @@ class EventItemsPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            //view?.setItems(it)
                             view?.setItems(it)
                         },
                         {
@@ -50,7 +50,7 @@ class EventItemsPresenter(
 
     fun deleteItemInCategory(itemID: Int, catID: Int){
         eventItemsUseCase
-                .deleteItemInCaategory(itemID)
+                .deleteItemInCategory(itemID)
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
@@ -64,4 +64,35 @@ class EventItemsPresenter(
                 )
     }
 
+    fun editItemInCategory(itemID: Int, item: SingleItemSmallModel, catID: Int) {
+        eventItemsUseCase
+                .editItemInCategory(itemID, item)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            getAllCategoryItems(catID)
+                            view?.notifyOnUpdate()
+                        },
+                        {
+                            view?.myToast("Problem with editing item :(")
+                        }
+                )
+    }
+
+    fun confirmCategory(groupID: Int, group: NeedNoID){
+        eventItemsUseCase
+                .confirmCategory(groupID, group)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            getAllCategoryItems(groupID)
+                            view?.notifyOnUpdate()
+                        },
+                        {
+                            view?.myToast("Problem with editing item :(")
+                        }
+                )
+    }
 }

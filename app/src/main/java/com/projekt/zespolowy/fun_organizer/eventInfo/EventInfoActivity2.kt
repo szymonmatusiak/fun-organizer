@@ -86,7 +86,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         groupsList.sortBy {it.id}
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = EventInfoItemsGroupsAdapter(groupsList, this)
+        viewAdapter = EventInfoItemsGroupsAdapter(groupsList, iAmHost, this)
 
         recyclerView = findViewById<RecyclerView>(R.id.event_info_event_needs_recycle_view).apply {
             setHasFixedSize(false)

@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.ViewGroup
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 
-class EventInfoItemsGroupsAdapter(private val itemsGropusList: MutableList<Need>, private val eventItemsListener: EventInfoItemsGoupsListener)
+class EventInfoItemsGroupsAdapter(private val itemsGropusList: MutableList<Need>, private val iAmHost:Boolean, private val eventItemsListener: EventInfoItemsGoupsListener)
     : RecyclerView.Adapter<EventInfoItemsGroupsHolder>(){
 
     // Create new views (invoked by the layout manager)
@@ -16,7 +16,7 @@ class EventInfoItemsGroupsAdapter(private val itemsGropusList: MutableList<Need>
     override fun onBindViewHolder(eventViewHolder: EventInfoItemsGroupsHolder, position: Int) {
         //Log.v("2 Size: ", itemsGropusList.size.toString())
         //eventViewHolder.setData(userModelList.needs.get(position), itemsGropusList.get(position), eventItemsListener)
-        eventViewHolder.setData(itemsGropusList[position], eventItemsListener)
+        eventViewHolder.setData(itemsGropusList[position], iAmHost, eventItemsListener)
     }
 
     override fun getItemCount() = itemsGropusList.size

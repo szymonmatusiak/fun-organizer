@@ -1,6 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.api
 
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
+import com.projekt.zespolowy.fun_organizer.eventInfo.NeedNoID
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemModel
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemSmallModel
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
@@ -62,16 +63,21 @@ interface ApiService {
     @PUT("/api/useraddfbook")
     fun searchWithContactList(@Body list: List<String>): Single<Response<Void>>
 
-    //EventNeeds/items
-    @POST("/api/itemcat")
-    fun postEventCategory(@Body category: EventNeedsModel): Single<Response<Void>>
-
+    //Guests
     @POST("/api/event/invite")
     fun sendInvitationToEvent(@Body inviteData: InviteData): Single<Response<Void>>
 
     @GET("/api/event/guests")
     fun getEventGuest(@Query("id") eventID: String): Single<List<UserModelNoPassword>>
 
+    //EventNeeds/items
+    @POST("/api/itemcat")
+    fun postEventCategory(@Body category: EventNeedsModel): Single<Response<Void>>
+
+    @PUT("/api/itemcat")
+    fun confirmCategory(@Query("id") groupID: Int, @Body recivedGroup: NeedNoID): Single<Response<Void>>
+
+    //EventNeeds/Single items
     @GET("/api/itemall")
     fun getAllCategoryItems(@Query("catid") catID: Int): Single<MutableList<SingleItemModel>>
 
@@ -79,5 +85,10 @@ interface ApiService {
     fun postItemToCategory(@Query("catid") catID: Int, @Body recivedItemModel: SingleItemSmallModel): Single<SingleItemSmallModel>
 
     @DELETE("/api/item")
-    fun deleteItemInCaategory(@Query("id") itemID: Int): Single<Response<Void>>
+    fun deleteItemInCategory(@Query("id") itemID: Int): Single<Response<Void>>
+
+    @PUT("/api/item")
+    fun editItemInCategory(@Query("id") itemID: Int, @Body recivetItem: SingleItemSmallModel): Single<SingleItemSmallModel>
+
+
 }

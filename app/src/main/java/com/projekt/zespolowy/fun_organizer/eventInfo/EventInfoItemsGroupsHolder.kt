@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.projekt.zespolowy.fun_organizer.R
@@ -18,6 +19,7 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
     //private val numberOfItems: TextView
     private val enoughIcon: ImageView
     private val notEnoughIcon: ImageView
+    private val layout: LinearLayout
     private val viewHolder: ConstraintLayout by bindView(R.id.event_info_items_group_holder)
 
     companion object {
@@ -38,11 +40,12 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
         itemDescription = v.findViewById(R.id.event_items_group_description)
         enoughIcon = v.findViewById(R.id.event_info_enough_items)
         notEnoughIcon = v.findViewById(R.id.event_info_not_enough_items)
+        layout = v.findViewById((R.id.single_group_layout))
 
         viewHolder.setOnClickListener({})
     }
 
-    fun setData(need: Need , eventItemsListener: EventInfoItemsGoupsListener) {
+    fun setData(need: Need , iAmHost:Boolean, eventItemsListener: EventInfoItemsGoupsListener) {
 
         itemName.text = need.name
         itemDescription.text = need.description
@@ -52,12 +55,12 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
         notEnoughIcon.isEnabled = !need.enough
         notEnoughIcon.isVisible = !need.enough
 
-        if (!need.enough){
+        //Przetestować czy działa jak jest zaakceptowane a jestem hostem
+        if (!need.enough || iAmHost){
             viewHolder.setOnClickListener{eventItemsListener.onEventClicked(need)}
-
         }
         else{
-            viewHolder.setBackgroundColor(Color.parseColor("#21adf6ec"))
+            layout.setBackgroundColor(Color.parseColor("#81adf6ec"))
         }
 
 
