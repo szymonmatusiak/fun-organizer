@@ -59,8 +59,9 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
         if (!need.enough || iAmHost){
             viewHolder.setOnClickListener{eventItemsListener.onEventClicked(need)}
         }
-        else{
-            layout.setBackgroundColor(Color.parseColor("#81adf6ec"))
+
+        if (need.enough){
+            layout.setBackgroundColor(Color.parseColor("#817ef67c"))
         }
 
 

@@ -59,7 +59,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
         event_items_activity_group_description.text = groupDescription
 
         if (groupIsEnough){
-            single_event.setBackgroundColor(Color.parseColor("#81adf6ec"))
+            single_event.setBackgroundColor(Color.parseColor("#817ef67c"))
             event_items_accept.setText("Resume adding to group")
         }
 
@@ -99,16 +99,16 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                     var price = inputPrice.text.toString()
                     var parsedPrice: Int
 
-                    //Jak strczy czasu: Ogarnąć parsowanie przecinka
-                    //var temp = price.substring(0, price.lastIndexOf('.',0) + 3)
-                    //toast( temp)
-                    //toast( price.substring(0, price.lastIndexOf('.',price.length)))
-
                     if (price == "")
                         parsedPrice = 0
                     else{
                         val regex = "\\D+".toRegex()
-                        val result = regex.replace(price, "")
+                        var result = regex.replace(price, "")
+                        if (result.length == 1)
+                            result += "00"
+                        else if (result.length == 2)
+                            result += "0"
+
                         parsedPrice = Integer.parseInt(result)
                     }
                     var model = SingleItemSmallModel(inputItem.text.toString(), inputDescription.text.toString(), parsedPrice)
@@ -117,7 +117,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                     eventItemsPresenter.getAllCategoryItems(groupID)
                 }
                 else {
-                    toast("Fields cannot be empty")
+                    toast("Name and price cannot be empty")
                 }
             })
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
