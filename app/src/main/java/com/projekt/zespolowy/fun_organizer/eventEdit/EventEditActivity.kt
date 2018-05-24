@@ -161,7 +161,7 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
             builder.setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
                 itemName = inputItem.text.toString()
                 if (itemName != "") {
-                    this.itemsList.add(EventNeedsModel(0, itemName, inputDescription.text.toString()))
+                    this.itemsList.add(EventNeedsModel(-1, itemName, inputDescription.text.toString()))
                     viewAdapter.notifyDataSetChanged()
                     toast(itemsList.last().name)
                 }
