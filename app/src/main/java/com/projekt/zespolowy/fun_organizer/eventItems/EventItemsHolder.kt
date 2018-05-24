@@ -46,7 +46,7 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     }
 
-    fun setData(item: SingleItemModel, iAmHost:Boolean, eventItemsListener: EventItemsListener) {
+    fun setData(item: SingleItemModel, iAmHost:Boolean, isEnough:Boolean, eventItemsListener: EventItemsListener) {
 
         itemName.text = item.name
         itemDescription.text = item.description
@@ -70,10 +70,15 @@ class EventItemsHolder(v: View) : RecyclerView.ViewHolder(v) {
             iAmOwner = true
 
         //sprawdzić czy działa jak szymon swoje zroib
-        if (iAmHost || iAmOwner){
-            editItem.setOnClickListener({eventItemsListener.onEventClicked(item)})
-            deleteItem.setOnClickListener({eventItemsListener.onDeleteClicked(item, adapterPosition)})
-        }
+        if (!isEnough)
+            if (iAmHost || iAmOwner){
+                editItem.setOnClickListener({eventItemsListener.onEventClicked(item)})
+                deleteItem.setOnClickListener({eventItemsListener.onDeleteClicked(item, adapterPosition)})
+            }
+            else{
+                deleteItem.isVisible = false
+                deleteItem.isEnabled = false
+            }
         else{
             deleteItem.isVisible = false
             deleteItem.isEnabled = false

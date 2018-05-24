@@ -57,9 +57,9 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
             startActivity(intent)
         })
 
-        event_info_add_item_button.setOnClickListener({
-            toast("Jako host mogę dodawać rzeczy :)")
-        })
+       /*event_info_add_item_button.setOnClickListener({
+            //toast("Jako host mogę dodawać rzeczy :)")
+        })*/
 
         /*eventInfo_show_needs.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
@@ -130,8 +130,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         // tylko host wydażenia powinien je widzieć
         event_details_edit_event.isEnabled = bool
         event_details_edit_event.isVisible = bool
-        event_info_add_item_button.isEnabled = bool
-        event_info_add_item_button.isVisible = bool
+        //event_info_add_item_button.isEnabled = bool
+        //event_info_add_item_button.isVisible = bool
     }
 
     override fun onEventClicked(item: Need) {

@@ -61,6 +61,9 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
         if (groupIsEnough){
             single_event.setBackgroundColor(Color.parseColor("#817ef67c"))
             event_items_accept.setText("Resume adding to group")
+
+            event_items_add_new_item.isVisible = false
+            event_items_add_new_item.isEnabled = false
         }
 
         if (iAmHost){
@@ -74,9 +77,8 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                     newStatus = true
 
                 var group: NeedNoID = NeedNoID(groupName, groupDescription, newStatus)
-                toast(group.toString())
+                //toast(group.toString())
                 eventItemsPresenter.confirmCategory(groupID, group)
-                this.finish()
             })
         }
         else{
@@ -123,7 +125,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
     override fun setItems(it: MutableList<SingleItemModel>?) {
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = EventItemsAdapter(it!!, iAmHost, this)
+        viewAdapter = EventItemsAdapter(it!!, iAmHost, groupIsEnough, this)
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -168,7 +170,7 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                 eventItemsPresenter.getAllCategoryItems(groupID)
             }
             else {
-                toast("Fields cannot be empty")
+                toast("Name and price cannot be empty")
             }
         })
         builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
@@ -188,6 +190,10 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
 
     override fun notifyOnUpdate() {
         viewAdapter.notifyDataSetChanged()
+    }
+
+    override fun killActivity() {
+        this.finish()
     }
 
     fun onCreateDialog(item : SingleItemModel): Dialog {

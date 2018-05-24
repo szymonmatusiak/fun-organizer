@@ -37,13 +37,13 @@ class FriendsEventPresenter(
     fun addToList(user: UserModel) {
         inviteData.emails.add(user.email)
         list.add(user.email)
-        view?.toast(list.toString())
+        //view?.toast(list.toString())
 
         Log.v("test", list.toString())
     }
 
     fun toast() {
-        view?.toast(list.toString())
+        //view?.toast(list.toString())
 
     }
 
