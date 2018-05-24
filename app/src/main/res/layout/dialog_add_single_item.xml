@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <AutoCompleteTextView
+        android:id="@+id/input_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:focusedByDefault="true"
+        android:nextFocusDown="@+id/input_description"
+        android:inputType="textAutoCorrect" />
+
+    <AutoCompleteTextView
+        android:id="@+id/input_item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price (PLN)"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:inputType="numberDecimal" />
+
+    <AutoCompleteTextView
+        android:id="@+id/input_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:inputType="textAutoCorrect" />
+
+
+
+</LinearLayout>

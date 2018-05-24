@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +47,67 @@
                 android:text="" />
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="33dp"
+                android:paddingTop="15dp"
+                android:text="@string/event_date_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <EditText
+                android:id="@+id/dateField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/dateLabel"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/timeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:paddingTop="15dp"
+                android:text="@string/event_time_field"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <EditText
+                android:id="@+id/timeField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/timeLabel"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="" />
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -135,66 +195,33 @@
                 android:text="" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/dateLabel"
+            <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="33dp"
-                android:paddingTop="15dp"
-                android:text="@string/event_date_field"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:layout_weight="1" />
 
-            <EditText
-                android:id="@+id/dateField"
+            <Button
+                android:id="@+id/mapBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:layout_toRightOf="@id/dateLabel"
-                android:ems="10"
-                android:focusable="false"
-                android:inputType="textPersonName"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:text="" />
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/event_map_button" />
 
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/timeLabel"
+            <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="30dp"
-                android:paddingTop="15dp"
-                android:text="@string/event_time_field"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-            <EditText
-                android:id="@+id/timeField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:layout_toRightOf="@id/timeLabel"
-                android:ems="10"
-                android:focusable="false"
-                android:inputType="textPersonName"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:text="" />
-
-        </RelativeLayout>
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/eventDescriptionLabel"
@@ -221,35 +248,6 @@
                 android:inputType="textAutoCorrect"
                 android:text="" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/mapBtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="@string/event_map_button" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
 
         <TextView
             android:id="@+id/eventNeedsLabel"

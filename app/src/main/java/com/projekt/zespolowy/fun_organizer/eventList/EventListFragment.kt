@@ -18,7 +18,7 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotterknife.bindView
 
 
-class EventListFragment : Fragment(), EventListView, EventListener {
+class EventListFragment : Fragment(), EventsAcceptedView, EventListener {
 
     private lateinit var eventListPresenter: EventListPresenter
     private lateinit var viewAdapter: RecyclerView.Adapter<*>

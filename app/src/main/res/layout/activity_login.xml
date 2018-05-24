@@ -17,101 +17,111 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
-    <EditText
-        android:id="@+id/loginEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:hint="@string/login_email_field"
-        android:inputType="textEmailAddress"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="@string/login_password_field"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/loginEditText" />
-
     <LinearLayout
+        android:id="@+id/login_layout_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Space
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/loginEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/loginButton"
-            style="@android:style/Widget.DeviceDefault.Light.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/login_login_button"
-            android:textColor="@android:color/background_light"
-            android:textColorLink="@android:color/holo_blue_dark"
-            app:layout_constraintBottom_toBottomOf="@id/passwordEditText"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:hint="@string/login_email_field"
+            android:inputType="textEmailAddress"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/login_password_field"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/loginEditText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/loginButton"
+                style="@android:style/Widget.DeviceDefault.Light.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/login_login_button"
+                android:textColor="@android:color/background_light"
+                android:textColorLink="@android:color/holo_blue_dark"
+                app:layout_constraintBottom_toBottomOf="@id/passwordEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="bottom"
-        android:text="@string/login_create_account_message"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/createAccountButton"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/login_create_account_button" />
+            android:gravity="bottom"
+            android:text="@string/login_create_account_message"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/createAccountButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/login_create_account_button" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
     </LinearLayout>
+
+
 
 </LinearLayout>

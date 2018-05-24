@@ -5,9 +5,9 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 class EventListPresenter(
         private val eventListUseCase: EventListUseCase,
-        private val schedulersProvider: SchedulersProvider) : BasePresenter<EventListView>() {
+        private val schedulersProvider: SchedulersProvider) : BasePresenter<EventsAcceptedView>() {
 
-    fun onStart(eventListView: EventListView) {
+    fun onStart(eventListView: EventsAcceptedView) {
         attachView(eventListView)
     }
 
@@ -23,6 +23,7 @@ class EventListPresenter(
                 .subscribe(
                         {
                             view?.setEvents(it)
+
                         },
                         {
                             println(it.toString())
