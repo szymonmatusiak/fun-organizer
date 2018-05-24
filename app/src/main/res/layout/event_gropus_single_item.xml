@@ -59,6 +59,16 @@
                 tools:layout_editor_absoluteX="130dp"
                 tools:layout_editor_absoluteY="16dp" />
 
+            <TextView
+                android:id="@+id/event_items_item_user_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="By ..."
+                android:textSize="11dp"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
         </LinearLayout>
 
         <Space
@@ -71,8 +81,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:layout_marginRight="20dp"
             app:srcCompat="@android:drawable/btn_dialog" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical" />
 
 </android.support.constraint.ConstraintLayout>

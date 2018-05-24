@@ -27,7 +27,6 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_guests)
-        setSupportActionBar(toolbar)
         eventID = intent.getStringExtra("eventID")
         eventGuestsPresenter = EventGuestsPresenter(EventGuestsUseCase(ApiProvider.instance), SchedulersProvider())
     }

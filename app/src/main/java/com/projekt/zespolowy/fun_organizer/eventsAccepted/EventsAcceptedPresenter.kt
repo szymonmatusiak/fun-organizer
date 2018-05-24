@@ -3,8 +3,8 @@ package com.projekt.zespolowy.fun_organizer.eventList
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
-class EventListPresenter(
-        private val eventListUseCase: EventListUseCase,
+class EventsAcceptedPresenter(
+        private val eventListUseCase: EventsAcceptedUseCase,
         private val schedulersProvider: SchedulersProvider) : BasePresenter<EventsAcceptedView>() {
 
     fun onStart(eventListView: EventsAcceptedView) {
@@ -15,9 +15,9 @@ class EventListPresenter(
         detachView(false)
     }
 
-    fun getEventList() {
+    fun getEventsAccepted() {
         eventListUseCase
-                .getEventList()
+                .getEventsAccepted()
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(

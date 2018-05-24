@@ -22,16 +22,16 @@
             android:title="Your events" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Others">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/logout"
+                android:icon="@android:drawable/ic_menu_set_as"
+                android:title="Logout" />
         </menu>
     </item>
 

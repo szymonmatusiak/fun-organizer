@@ -36,6 +36,7 @@ class LoginPresenter(
                                     putString("Authorization", it.raw().header("Authorization").toString())
                                 }
                                 //view?.toast(it.raw().header("Authorization").toString())
+                                //!!!!!!!! OGARNĄĆ WYCIEKI PAMIĘCI !!!!!!!!
                                 checkIfUserIsAuthenticated()
                             } else
                                 view?.toast("błędne dane logowania")
@@ -60,12 +61,12 @@ class LoginPresenter(
                                 putString("phoneNumber", it.phoneNumber)
                                 putString("email", it.email)
                             }
+                            view?.checkIfUserIsAuthenticated()
                         },
                         {
                             println(it.toString())
                         }
                 )
-        view?.checkIfUserIsAuthenticated()
     }
 
     fun startNavigationActivity() {
