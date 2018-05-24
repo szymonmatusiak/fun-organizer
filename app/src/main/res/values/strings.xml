@@ -17,6 +17,18 @@
     <string name="event_map_button">Select location</string>
     <string name="event_new_event_button">Create event</string>
 
+    <!-- String related to edit evnet gui -->
+    <string name="edit_main_message">"Edit event"</string>
+    <string name="edit_name_field">Name:</string>
+    <string name="edit_place_field">Place:</string>
+    <string name="edit_street_field">Address: </string>
+    <string name="edit_placeInfo_field">Place info: </string>
+    <string name="edit_date_field">Date:</string>
+    <string name="edit_time_field">Time:</string>
+    <string name="edit_description_field">Event description:</string>
+    <string name="edit_map_button">Change location</string>
+    <string name="edit_event_button">Modify event</string>
+
     <!-- Strings related to login gui -->
     <string name="login_main_message">"Login to Fun organizer"</string>
     <string name="login_email_field">E-mail</string>
