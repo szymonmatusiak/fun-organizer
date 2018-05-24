@@ -24,7 +24,7 @@ class InvitationsPresenter(
                 .subscribe(
                         {
                             view?.setEvents(it)
-                            view?.toast(it.toString())
+                            //view?.toast(it.toString())
                         },
                         {
                         }

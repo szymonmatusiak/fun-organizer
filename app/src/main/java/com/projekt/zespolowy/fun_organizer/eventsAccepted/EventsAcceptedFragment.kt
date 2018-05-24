@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfoActivity2
 import com.projekt.zespolowy.fun_organizer.newEvent.NewEventActivity
@@ -40,10 +41,14 @@ class EventsAcceptedFragment : Fragment(), EventsAcceptedView, EventListener {
         super.onStart()
         eventsAcceptedPresenter.onStart(this)
         eventsAcceptedPresenter.getEventsAccepted()
-        newEventButton.setOnClickListener {
+
+        newEventButton.isVisible = false
+        newEventButton.isEnabled = false
+
+        /*newEventButton.setOnClickListener {
             eventsAcceptedPresenter.startNewActivity()
         }
-        Toast.makeText(activity,"test",Toast.LENGTH_LONG).show()
+        Toast.makeText(activity,"test",Toast.LENGTH_LONG).show()*/
     }
 
     override fun onStop() {

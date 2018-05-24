@@ -43,7 +43,7 @@ class EventItemsPresenter(
                         },
                         {
                             println(it.toString())
-                            view?.myToast("Problem with adding item :(")
+                            view?.myToast("Problem with adding item")
                         }
                 )
     }
@@ -59,7 +59,7 @@ class EventItemsPresenter(
                             view?.notifyOnUpdate()
                         },
                         {
-                            view?.myToast("Problem with deleting item :(")
+                            view?.myToast("Problem with deleting item")
                         }
                 )
     }
@@ -75,7 +75,7 @@ class EventItemsPresenter(
                             view?.notifyOnUpdate()
                         },
                         {
-                            view?.myToast("Problem with editing item :(")
+                            view?.myToast("Problem with editing item")
                         }
                 )
     }
@@ -89,9 +89,10 @@ class EventItemsPresenter(
                         {
                             getAllCategoryItems(groupID)
                             view?.notifyOnUpdate()
+                            view?.killActivity()
                         },
                         {
-                            view?.myToast("Problem with editing item :(")
+                            view?.myToast("Problem with editing item")
                         }
                 )
     }

@@ -6,5 +6,6 @@ interface EventItemsView : IBaseView {
     fun setItems(it: MutableList<SingleItemModel>?)
     fun myToast (s: String)
     fun notifyOnUpdate()
+    fun killActivity()
     //fun setItemsInCategory(itemsList: MutableList<SingleItemModel>)
 }

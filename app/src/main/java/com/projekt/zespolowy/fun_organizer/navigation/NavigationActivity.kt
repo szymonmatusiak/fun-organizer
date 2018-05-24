@@ -133,10 +133,10 @@ class NavigationActivity : AppCompatActivity(),
 
             R.id.nav_your_events -> fragment = EventListFragment()
 
-            R.id.nav_share -> {
+            /*R.id.nav_share -> {
                 val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
                 startActivity(navigatorActivity)
-            }
+            }*/
             R.id.logout -> {
                 var builder = onCreateDialog()
                 builder.show()

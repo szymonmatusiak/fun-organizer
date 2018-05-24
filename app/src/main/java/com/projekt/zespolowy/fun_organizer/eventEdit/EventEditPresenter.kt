@@ -41,7 +41,7 @@ class EventEditPresenter(
                 .subscribe(
                         {
                             view?.killActivity()
-                            view?.toast(it.toString())
+                            //view?.toast(it.toString())
                         },
                         {
                             println(it.toString())

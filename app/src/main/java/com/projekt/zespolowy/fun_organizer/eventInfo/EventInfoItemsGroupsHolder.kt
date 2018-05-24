@@ -56,9 +56,9 @@ class EventInfoItemsGroupsHolder(v: View) : RecyclerView.ViewHolder(v) {
         notEnoughIcon.isVisible = !need.enough
 
         //Przetestować czy działa jak jest zaakceptowane a jestem hostem
-        if (!need.enough || iAmHost){
-            viewHolder.setOnClickListener{eventItemsListener.onEventClicked(need)}
-        }
+        //if (!need.enough || iAmHost){
+        viewHolder.setOnClickListener{eventItemsListener.onEventClicked(need)}
+        //}
 
         if (need.enough){
             layout.setBackgroundColor(Color.parseColor("#817ef67c"))

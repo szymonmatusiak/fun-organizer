@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
+import com.projekt.zespolowy.fun_organizer.R.id.loginEditText
 import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
 import com.projekt.zespolowy.fun_organizer.register.RegisterActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider

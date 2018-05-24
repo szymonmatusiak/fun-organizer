@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.newFriend
 
+import android.util.Log
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
@@ -28,8 +29,7 @@ class NewFriendPresenter(
                             if (raw.isSuccessful)
                                 view?.exitActivity()
                             else
-                                view?.toast(raw.code().toString())
-
+                                Log.d("Błąd:", raw.code().toString())
                         },
                         {
 
@@ -48,8 +48,7 @@ class NewFriendPresenter(
                             if (raw.code() == 200)
                                 view?.exitActivity()
                             else
-                                view?.toast(raw.code().toString())
-
+                                Log.d("Błąd:", raw.code().toString())
                         },
                         {
 
@@ -68,8 +67,7 @@ class NewFriendPresenter(
                             if (raw.isSuccessful)
                                 view?.exitActivity()
                             else
-                                view?.toast(raw.code().toString())
-
+                                Log.d("Błąd:", raw.code().toString())
                         },
                         {
 

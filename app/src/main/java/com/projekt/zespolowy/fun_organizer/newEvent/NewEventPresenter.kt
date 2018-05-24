@@ -55,10 +55,10 @@ private val schedulersProvider: SchedulersProvider
                     .subscribe(
                             {
                                 view?.killActivity()
-                                view?.toast(it.toString())
+                                //view?.toast(it.toString())
                             },
                             {
-                                view?.toast(it.toString())
+                                //view?.toast(it.toString())
                             }
                     )
         }
