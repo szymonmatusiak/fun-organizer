@@ -45,8 +45,6 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
 
         imageView_show_on_map.setOnClickListener({
             //Przycisk mapy tutaj <<<
-            Intent(Intent.ACTION_VIEW,
-                    Uri.parse(String.format("geo:%s,%s", eventInfo.latitude, eventInfo.longitude)))
             var builder = onCreateDialog()
             builder.show()
         })
@@ -154,7 +152,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Show map?")
                 .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
-                    // Odpal mapkę
+                    startActivity(Intent(Intent.ACTION_VIEW,
+                            Uri.parse(String.format("http://maps.google.co.in/maps?q=geo:%s,%s(%s)", eventInfo.latitude, eventInfo.longitude,eventInfo.address))))
                 })
                 .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
                     // Anuluj
