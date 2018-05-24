@@ -5,6 +5,7 @@ import com.projekt.zespolowy.fun_organizer.eventInfo.NeedNoID
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemModel
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemSmallModel
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
+import com.projekt.zespolowy.fun_organizer.invitations.Invitation
 import com.projekt.zespolowy.fun_organizer.login.Login
 import com.projekt.zespolowy.fun_organizer.newEvent.EventModel
 import com.projekt.zespolowy.fun_organizer.newEvent.EventNeedsModel
@@ -93,5 +94,20 @@ interface ApiService {
     @GET("/api/eventgo")
     fun getEventsAccepted(): Single<List<com.projekt.zespolowy.fun_organizer.eventList.EventModel2>>
 
+
+    @GET("api/usershowi")
+    fun getUserInvitations(): Single<List<Invitation>>
+
+    @POST("api/event/inviteresponse")
+    fun sentInvitationDesition(
+            @Query("invid") id: Int,
+            @Query("r") i: Int
+    ): Single<Response<Void>>
+
+    @PUT("/api/event")
+    fun putEventToDatabase(@Query("eventid") eventID: Int, @Body event: com.projekt.zespolowy.fun_organizer.eventEdit.EventModel): Single<com.projekt.zespolowy.fun_organizer.eventEdit.EventModel>
+
+    @GET("/api/event/{id}")
+    fun getEventForEdit(@Path("id") eventID: Int): Single<com.projekt.zespolowy.fun_organizer.eventEdit.EventModel>
 
 }

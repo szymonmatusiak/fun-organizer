@@ -22,6 +22,7 @@ import com.projekt.zespolowy.fun_organizer.eventList.EventListFragment
 import com.projekt.zespolowy.fun_organizer.eventList.EventsAcceptedFragment
 import com.projekt.zespolowy.fun_organizer.friends.FriendsListFragment
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
+import com.projekt.zespolowy.fun_organizer.invitations.InvitationsFragment
 import com.projekt.zespolowy.fun_organizer.login.LoginActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -118,7 +119,7 @@ class NavigationActivity : AppCompatActivity(),
         }
 
         when (item.itemId) {
-            R.id.nav_news -> fragment = BlankFragment2()
+            R.id.nav_news -> fragment = InvitationsFragment()
 
             R.id.nav_upcoming_events -> fragment = EventsAcceptedFragment()
         /*{

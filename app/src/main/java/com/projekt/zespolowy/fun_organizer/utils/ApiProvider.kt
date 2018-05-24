@@ -74,9 +74,15 @@ class ApiProvider private constructor() {
 
     fun confirmCategory(groupID: Int, group: NeedNoID) = service.confirmCategory(groupID, group)
 
+    fun getEventForEdit(eventID: Int) = service.getEventForEdit(eventID)
+    fun putEventToDatabase(eventID: Int, event: com.projekt.zespolowy.fun_organizer.eventEdit.EventModel) = service.putEventToDatabase(eventID, event)
+
     fun getAllCategoryItems(catID: Int) = service.getAllCategoryItems(catID)
     fun postItemToCategory(catID: Int, item: SingleItemSmallModel) = service.postItemToCategory(catID, item)
     fun deleteItemInCategory(itemID: Int) = service.deleteItemInCategory(itemID)
     fun editItemInCategory(itemID: Int, item: SingleItemSmallModel) = service.editItemInCategory(itemID, item)
     fun getEventsAccepted() = service.getEventsAccepted()
+    fun getUserInvitations() = service.getUserInvitations()
+    fun sentInvitationDesition(id: Int, i: Int) = service.sentInvitationDesition(id, i)
+
 }
