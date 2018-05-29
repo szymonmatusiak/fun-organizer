@@ -1,4 +1,4 @@
-package com.projekt.zespolowy.fun_organizer.ping
+package com.projekt.zespolowy.fun_organizer.api
 
 /**
  * Created by szymon on 10.03.18.

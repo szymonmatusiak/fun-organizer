@@ -7,4 +7,6 @@ import com.projekt.zespolowy.fun_organizer.base.IBaseView
  */
 interface MainView : IBaseView {
     fun toast(text: String)
+    fun checkIfUserIsAuthenticated()
+    //fun startEventListActivity()
 }

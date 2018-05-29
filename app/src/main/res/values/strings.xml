@@ -1,5 +1,87 @@
 <resources>
-    <string name="app_name">fun</string>
+    <string name="app_name">Fun organizer</string>
     <string name="ping">get simple Ping response</string>
     <string name="post">post val to server</string>
+    <string name="register">register</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to new event gui -->
+    <string name="event_main_message">"Create new event"</string>
+    <string name="event_name_field">Name:</string>
+    <string name="event_place_field">Place:</string>
+    <string name="event_street_field">Address: </string>
+    <string name="event_placeInfo_field">Place info: </string>
+    <string name="event_date_field">Date:</string>
+    <string name="event_time_field">Time:</string>
+    <string name="event_description_field">Event description:</string>
+    <string name="event_map_button">Select location</string>
+    <string name="event_new_event_button">Create event</string>
+
+    <!-- String related to edit evnet gui -->
+    <string name="edit_main_message">"Edit event"</string>
+    <string name="edit_name_field">Name:</string>
+    <string name="edit_place_field">Place:</string>
+    <string name="edit_street_field">Address: </string>
+    <string name="edit_placeInfo_field">Place info: </string>
+    <string name="edit_date_field">Date:</string>
+    <string name="edit_time_field">Time:</string>
+    <string name="edit_description_field">Event description:</string>
+    <string name="edit_map_button">Change location</string>
+    <string name="edit_event_button">Modify event</string>
+    <string name="edit_need_field">Edit items:</string>
+    <string name="edit_add_need_field">Add new item: </string>
+
+    <!-- Strings related to login gui -->
+    <string name="login_main_message">"Login to Fun organizer"</string>
+    <string name="login_email_field">E-mail</string>
+    <string name="login_password_field">Password</string>
+    <string name="login_login_button">Login</string>
+    <string name="login_create_account_message">"Don't have an account?"</string>
+    <string name="login_create_account_button">"Create new account"</string>
+
+    <!-- Strings related to register gui -->
+    <string name="register_main_message">"Create new Fun organizer account"</string>
+    <string name="register_email_text">"E-mail:"</string>
+    <string name="register_password_text">"Password:"</string>
+    <string name="register_confirm_password_text">"Confirm
+password:"</string>
+    <string name="register_optional_text">"Optional"</string>
+    <string name="register_name_text">"Name:"</string>
+    <string name="register_surname_text">"Surname:"</string>
+    <string name="register_number_text">"Phone:"</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_events_list">EventsListActivity</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_contact_list_numbers">Get friends from your phonebook</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="event_need_field">Event needs list:</string>
+    <string name="event_add_need_field">Add new Item</string>
+    <string name="search_by_email">Search by e-mail</string>
+    <string name="search_by_phone">Search by phone number</string>
+    <string name="inviteFriends">Zaproś znajomych</string>
+    <string name="edit_event">Edit event</string>
+    <string name="event_info_description_text">Description:</string>
+    <string name="title_activity_event_guests">eventGuestsActivity</string>
+    <string name="event_info_add_need">Add category</string>
 </resources>

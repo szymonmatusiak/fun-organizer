@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="Invites" />
+        <item
+            android:id="@+id/nav_upcoming_events"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="Upcomming events" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Friends" />
+        <item
+            android:id="@+id/nav_your_events"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Your events" />
+    </group>
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@android:drawable/ic_menu_set_as"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

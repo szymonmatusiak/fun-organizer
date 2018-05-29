@@ -1,7 +1,7 @@
 package com.projekt.zespolowy.fun_organizer.main
 
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
-import com.projekt.zespolowy.fun_organizer.ping.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 
 class MainPresenter(
@@ -46,4 +46,10 @@ class MainPresenter(
                         }
                 )
     }
+
+    fun checkIfUserIsAuthenticated() {
+        view?.checkIfUserIsAuthenticated()
+    }
+
+
 }
