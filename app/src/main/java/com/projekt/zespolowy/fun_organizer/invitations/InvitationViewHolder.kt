@@ -16,7 +16,6 @@ class InvitationViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val eventHost: TextView by bindView(R.id.event_host)
     private val eventDate: TextView by bindView(R.id.event_date)
     private val accept: Button by bindView(R.id.accept)
-    private val later: Button by bindView(R.id.later)
     private val decline: Button by bindView(R.id.decline)
     private val viewHolder: ConstraintLayout by bindView(R.id.layout_holder)
 
@@ -34,7 +33,6 @@ class InvitationViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         eventHost.text = invitation.event.host.name + invitation.event.host.surname
         eventDate.text = invitation.event.date
         accept.setOnClickListener { invitationsListener.onEventClicked(invitation, accept) }
-        later.setOnClickListener { invitationsListener.onEventClicked(invitation, later) }
         decline.setOnClickListener { invitationsListener.onEventClicked(invitation, decline) }
     }
 
