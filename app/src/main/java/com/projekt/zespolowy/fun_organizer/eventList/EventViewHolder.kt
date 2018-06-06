@@ -36,7 +36,12 @@ class EventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         } else {
             eventDate.text = event.date
         }
-        eventPlace.text = event.placeName
+        if (event.place.contains("°")) {
+            eventPlace.text = event.address
+        }
+        else{
+            eventPlace.text = event.place
+        }
         viewHolder.setOnClickListener { eventListener.onEventClicked(event) }
     }
 

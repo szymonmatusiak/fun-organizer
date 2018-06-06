@@ -29,23 +29,27 @@
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <TextView
-            android:id="@+id/surname_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Place"
-            tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="16dp" />
 
-        <TextView
-            android:id="@+id/mail_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Date"
-            tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="16dp" />
+            <TextView
+                android:id="@+id/surname_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Place"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+
+            <TextView
+                android:id="@+id/mail_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Date"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+
 
     </LinearLayout>
 

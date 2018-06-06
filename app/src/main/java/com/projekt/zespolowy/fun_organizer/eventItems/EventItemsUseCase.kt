@@ -10,4 +10,5 @@ class EventItemsUseCase(private val apiProvider: ApiProvider) {
     fun deleteItemInCategory(itemID: Int) = apiProvider.deleteItemInCategory(itemID)
     fun editItemInCategory(itemID: Int, item: SingleItemSmallModel) = apiProvider.editItemInCategory(itemID, item)
     fun confirmCategory(groupID: Int, group: NeedNoID) = apiProvider.confirmCategory(groupID, group)
+    fun deleteItemCategory(eventID: Int) = apiProvider.deleteItemCategory(eventID)
 }

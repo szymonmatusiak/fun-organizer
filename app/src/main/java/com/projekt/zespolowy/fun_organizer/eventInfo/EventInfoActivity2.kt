@@ -122,6 +122,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         // bool to przesłanie czy jestem hostem czy nie
         // okeśla to widzoczność i dla bepeczeństwa możliwość klikania przycisku
         // tylko host wydażenia powinien je widzieć
+        //tylko gość (nie host) może zrezygnować z eventu
         if (iAmHost){
             event_details_edit_event.isEnabled = true
             event_details_edit_event.isVisible = true

@@ -5,5 +5,7 @@ data class EventModel2(val date: String = "",
                        val name: String = "",
                        val description: String = "",
                        val id: Int = -1,
-                       val placeName: String = ""
+                       val place: String,
+                       val address: String,
+                       val placeInfo: String = ""
 )

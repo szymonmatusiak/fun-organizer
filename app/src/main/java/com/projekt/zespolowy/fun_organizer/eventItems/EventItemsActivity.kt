@@ -64,10 +64,13 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
 
             event_items_add_new_item.isVisible = false
             event_items_add_new_item.isEnabled = false
+            event_items_delete_category.isVisible = false
+            event_items_delete_category.isEnabled = false
         }
 
         if (iAmHost){
             event_items_accept.isEnabled = true
+            event_items_delete_category.isEnabled = true
             event_items_accept.setOnClickListener({
 
                 var newStatus: Boolean
@@ -80,10 +83,17 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                 //toast(group.toString())
                 eventItemsPresenter.confirmCategory(groupID, group)
             })
+
+            event_items_delete_category.setOnClickListener({
+                var builder = resignDialog(groupID)
+                builder.show()
+            })
         }
         else{
             event_items_accept.isVisible = false
             event_items_accept.isEnabled = false
+            event_items_delete_category.isVisible = false
+            event_items_delete_category.isEnabled = false
         }
 
         event_items_add_new_item.setOnClickListener({
@@ -205,6 +215,21 @@ class EventItemsActivity : AppCompatActivity(), EventItemsView, EventItemsListen
                     eventItemsPresenter.deleteItemInCategory(item.id, this.groupID)
                 })
                 .setNegativeButton("no", DialogInterface.OnClickListener { dialog, id ->
+                    // Anuluj
+                })
+        return builder.create()
+    }
+
+    fun resignDialog(catID: Int): Dialog {
+
+        //builder dialogu
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setMessage("Are you sure to delete this category?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+                    eventItemsPresenter.deleteItemCategory(catID)
+                    killActivity()
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
                     // Anuluj
                 })
         return builder.create()

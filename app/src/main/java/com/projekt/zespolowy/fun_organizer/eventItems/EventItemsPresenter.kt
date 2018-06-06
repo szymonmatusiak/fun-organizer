@@ -96,4 +96,19 @@ class EventItemsPresenter(
                         }
                 )
     }
+
+    fun deleteItemCategory(catID: Int){
+        eventItemsUseCase
+                .deleteItemCategory(catID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            view?.myToast("Category deleted")
+                        },
+                        {
+                            view?.myToast("Problem with deleting category")
+                        }
+                )
+    }
 }

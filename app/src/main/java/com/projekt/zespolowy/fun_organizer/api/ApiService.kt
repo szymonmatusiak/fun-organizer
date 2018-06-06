@@ -81,6 +81,9 @@ interface ApiService {
     @PUT("/api/itemcat")
     fun confirmCategory(@Query("id") groupID: Int, @Body recivedGroup: NeedNoID): Single<Response<Void>>
 
+    @DELETE("/api/itemcat")
+    fun deleteItemCategory(@Query("id") itemID: Int): Single<Response<Void>>
+
     //EventNeeds/Single items
     @GET("/api/itemall")
     fun getAllCategoryItems(@Query("catid") catID: Int): Single<MutableList<SingleItemModel>>
