@@ -49,6 +49,9 @@ interface ApiService {
     @GET("/api/eventchk")
     fun getIfIsHost(@Query("id") eventID: Int): Single<Boolean>
 
+    @DELETE("/api/event/delmyself")
+    fun deleteMyself(@Query("event") eventID: Int): Single<Response<Void>>
+
     //Friends
     @GET("/api/usershowf")
     fun getFriendsList(): Single<List<UserModel>>

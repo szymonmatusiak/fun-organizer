@@ -1,7 +1,11 @@
 package com.projekt.zespolowy.fun_organizer.eventInfo
 
+import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.base.BasePresenter
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
+import android.R.attr.duration
+
+
 
 class EventInfoPresenter(
         private val eventInfoUseCase: EventInfoUseCase,
@@ -39,6 +43,19 @@ class EventInfoPresenter(
                     view?.iAmHost(it)
                 },{
 
+                }
+                )
+    }
+
+    fun deleteMyself(eventID: Int){
+        eventInfoUseCase
+                .deleteMyself(eventID)
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe({
+                    view?.toast("You resigned from this event")
+                },{
+                    view?.toast("Problem with resign :(")
                 }
                 )
     }

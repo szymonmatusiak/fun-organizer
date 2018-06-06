@@ -30,7 +30,6 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
     private lateinit var eventInfo: EventInfo
     var groupsList: MutableList<Need> = mutableListOf<Need>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_info)
@@ -57,16 +56,10 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
             startActivity(intent)
         })
 
-       /*event_info_add_item_button.setOnClickListener({
-            //toast("Jako host mogę dodawać rzeczy :)")
-        })*/
-
-        /*eventInfo_show_needs.setOnClickListener({
-            //trzeba chyba przekazać jako extra intent czy jestem hostem
-            val intent = Intent(this, EventItemsActivity::class.java)
-            intent.putExtra("eventID", eventID.toString())
-            startActivity(intent)
-        })*/
+        event_details_resign.setOnClickListener({
+            var builder = resignDialog(Integer.parseInt(eventID))
+            builder.show()
+        })
 
         eventInfo_show_guests.setOnClickListener({
             //trzeba chyba przekazać jako extra intent czy jestem hostem
@@ -129,10 +122,19 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         // bool to przesłanie czy jestem hostem czy nie
         // okeśla to widzoczność i dla bepeczeństwa możliwość klikania przycisku
         // tylko host wydażenia powinien je widzieć
-        event_details_edit_event.isEnabled = bool
-        event_details_edit_event.isVisible = bool
-        //event_info_add_item_button.isEnabled = bool
-        //event_info_add_item_button.isVisible = bool
+        if (iAmHost){
+            event_details_edit_event.isEnabled = true
+            event_details_edit_event.isVisible = true
+            event_details_resign.isEnabled = false
+            event_details_resign.isVisible = false
+        }
+        else {
+            event_details_edit_event.isEnabled = false
+            event_details_edit_event.isVisible = false
+            event_details_resign.isEnabled = true
+            event_details_resign.isVisible = true
+        }
+
     }
 
     override fun onEventClicked(item: Need) {
@@ -147,6 +149,11 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         startActivity(intent)
     }
 
+    override fun toast(msg: String){
+        toast(msg)
+    }
+
+
     fun onCreateDialog(): Dialog {
 
         //builder dialogu
@@ -155,6 +162,22 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
                 .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
                     startActivity(Intent(Intent.ACTION_VIEW,
                             Uri.parse(String.format("http://maps.google.co.in/maps?q=geo:%s,%s(%s)", eventInfo.latitude, eventInfo.longitude,eventInfo.address))))
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
+                    // Anuluj
+                })
+        return builder.create()
+    }
+
+
+    fun resignDialog(eventID: Int): Dialog {
+
+        //builder dialogu
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Are you sure to resign from event?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+                    eventInfoPresenter.deleteMyself(eventID)
+                    this.finish()
                 })
                 .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
                     // Anuluj

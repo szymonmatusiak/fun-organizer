@@ -71,7 +71,7 @@ class ApiProvider private constructor() {
     fun searchWithContactList(contactList: List<String>) = service.searchWithContactList(contactList)
     fun sendInvitationToEvent(inviteData: InviteData) = service.sendInvitationToEvent(inviteData)
     fun getEventGuest(eventID: String) = service.getEventGuest(eventID)
-
+    fun deleteMyself(eventID: Int) = service.deleteMyself(eventID)
     fun confirmCategory(groupID: Int, group: NeedNoID) = service.confirmCategory(groupID, group)
 
     fun getEventForEdit(eventID: Int) = service.getEventForEdit(eventID)

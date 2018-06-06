@@ -54,7 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="70dp"
+            android:backgroundTint="@android:color/holo_green_light"
             android:text="accept"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -66,7 +68,9 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="70dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
             android:text="decline"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

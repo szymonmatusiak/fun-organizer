@@ -84,4 +84,5 @@ password:"</string>
     <string name="event_info_description_text">Description:</string>
     <string name="title_activity_event_guests">eventGuestsActivity</string>
     <string name="event_info_add_need">Add category</string>
+    <string name="resign_from_event">Resign from event</string>
 </resources>
