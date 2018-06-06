@@ -59,7 +59,7 @@ class InvitationsFragment : Fragment(), InvitationListView, InvitationsListener 
         view.accept
         when (view.id) {
             accept.id -> invitationsPresenter.sentInvitationDesition(invitation.id,2)
-            later.id  -> invitationsPresenter.sentInvitationDesition(invitation.id,0)
+            //later.id  -> invitationsPresenter.sentInvitationDesition(invitation.id,0)
             decline.id  ->invitationsPresenter.sentInvitationDesition(invitation.id,1)
         }
     }

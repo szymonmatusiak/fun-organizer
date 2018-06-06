@@ -72,6 +72,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
             //trzeba chyba przekazać jako extra intent czy jestem hostem
             val intent = Intent(this, EventGuestsActivity::class.java)
             intent.putExtra("eventID", eventID)
+            intent.putExtra("iAmHost", iAmHost.toString())
 
             startActivity(intent)
         })

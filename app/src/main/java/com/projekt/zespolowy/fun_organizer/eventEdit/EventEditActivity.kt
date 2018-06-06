@@ -1,30 +1,22 @@
 package com.projekt.zespolowy.fun_organizer.eventEdit
 
-import android.R
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.Spinner
-import com.google.android.gms.common.api.Api
-import com.projekt.zespolowy.fun_organizer.R.attr.content
 import com.projekt.zespolowy.fun_organizer.map.MapsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_edit.*
-import kotlinx.android.synthetic.main.activity_new_event.*
 import kotterknife.bindView
 import java.util.*
 
@@ -140,8 +132,6 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
                     editDescription.text.toString(),
                     itemsList)
 
-            toast(eventM.toString())
-
             eventPresenter.putEventToDatabase(currentId, eventM)
         })
 
@@ -196,7 +186,11 @@ class EventEditActivity : AppCompatActivity(), EventEditView, EditItemListener{
     }*/
 
     fun parseDate() : String {
-        var finalDate: String = year + "-" + month + "-" + day + " " + hour + ":" + minutes
+        var finalDate: String
+                if (year.equals("") && month.equals("") && day.equals(""))
+                    finalDate = editDateField.text.toString() + " " + editTimeField.text.toString()
+                else
+                    finalDate = year + "-" + month + "-" + day + " " + hour + ":" + minutes
         return finalDate
     }
 

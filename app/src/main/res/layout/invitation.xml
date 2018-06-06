@@ -21,6 +21,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
+            android:textSize="17dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,32 +53,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="70dp"
             android:text="accept"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/later"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="later"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/decline"
-            app:layout_constraintStart_toEndOf="@+id/accept"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/decline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="70dp"
             android:layout_marginTop="8dp"
             android:text="decline"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -84,4 +72,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical" />
+
 </android.support.constraint.ConstraintLayout>

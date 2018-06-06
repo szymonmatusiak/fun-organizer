@@ -26,8 +26,11 @@ class NewFriendPresenter(
                 .subscribe(
                         {
                             val raw = it.raw()
-                            if (raw.isSuccessful)
+                            if (raw.isSuccessful){
                                 view?.exitActivity()
+                                view?.toast("A new friend has been added")
+                            }
+
                             else
                                 Log.d("Błąd:", raw.code().toString())
                         },
@@ -45,8 +48,10 @@ class NewFriendPresenter(
                 .subscribe(
                         {
                             val raw = it.raw()
-                            if (raw.code() == 200)
+                            if (raw.code() == 200) {
                                 view?.exitActivity()
+                                view?.toast("A new friend has been added")
+                            }
                             else
                                 Log.d("Błąd:", raw.code().toString())
                         },
@@ -64,8 +69,10 @@ class NewFriendPresenter(
                 .subscribe(
                         {
                             val raw = it.raw()
-                            if (raw.isSuccessful)
+                            if (raw.isSuccessful) {
                                 view?.exitActivity()
+                                view?.toast("A new friend has been added")
+                            }
                             else
                                 Log.d("Błąd:", raw.code().toString())
                         },

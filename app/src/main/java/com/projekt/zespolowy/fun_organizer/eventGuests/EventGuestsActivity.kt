@@ -6,13 +6,12 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-
+import androidx.core.view.isVisible
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
 import com.projekt.zespolowy.fun_organizer.register.UserModelNoPassword
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
-import kotlinx.android.synthetic.main.activity_event_guests.*
 import kotterknife.bindView
 
 class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
@@ -23,11 +22,14 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
 
     private lateinit var eventGuestsPresenter: EventGuestsPresenter
     private lateinit var eventID: String
+    private var iAmHost: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_guests)
         eventID = intent.getStringExtra("eventID")
+        iAmHost = intent.getStringExtra("iAmHost").toBoolean()
         eventGuestsPresenter = EventGuestsPresenter(EventGuestsUseCase(ApiProvider.instance), SchedulersProvider())
     }
 
@@ -35,9 +37,13 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
         super.onStart()
         eventGuestsPresenter.onStart(this)
         eventGuestsPresenter.getEventGuest(eventID)
-        button.setOnClickListener {
-            eventGuestsPresenter.startNewActivity(eventID)
-        }
+
+        if (iAmHost)
+            button.setOnClickListener {
+                eventGuestsPresenter.startNewActivity(eventID)
+            }
+        else
+            button.isVisible = false
     }
 
     override fun onStop() {
