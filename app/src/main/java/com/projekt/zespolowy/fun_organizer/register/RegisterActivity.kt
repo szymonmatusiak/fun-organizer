@@ -2,6 +2,7 @@ package com.projekt.zespolowy.fun_organizer.register
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
@@ -17,6 +18,7 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         registerPresenter = RegisterPresenter(RegisterUseCase(ApiProvider.instance), SchedulersProvider())
+        setActionBar("Register")
     }
 
     override fun onStart() {
@@ -55,5 +57,24 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
 
     override fun toast(text: String) {
         android.widget.Toast.makeText(this, text, android.widget.Toast.LENGTH_LONG).show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
     }
 }

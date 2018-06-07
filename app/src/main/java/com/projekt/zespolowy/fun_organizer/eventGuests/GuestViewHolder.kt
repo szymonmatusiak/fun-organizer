@@ -14,22 +14,22 @@ import kotterknife.bindView
 class GuestViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val name: TextView by bindView(R.id.username_recycler)
     private val surname: TextView by bindView(R.id.surname_recycler)
-    private val phoneLabel: TextView by bindView(R.id.phoneLabel)
+    private val phone: TextView by bindView(R.id.mail_recycler)
+    //private val phoneLabel: TextView by bindView(R.id.phoneLabel)
 
     companion object {
         fun createViewHolder(viewGroup: ViewGroup): GuestViewHolder {
             val v = LayoutInflater.from(viewGroup.context)
                     .inflate(R.layout.user_list_element, viewGroup, false)
             Log.v("QQQQQQQQQQQ", "testestestes")
-
             return GuestViewHolder(v)
         }
     }
 
     fun setData(user: UserModelNoPassword) {
         name.text = user.name + " " + user.surname
-        surname.text = user.surname
-        //phoneLabel.isVisible = false
+        surname.text = user.email
+        phone.text = user.phoneNumber
         Log.v("QQQQQQQQQQQ", user.toString())
     }
 }

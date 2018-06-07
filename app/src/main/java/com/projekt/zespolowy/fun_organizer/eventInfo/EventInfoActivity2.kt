@@ -17,6 +17,11 @@ import com.projekt.zespolowy.fun_organizer.eventItems.EventItemsActivity
 import com.projekt.zespolowy.fun_organizer.utils.ApiProvider
 import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_info.*
+import android.graphics.drawable.ColorDrawable
+import android.support.design.R.id.home
+import android.support.v4.app.NavUtils
+import android.view.MenuItem
+
 
 class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGoupsListener {
 
@@ -33,6 +38,8 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_info)
         eventInfoPresenter = EventInfoPresenter(EventInfoUseCase(ApiProvider.instance), SchedulersProvider())
+
+        setActionBar("Event details")
     }
 
     override fun onStart() {
@@ -41,6 +48,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         var eventID: String = intent.getStringExtra("eventID")
         eventInfoPresenter.getIfIsHost(Integer.parseInt(eventID))
         eventInfoPresenter.getEventInfo(Integer.parseInt(eventID))
+
 
         imageView_show_on_map.setOnClickListener({
             //Przycisk mapy tutaj <<<
@@ -70,7 +78,7 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         })
 
         eventInfo_show_chat.setOnClickListener({
-            toast("Trzeba zrobić czat")
+            //toast("Trzeba zrobić czat")
         })
     }
 
@@ -153,9 +161,30 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         startActivity(intent)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
+    }
+
+
     override fun toast(msg: String){
         toast(msg)
     }
+
 
 
     fun onCreateDialog(): Dialog {

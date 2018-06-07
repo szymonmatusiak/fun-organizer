@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import androidx.core.view.isVisible
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.AddFriendsToEventActivity
@@ -31,6 +32,8 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
         eventID = intent.getStringExtra("eventID")
         iAmHost = intent.getStringExtra("iAmHost").toBoolean()
         eventGuestsPresenter = EventGuestsPresenter(EventGuestsUseCase(ApiProvider.instance), SchedulersProvider())
+
+        setActionBar("Event guests")
     }
 
     override fun onStart() {
@@ -67,4 +70,22 @@ class EventGuestsActivity : AppCompatActivity(), EventGuestsView {
         startActivity(intent)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
+    }
 }

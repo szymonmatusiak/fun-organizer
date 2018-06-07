@@ -11,19 +11,12 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_guests_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="505dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:clipToPadding="true"
+        android:layout_height="match_parent"
+
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_friends_button"

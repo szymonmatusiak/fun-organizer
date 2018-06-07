@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
@@ -54,6 +55,8 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+
+        setActionBar("Create new event")
     }
 
     override fun onStart() {
@@ -198,4 +201,22 @@ class NewEventActivity : AppCompatActivity(), NewEventView, ItemListener {
         this.finish()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
+    }
 }

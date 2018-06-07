@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.friends.FriendsListUseCase
@@ -29,6 +30,8 @@ class AddFriendsToEventActivity : AppCompatActivity(), AddFriendsToEventView, Us
         presenter = FriendsEventPresenter(FriendsListUseCase(ApiProvider.instance), SchedulersProvider())
         eventID = intent.getStringExtra("eventID")
         Log.v("eventIDinMy", eventID)
+
+        setActionBar("Add friends to event")
     }
 
     override fun onStart() {
@@ -66,5 +69,24 @@ class AddFriendsToEventActivity : AppCompatActivity(), AddFriendsToEventView, Us
 
     override fun closeActivity() {
         startActivity(Intent(this, NavigationActivity::class.java))
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
     }
 }

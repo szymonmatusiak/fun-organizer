@@ -29,9 +29,9 @@ class UserAddToEventViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     fun setData(user: UserModel, userClickListener: UserClickListener) {
-        name.text = user.name
-        surname.text = user.surname
-        mail.text = user.email
+        name.text = user.name + " " + user.surname
+        surname.text = user.email
+        mail.text = user.phoneNumber
         viewHolder.setOnClickListener {
             isClicked = if (!isClicked) {
                 this.itemView.setBackgroundColor(Color.parseColor("#35589e"))

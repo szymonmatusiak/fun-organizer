@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.navigation.NavigationActivity
@@ -30,7 +31,7 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_friend)
         newFriendPresenter = NewFriendPresenter(NewFriendUseCase(ApiProvider.instance), SchedulersProvider())
-
+        setActionBar("Add friend")
     }
 
     override fun onStart() {
@@ -103,6 +104,25 @@ class NewFriendActivity : AppCompatActivity(), NewFriendView {
         }
         cur?.close()
         return list
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                this.finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setTitle(heading)
+        actionBar.show()
     }
 
 }

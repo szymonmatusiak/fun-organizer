@@ -62,18 +62,22 @@ class NavigationActivity : AppCompatActivity(),
 
         if (lastNavigator.equals("invites")) {
             var fragment = InvitationsFragment()
+            setActionBar("Invites")
             ft.replace(R.id.fragment_placeholder, fragment)
         }
         else if (lastNavigator.equals("friends")){
             var fragment = FriendsListFragment()
+            setActionBar("Friends")
             ft.replace(R.id.fragment_placeholder, fragment)
         }
         else if (lastNavigator.equals("yourEvents")){
             var fragment = EventListFragment()
+            setActionBar("Your events")
             ft.replace(R.id.fragment_placeholder, fragment)
         }
         else{
             var fragment = EventsAcceptedFragment()
+            setActionBar("Upcomming events")
             ft.replace(R.id.fragment_placeholder, fragment)
         }
 
@@ -147,6 +151,7 @@ class NavigationActivity : AppCompatActivity(),
                 sharedPreferences.edit {
                     putString("lastNavigator", "invites")
                 }
+                setActionBar("Invites")
                 fragment = InvitationsFragment()
             }
 
@@ -155,6 +160,7 @@ class NavigationActivity : AppCompatActivity(),
                 sharedPreferences.edit {
                     putString("lastNavigator", "upcomingEvents")
                 }
+                setActionBar("Upcoming events")
                 fragment = EventsAcceptedFragment()
             }
 
@@ -163,6 +169,7 @@ class NavigationActivity : AppCompatActivity(),
                 sharedPreferences.edit {
                     putString("lastNavigator", "friends")
                 }
+                setActionBar("Friends")
                 fragment = FriendsListFragment()
             }
 
@@ -171,6 +178,7 @@ class NavigationActivity : AppCompatActivity(),
                 sharedPreferences.edit {
                     putString("lastNavigator", "yourEvents")
                 }
+                setActionBar("Your events")
                 fragment = EventListFragment()
             }
 
@@ -215,4 +223,12 @@ class NavigationActivity : AppCompatActivity(),
         return builder.create()
     }
 
+
+    fun setActionBar(heading: String) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+
+        actionBar.title = heading
+        actionBar.show()
+    }
 }
