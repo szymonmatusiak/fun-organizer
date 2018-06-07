@@ -1,5 +1,6 @@
 package com.projekt.zespolowy.fun_organizer.api
 
+import com.projekt.zespolowy.fun_organizer.eventChat.EventChatModel
 import com.projekt.zespolowy.fun_organizer.eventInfo.EventInfo
 import com.projekt.zespolowy.fun_organizer.eventInfo.NeedNoID
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemModel
@@ -73,6 +74,14 @@ interface ApiService {
 
     @GET("/api/event/guests")
     fun getEventGuest(@Query("id") eventID: String): Single<List<UserModelNoPassword>>
+
+    //EventChat
+    @GET("/api/event/message")
+    fun getEventChat(@Query("event") eventID: Int): Single<List<EventChatModel>>
+
+    @POST("/api/event/message")
+    fun postEventChatMessage(@Query("event ") eventID: Int, @Body msg: EventChatModel): Single<Response<Void>>
+
 
     //EventNeeds/items
     @POST("/api/itemcat")

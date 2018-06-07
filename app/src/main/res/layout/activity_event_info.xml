@@ -235,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Show chat" />
+                    android:text="Show event chat" />
 
                 <Space
                     android:layout_width="wrap_content"
@@ -259,7 +259,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Show event guests" />
+                    android:text="Show guests" />
 
                 <Space
                     android:layout_width="wrap_content"

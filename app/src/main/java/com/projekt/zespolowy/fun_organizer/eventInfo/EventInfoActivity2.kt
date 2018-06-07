@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable
 import android.support.design.R.id.home
 import android.support.v4.app.NavUtils
 import android.view.MenuItem
+import com.projekt.zespolowy.fun_organizer.eventChat.EventChatActivity
 
 
 class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGoupsListener {
@@ -78,7 +79,9 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
         })
 
         eventInfo_show_chat.setOnClickListener({
-            //toast("Trzeba zrobić czat")
+            val intent = Intent(this, EventChatActivity::class.java)
+            intent.putExtra("eventID", eventID.toString())
+            startActivity(intent)
         })
     }
 

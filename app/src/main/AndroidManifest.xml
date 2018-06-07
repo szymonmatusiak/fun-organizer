@@ -60,7 +60,8 @@
             android:label="@string/title_activity_event_guests" />
         <activity android:name=".friendsListEvent.AddFriendsToEventActivity" />
         <activity android:name=".eventEdit.EditEventActivity" />
-        <activity android:name=".eventEdit.EventEditActivity"></activity>
+        <activity android:name=".eventEdit.EventEditActivity" />
+        <activity android:name=".eventChat.EventChatActivity"></activity>
     </application>
 
 </manifest>

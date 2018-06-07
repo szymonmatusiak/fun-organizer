@@ -3,6 +3,7 @@ package com.projekt.zespolowy.fun_organizer.utils
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.projekt.zespolowy.fun_organizer.api.ApiService
 import com.projekt.zespolowy.fun_organizer.api.PingResponseObject
+import com.projekt.zespolowy.fun_organizer.eventChat.EventChatModel
 import com.projekt.zespolowy.fun_organizer.eventInfo.NeedNoID
 import com.projekt.zespolowy.fun_organizer.eventItems.SingleItemSmallModel
 import com.projekt.zespolowy.fun_organizer.friendsListEvent.InviteData
@@ -74,6 +75,9 @@ class ApiProvider private constructor() {
     fun deleteMyself(eventID: Int) = service.deleteMyself(eventID)
     fun deleteItemCategory(eventID: Int) = service.deleteItemCategory(eventID)
     fun confirmCategory(groupID: Int, group: NeedNoID) = service.confirmCategory(groupID, group)
+
+    fun getEventChat(eventID: Int) = service.getEventChat(eventID)
+    fun postEventChatMessage(eventID:Int, message: EventChatModel) = service.postEventChatMessage(eventID, message)
 
     fun getEventForEdit(eventID: Int) = service.getEventForEdit(eventID)
     fun putEventToDatabase(eventID: Int, event: com.projekt.zespolowy.fun_organizer.eventEdit.EventModel) = service.putEventToDatabase(eventID, event)
