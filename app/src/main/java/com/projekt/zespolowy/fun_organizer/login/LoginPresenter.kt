@@ -65,11 +65,13 @@ class LoginPresenter(
                         },
                         {
                             println(it.toString())
+                            view?.showScreen()
                         }
                 )
     }
 
     fun startNavigationActivity() {
         view?.startNavigationActivity()
+        view?.showScreen()
     }
 }

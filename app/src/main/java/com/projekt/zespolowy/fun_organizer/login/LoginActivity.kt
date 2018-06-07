@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.projekt.zespolowy.fun_organizer.MyApplication
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.R.id.loginEditText
@@ -27,6 +28,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun onStart() {
         super.onStart()
+
+            loginWholeScreen.isVisible = false
+            loginWholeScreen.isEnabled = false
+
         loginPresenter.onStart(this)
         loginPresenter.checkIfUserIsAuthenticated()
         loginButton.setOnClickListener { login() }
@@ -53,6 +58,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
         authorization = sharedPreferences.getString("Authorization", "not")
         if (authorization != "not" && authorization != "null")
             loginPresenter.startNavigationActivity()
+        else
+            showScreen()
     }
 
     override fun startNavigationActivity() {
@@ -74,6 +81,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
         editor.putString("phoneNumber", it.phoneNumber)
         editor.apply()
     }*/
+    override fun showScreen() {
+        loginWholeScreen.isVisible = true
+        loginWholeScreen.isEnabled = true
+    }
 
     override fun toastMessage(): String {
         return "Bezpieczne logowanie:\nLogin: " + loginEditText.text + "\nHasło: " + passwordEditText.text

@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import androidx.core.view.isVisible
-import androidx.core.widget.toast
 import com.projekt.zespolowy.fun_organizer.R
 import com.projekt.zespolowy.fun_organizer.eventEdit.EventEditActivity
 import com.projekt.zespolowy.fun_organizer.eventGuests.EventGuestsActivity
@@ -68,6 +67,10 @@ class EventInfoActivity2 : AppCompatActivity(), EventInfoView, EventInfoItemsGou
             intent.putExtra("iAmHost", iAmHost.toString())
 
             startActivity(intent)
+        })
+
+        eventInfo_show_chat.setOnClickListener({
+            toast("Trzeba zrobić czat")
         })
     }
 

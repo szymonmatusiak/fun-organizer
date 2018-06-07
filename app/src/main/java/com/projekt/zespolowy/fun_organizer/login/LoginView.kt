@@ -12,5 +12,6 @@ interface LoginView : IBaseView {
     fun toastMessage(): String
     fun checkIfUserIsAuthenticated()
     fun startNavigationActivity()
+    fun showScreen()
     //fun saveUserData(it: UserModelNoPassword)
 }
