@@ -54,9 +54,32 @@ class NavigationActivity : AppCompatActivity(),
 
     override fun onStart() {
         super.onStart()
-        var fragment = EventListFragment()
+        var fragment = EventsAcceptedFragment()
+
+        var lastNavigator = defaultSharedPreferences.getString("lastNavigator", "Missing")
         val ft = fragmentManager.beginTransaction()
-        ft.replace(R.id.fragment_placeholder, fragment)
+
+
+        if (lastNavigator.equals("invites")) {
+            var fragment = InvitationsFragment()
+            ft.replace(R.id.fragment_placeholder, fragment)
+        }
+        else if (lastNavigator.equals("friends")){
+            var fragment = FriendsListFragment()
+            ft.replace(R.id.fragment_placeholder, fragment)
+        }
+        else if (lastNavigator.equals("yourEvents")){
+            var fragment = EventListFragment()
+            ft.replace(R.id.fragment_placeholder, fragment)
+        }
+        else{
+            var fragment = EventsAcceptedFragment()
+            ft.replace(R.id.fragment_placeholder, fragment)
+        }
+
+
+        //val ft = fragmentManager.beginTransaction()
+        //ft.replace(R.id.fragment_placeholder, fragment)
         ft.commit()
 
         var nr = defaultSharedPreferences.getString("phoneNumber", "Missing")
@@ -119,26 +142,40 @@ class NavigationActivity : AppCompatActivity(),
         }
 
         when (item.itemId) {
-            R.id.nav_news -> fragment = InvitationsFragment()
+            R.id.nav_news -> {
+                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                sharedPreferences.edit {
+                    putString("lastNavigator", "invites")
+                }
+                fragment = InvitationsFragment()
+            }
 
-            R.id.nav_upcoming_events -> fragment = EventsAcceptedFragment()
-        /*{
-        val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
-        startActivity(navigatorActivity)
-    }*/
+            R.id.nav_upcoming_events -> {
+                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                sharedPreferences.edit {
+                    putString("lastNavigator", "upcomingEvents")
+                }
+                fragment = EventsAcceptedFragment()
+            }
 
             R.id.nav_friends -> {
+                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                sharedPreferences.edit {
+                    putString("lastNavigator", "friends")
+                }
                 fragment = FriendsListFragment()
             }
 
-            R.id.nav_your_events -> fragment = EventListFragment()
+            R.id.nav_your_events -> {
+                var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.appContext)
+                sharedPreferences.edit {
+                    putString("lastNavigator", "yourEvents")
+                }
+                fragment = EventListFragment()
+            }
 
-            /*R.id.nav_share -> {
-                val navigatorActivity = Intent(this, AddFriendsToEventActivity::class.java)
-                startActivity(navigatorActivity)
-            }*/
             R.id.logout -> {
-                var builder = onCreateDialog()
+                var builder = logoutCreateDialog()
                 builder.show()
             }
         }
@@ -151,7 +188,7 @@ class NavigationActivity : AppCompatActivity(),
         return true
     }
 
-    fun onCreateDialog(): Dialog {
+    fun logoutCreateDialog(): Dialog {
 
         //builder dialogu
         val builder = AlertDialog.Builder(this)

@@ -25,10 +25,10 @@ class UserViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     init {
-        v.setOnClickListener { view ->
+        /*v.setOnClickListener { view ->
             Snackbar.make(view, "Cicked on event id: $adapterPosition", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-        }
+        }*/
         userName = v.findViewById(R.id.username_recycler)
         userSurname = v.findViewById(R.id.surname_recycler)
         userMail = v.findViewById(R.id.mail_recycler)
