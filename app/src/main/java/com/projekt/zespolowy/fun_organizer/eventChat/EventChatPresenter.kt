@@ -17,26 +17,34 @@ class EventChatPresenter(
     }
 
     fun getEventChat(eventID: Int) {
-        //Log.v("fuck2", "fuck")
         eventChatUseCase
                 .getEventChat(eventID)
                 .subscribeOn(schedulersProvider.backgroundThread())
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-                            if (it.isEmpty()) {
-                                Log.v("fuck", it.toString())
-
-                            }
-                            Log.v("setData", it.toString())
                             view?.setData(it)
+                            view?.notifyOnUpdate()
                         },
                         {
-                            Log.v("setData", it.toString())
+                            Log.v("kek ", "Coś nie tak :/")
+                        }
+                )
+    }
+
+    fun sendChatMessage(eventID: Int, message: EventChatModel) {
+        eventChatUseCase
+                .postEventChatMessage(eventID, message  )
+                .subscribeOn(schedulersProvider.backgroundThread())
+                .observeOn(schedulersProvider.mainThread())
+                .subscribe(
+                        {
+                            getEventChat(eventID)
+                            view?.notifyOnUpdate()
+                        },
+                        {
 
                         }
                 )
-
-
     }
 }

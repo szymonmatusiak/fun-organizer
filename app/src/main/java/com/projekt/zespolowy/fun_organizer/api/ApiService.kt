@@ -80,7 +80,7 @@ interface ApiService {
     fun getEventChat(@Query("event") eventID: Int): Single<List<EventChatModel>>
 
     @POST("/api/event/message")
-    fun postEventChatMessage(@Query("event ") eventID: Int, @Body msg: EventChatModel): Single<Response<Void>>
+    fun postEventChatMessage(@Query("event") eventID: Int, @Body text: EventChatModel): Single<Response<Void>>
 
 
     //EventNeeds/items
