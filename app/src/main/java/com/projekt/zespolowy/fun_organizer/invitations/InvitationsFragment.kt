@@ -64,6 +64,10 @@ class InvitationsFragment : Fragment(), InvitationListView, InvitationsListener 
         }
     }
 
+    override fun notyfyAdapter() {
+        viewAdapter.notifyDataSetChanged()
+    }
+
     override fun toast(toString: String) {
         Toast.makeText(activity, toString, Toast.LENGTH_LONG).show()
     }

@@ -2,6 +2,7 @@ package com.projekt.zespolowy.fun_organizer.eventChat
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import com.projekt.zespolowy.fun_organizer.utils.SchedulersProvider
 import kotlinx.android.synthetic.main.activity_event_chat.*
 import kotterknife.bindView
 
+
 class EventChatActivity : AppCompatActivity(), EventChatView {
 
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -27,6 +29,17 @@ class EventChatActivity : AppCompatActivity(), EventChatView {
 
     private lateinit var eventChatPresenter: EventChatPresenter
     private lateinit var eventID: String
+
+    var counter = object : CountDownTimer(5000, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            //toast("seconds remaining: " + millisUntilFinished / 1000)
+        }
+        override fun onFinish() {
+            eventChatPresenter.getEventChat(eventID.toInt())
+            countAgain()
+            //toast("finito")
+        }
+    }.start()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +54,15 @@ class EventChatActivity : AppCompatActivity(), EventChatView {
         eventChatPresenter.getEventChat(eventID.toInt())
         eventChatPresenter.onStart(this)
 
-
         send_chat_message.setOnClickListener({
             sendMessage()
         })
+
     }
 
     override fun onStop() {
         super.onStop()
+        counter.cancel()
         eventChatPresenter.onStop()
     }
 
@@ -74,7 +88,7 @@ class EventChatActivity : AppCompatActivity(), EventChatView {
             if (message != ""){
                 var model = EventChatModel("", UserModelNoPassword("xd", "xdd", "xddd", "xdddd") ,message)
                 eventChatPresenter.sendChatMessage(eventID.toInt(), model)
-                eventChatPresenter.getEventChat(eventID.toInt())
+                //eventChatPresenter.getEventChat(eventID.toInt())
             }
             else {
                 toast("Message cannot be empty")
@@ -85,6 +99,8 @@ class EventChatActivity : AppCompatActivity(), EventChatView {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
     }
+
+
 
     override fun notifyOnUpdate() {
         viewAdapter.notifyDataSetChanged()
@@ -107,6 +123,10 @@ class EventChatActivity : AppCompatActivity(), EventChatView {
         actionBar.setDisplayShowHomeEnabled(false)
         actionBar.setTitle(heading)
         actionBar.show()
+    }
+
+    fun countAgain(){
+        counter.start()
     }
 
 }

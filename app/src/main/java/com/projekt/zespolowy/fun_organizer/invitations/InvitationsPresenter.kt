@@ -24,7 +24,7 @@ class InvitationsPresenter(
                 .subscribe(
                         {
                             view?.setEvents(it)
-                            //view?.toast(it.toString())
+                            view?.notyfyAdapter()
                         },
                         {
                         }
@@ -38,9 +38,10 @@ class InvitationsPresenter(
                 .observeOn(schedulersProvider.mainThread())
                 .subscribe(
                         {
-
+                            getUserInvitations()
                         },
                         {
+                            getUserInvitations()
                         }
                 )
     }
